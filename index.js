@@ -41,7 +41,7 @@ bot.on('ready', async () => {
 });
 
 //conect to DB
-mongoose.connect('mongodb+srv://NY_Cookie:'+process.env.Password+'@clixoom-bot-oj9lk.mongodb.net/'+process.env.DB+'?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://'+process.env.UserName+':'+process.env.Password+'@clixoom-bot-oj9lk.mongodb.net/'+process.env.DB+'?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     dbName: process.env.DB,
