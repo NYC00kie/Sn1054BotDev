@@ -10,6 +10,7 @@ blacklist für dailycxc erstellen , so dass man bei bestimmten wörtern komplett
 .chstats @User (Admin Only)
 Charles Darwin Rolle einführen ?
 blacklist für channel in denen man cxc bekommt erstellen
+.transfer aktivieren
 .profil schön machen (optional)
 
 Im nächsten Update (1.4):
