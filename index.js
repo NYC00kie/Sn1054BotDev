@@ -41,7 +41,7 @@ bot.on('ready', async () => {
 });
 
 //conect to DB
-mongoose.connect('mongodb+srv://NY_Cookie:':'+process.env.Password+'@clixoom-bot-oj9lk.mongodb.net/'+process.env.DB+'?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://NY_Cookie:'+process.env.Password+'@clixoom-bot-oj9lk.mongodb.net/'+process.env.DB+'?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     dbName: process.env.DB,
@@ -165,7 +165,7 @@ bot.on("message",async message => {
       channel.unlink_channel_Admin(PingData,message)
       break;
     case "chstats":
-      channel.chstats_channel_User(message)
+      channel.chstats_channel_User(message,PingData)
       break;
     case "transfer":
       Cxc.transfer_cxc(PingData, NewCxc, message);
