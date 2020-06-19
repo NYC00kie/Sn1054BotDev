@@ -167,7 +167,6 @@ exports.transfer_cxc = (PingData, NewCxc, message) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-NewCxc.cxc} })
     .exec()
     .then(docs => {
-      //message.client.channels.get("509757254862372883").send(message.author+":\n cxc transfer:\n an "+PingData.Ping+" \n -"+NewCxc.cxc+"cxc")
       this.message.channel.send(NewCxc.cxc+" wurden zu "+PingData.Ping+" übertragen")
     }).catch(err => {
       var e = new Error(err);
