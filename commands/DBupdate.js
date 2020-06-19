@@ -8,11 +8,11 @@ const nodemailer = require('nodemailer');
 
 exports.update = (message) => {
   this.message = message;
-  /*if (!message.member.roles.some(role => role.id === "450742960678764544")){
+  if (!message.member.roles.some(role => role.id === "450742960678764544")){
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
   }
-*/
+
   var transporter = nodemailer.createTransport({
      host: "smtp.gmail.com",
     auth: {
