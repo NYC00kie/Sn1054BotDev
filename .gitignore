@@ -118,3 +118,4 @@ flycheck_*.el
 nodemon.json
 
 Todolist.txt
+bannedwords/
