@@ -30,7 +30,6 @@ exports.check_channel = (message) => {
     let channelid = data.split("|")
       for (i = 0; i < channelid.length; i++) {
         if (this.message.channel.id==channelid[i]) {
-          message.client.channels.get("509757254862372883").send(message.author+"hat in einem geblacklisteten Channel ("+channelid[i]+") geschriebenen \n Blacklist")
           return false;
         }
       }
