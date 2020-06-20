@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-//cxc auslesen
+
 exports.get_help = (message) => {
   this.message = message;
 
@@ -10,7 +10,6 @@ exports.get_help = (message) => {
   .addField("Allgemein","``.help`` - Zeigt dir dieses Hilfe-Menü \n``.changelog`` - Zeigt dir eine Liste von Veränderungen an diesem Bot \n``.profil`` - Zeigt dir dein Clixoom-Profil (mit deinem Guthaben, etc.) \n``.profil @user`` - Zeigt dir das Clixoom-Profil von @user (In Progress) \n``.shop`` - Zeigt dir eine Liste aller Items und Shop-Befehle")
   .addField("Währungsbefehle",".cxc - Damit kannst du sehen, wie viele Cx-Coins du gesammelt hast\n ``.cxc @user`` - Damit kannst du sehen, wie viele Cx-Coins @user gesammelt hat\n ``.transfer @user [betrag]`` - Damit sendest du @user eine gewünschte Anzahl an Cx-Coins \n ``.cxctop``(not yet configured) - Damit siehst du die reichsten Leute auf dem Server\n ``.spenttop`` (not yet configured)- Damit siehst du die Leute, die am meisten Cx-Coins ausgegeben haben \n **ACHTUNG! Die Rollen bei Befehlen immer klein schreiben!**\n Bsp.: ``.buyrole vip``")
   .addField("Kanalsystem","Hinweise:\n Diese System ist nur für wissenschaftliche Themen gedacht! Andere Themen werden sofort gelöscht.\n Den Namen des Kanals immer ohne Leerzeichen schreiben (Die Beschreibung darf Leerzeichen enthalten)\n Eigene Kanäle können erst gelöscht werden, wenn 24h nichts mehr in ihnen geschrieben wurde.\n Nachdem man seinen Kanal geschlossen hat erhält man eine kleine Belohnung in Form von Cx-Coins (die Anzahl richtet sich nach der vorherigen Aktivität des Channels)\n Missbrauch in Form von Spam usw. wird nicht tolleriert.\n ``.create [name] [beschreibung]`` - Erstellt einen eigenen Diskussionskanal\n ``.chstats`` - Zeigt dir Statistiken zu deinem Kanal an\n ``.delete`` - Löscht deinen eigenen Kanal")
-  .addField("Was bald kommt...","- Mehr Rollen\n - Mehr Möglichkeiten um Cx-Coins zu verdienen\n - Einstellbare Profilfarben (bei .profil)\n - Mehr Slots für eigene Kanäle")
   .addField("Zusätzliches","Bei Problemen mit diesem Bot kann man sich gerne bei mir über Discord melden:\n <@376394812888186890> , oder beim Clixoom Discord Team.\nMehr Befehle kommen bald. Vorschläge kannst du in den Chat <#518388012149899294> schreiben.\n Bugs sind bitte direkt bei mir oder beim Clixoom Discord Team zu melden.\n Viel Spaß c:")
   .setFooter("erstellt von: Clara und Nici ")
   this.message.author.send(Helpembed);

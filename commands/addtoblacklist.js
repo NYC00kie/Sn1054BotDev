@@ -18,3 +18,17 @@ exports.add_word = (message, NewWord) => {
   console.log('Word: '+NewWord+' added to Blacklist!');
 });
 }
+
+
+exports.add_channel = (message, NewWord) => {
+  this.message = message;
+  if (!message.member.roles.some(role => role.id === "450742960678764544")){
+    this.message.channel.send("Du hast keine Berechtigung dafür")
+    return;
+  }
+
+  fs.writeFile('./bannedwords/channelblacklist.txt', "|"+NewWord, {flag:'a'},function (err) {
+  if (err) throw err;
+  console.log('Word: '+NewWord+' added to Blacklist!');
+});
+}

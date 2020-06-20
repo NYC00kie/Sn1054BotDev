@@ -8,6 +8,7 @@ const PREFIX = "."
 var fs = require("fs");
 const Help = require("./commands/help");
 const blacklist = require("./commands/addtoblacklist");
+const checkblacklist = require("./commands/inblacklist")
 const addprofile = require("./commands/addprofile");
 const Cxc = require("./commands/cxc");
 const Sale = require('./models/sale');
@@ -80,10 +81,13 @@ bot.on("message",async message => {
   if (message.channel instanceof Discord.DMChannel)return;//return if the Channel the message got send in is the PM channel
   addprofile.add_Profile(message);
   if(!message.content.startsWith(PREFIX)) {
+    if(checkblacklist.check_channel(message)) {
+    console.log("durch")
     Cxc.add_cxc(message);
     await sleep(1000);
     Cxcdaily.add_cxc(message);
     return;
+    }
   }//return if there is no Prefix
   let args = message.content.substring(PREFIX.length).split(" ");
   let NewCxc = {
@@ -102,11 +106,14 @@ bot.on("message",async message => {
   //all Commands
   switch (args[0].toLowerCase()) {
       //here the sales should be displayed
-    case "blacklist":
+    case "addblacklist":
       blacklist.add_word(message,Word)
       break;
+    case "addchannel":
+      blacklist.add_channel(message,Word)
+      break;
     case "v":
-      message.channel.send("Version 1.2.4 (15.04.2020)")
+      message.channel.send("Version 1.3.2 (20.06.2020)")
       break;
     case "amonunser":
       insider.AmonUnser(message)
