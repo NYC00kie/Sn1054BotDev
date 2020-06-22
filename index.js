@@ -81,8 +81,7 @@ bot.on("message",async message => {
   if (message.channel instanceof Discord.DMChannel)return;//return if the Channel the message got send in is the PM channel
   addprofile.add_Profile(message);
   if(!message.content.startsWith(PREFIX)) {
-    if(checkblacklist.check_channel(message)) {
-    console.log("durch")
+    if (await checkblacklist.check_channel(message)) {
     Cxc.add_cxc(message);
     await sleep(1000);
     Cxcdaily.add_cxc(message);

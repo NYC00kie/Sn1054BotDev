@@ -5,13 +5,11 @@ const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const fs = require('fs');
 dotenv.config();
-
 exports.check_word = (message) => {
   this.message = message;
 
   Splitmessage = this.message.content.split(" ")
-  fs.readFile('./bannedwords/blacklist.txt',"utf8",(err, data) => {
-    if (err) throw err;
+  var data = fs.readFileSync('./bannedwords/blacklist.txt',"utf8")
       let words = data.split("|")
         for (i=0;i<Splitmessage.length;i++) {
           for (j = 0; j< words.length;j++) {
@@ -21,20 +19,24 @@ exports.check_word = (message) => {
             }
           }
         }
-      });
 }
 
-exports.check_channel = (message) => {
+exports.check_channel =  (message) => {
   this.message = message;
-  fs.readFile('./bannedwords/channelblacklist.txt',"utf8",(err, data) => {
+  var x
+  console.log(x)
+  var data = fs.readFileSync('./bannedwords/channelblacklist.txt',"utf8")
     let channelid = data.split("|")
       for (i = 0; i < channelid.length; i++) {
         if (this.message.channel.id==channelid[i]) {
+          console.log(false);
           return false;
+        }
+        if (i == channelid.length-1) {
+          console.log(true);
+          return true;
         }
       }
 
-
-
-    });
+    console.log(x)
 }
