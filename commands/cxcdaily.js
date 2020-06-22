@@ -13,7 +13,6 @@ exports.add_cxc =  (message) => {
         for (i=0;i<Splitmessage.length;i++) {
           for (j = 0; j< words.length;j++) {
             if (Splitmessage[i]==words[j]) {
-              this.message.channel.send("!help")
               message.client.channels.get("509757254862372883").send(message.author+"hat ein geblacklistetes Wort geschriebenen \n Blacklist")
               return;
             }
