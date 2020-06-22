@@ -118,5 +118,4 @@ flycheck_*.el
 nodemon.json
 
 Todolist.txt
-blacklist.txt
-channelblacklist.txt
+bannedwords/
