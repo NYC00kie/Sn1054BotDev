@@ -93,9 +93,13 @@ bot.on("message",async message => {
     Cxc.add_cxc(message);
     await sleep(1000);
     Cxcdaily.add_cxc(message);
+    if (message.channel.id == "518446638335918080") {
+      message.delete(1000)
+    }
     return;
     }
   }//return if there is no Prefix
+
   let args = message.content.substring(PREFIX.length).split(" ");
   let NewCxc = {
     cxc: Number(args[2])
