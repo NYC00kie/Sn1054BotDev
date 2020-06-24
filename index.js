@@ -9,7 +9,7 @@ var fs = require("fs");
 const Help = require("./commands/help");
 const blacklist = require("./commands/addtoblacklist");
 const checkblacklist = require("./commands/inblacklist")
-const addprofile = require("./commands/addprofile");
+const manageprofile = require("./commands/manageprofile");
 const Cxc = require("./commands/cxc");
 const Sale = require('./models/sale');
 const Sellrole = require("./commands/sellrole");
@@ -25,6 +25,7 @@ const cxgifs = require('./commands/cx-gifs');
 const dbupdate = require('./commands/DBupdate');
 const stats = require('./commands/stats');
 const insider = require('./commands/insider');
+const start = require('./commands/start');
 let bot = new Discord.Client();
 
 bot.login(process.env.TOKEN);
@@ -72,14 +73,21 @@ var transporter = nodemailer.createTransport({
   }
 });
 
+bot.on("guildMemberAdd" , member => {
+  manageprofile.add_Profile_new(member);//addprofile to DB when entering the Server
+})
+
+bot.on("guildMemberRemove" , member => {
+  manageprofile.remove_Profile(member);//removeprofile from DB when leaving the server
+})
+
 //Execute Commands
 bot.on("message",async message => {
   if (message.author.bot) {
     return;//leave if the Author is a Bot or the Bot itself
   };
-  //console.log(message.content)
   if (message.channel instanceof Discord.DMChannel)return;//return if the Channel the message got send in is the PM channel
-  addprofile.add_Profile(message);
+  manageprofile.add_Profile_old(message);
   if(!message.content.startsWith(PREFIX)) {
     if (await checkblacklist.check_channel(message)) {
     Cxc.add_cxc(message);
@@ -112,7 +120,7 @@ bot.on("message",async message => {
       blacklist.add_channel(message,Word)
       break;
     case "v":
-      message.channel.send("Version 1.3.2 (20.06.2020)")
+      message.channel.send("Version 1.3.3 (24.06.2020)")
       break;
     case "amonunser":
       insider.AmonUnser(message)
@@ -204,10 +212,13 @@ bot.on("message",async message => {
       dbupdate.update(message);
       break;
     case "reset":
-      addprofile.reset_Profile(PingData,message);
+      manageprofile.reset_Profile(PingData,message);
       break;
     case "stats":
       stats.stats(message);
+      break;
+    case "start":
+      start.start(message);
       break;
   };
 });
