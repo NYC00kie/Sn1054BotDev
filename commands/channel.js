@@ -245,7 +245,7 @@ exports.delete_channel_Admin = (PingData,message) => {
           Sale.updateOne({ _id: docs.id }, { $set: { Channelid: "undefined" , cxc: docs.cxc+newcxc} })
           .exec()
           .then(docs =>{
-            message.client.channels.get("509757254862372883").send(channel+" von "+Author+" wurde archiviert und hat "+newcxc+"cxc bekommen\n archiv_admin")
+            message.client.channels.get("509757254862372883").send(channel+" von "+PingData.Ping+" wurde archiviert und hat "+newcxc+"cxc bekommen\n archiv_admin")
           }).catch(console.error);
         }).catch(console.error);
     }
