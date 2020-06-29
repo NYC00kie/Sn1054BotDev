@@ -20,13 +20,13 @@ exports.get_cxc = (PingData, message) => {
     Sale.findOne({Name2:PingData.Ping})
     .exec()
     .then(docs => {
-      this.message.channel.send(docs.Name+" hat aktuell **"+docs.cxc+"** Cx-Coins")
+      this.message.channel.send(docs.Name+" hat aktuell **"+docs.cxc+"** Nova-Coins")
     }).catch(err => {
         //this.message.channel.send("Handy Ping Version")
         Sale.findOne({Name:PingData.Ping})
         .exec()
         .then(docs => {
-          this.message.channel.send(docs.Name+" hat aktuell **"+docs.cxc+"** Cx-Coins")
+          this.message.channel.send(docs.Name+" hat aktuell **"+docs.cxc+"** Nova-Coins")
         }).catch(err => {
             this.message.channel.send("Ein Fehler ist aufgetreten. Ein Fehlerbericht  wurde Bereits an den Entwickler gesendet.")
             var e = new Error(err);
@@ -46,7 +46,7 @@ exports.get_cxc = (PingData, message) => {
     Sale.findOne({Name:this.message.author})
     .exec()
     .then(docs => {
-      this.message.channel.send(docs.Name+" hat aktuell **"+docs.cxc+"** Cx-Coins")
+      this.message.channel.send(docs.Name+" hat aktuell **"+docs.cxc+"** Nova-Coins")
     }).catch(err => {
       this.message.channel.send("Ein Fehler ist augetreten. Ein Fehlerbericht  wurde Bereits an den Entwickler gesendet.")
       var e = new Error(err);
@@ -74,7 +74,6 @@ exports.add_cxc =  (message) => {
         for (i=0;i<Splitmessage.length;i++) {
           for (j = 0; j< words.length;j++) {
             if (Splitmessage[i]==words[j]) {
-              message.client.channels.get("509757254862372883").send(message.author+"hat ein geblacklistetes Wort geschriebenen \n Blacklist")
               return;
             }
           }
@@ -163,6 +162,9 @@ exports.transfer_cxc = (PingData, NewCxc, message) => {
   Sale.findOne({Name:Author})
   .exec()
   .then(docs => {
+    if (NewCxc.cxc > docs.cxc){
+      return;
+    }
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-NewCxc.cxc} })
     .exec()
     .then(docs => {
