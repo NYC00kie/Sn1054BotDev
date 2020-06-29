@@ -189,7 +189,7 @@ exports.transfer_cxc = (PingData, NewCxc, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+NewCxc.cxc} })
       .exec()
       .then(docs => {
-        this.message.channel.send("cxc wurden bei "+PingData.Ping+" entfernt")
+        this.message.channel.send("cxc wurden bei "+PingData.Ping+" hinzugefügt")
       })
     }).catch(err => {
       Sale.findOne({Name:PingData.Ping})
@@ -198,7 +198,7 @@ exports.transfer_cxc = (PingData, NewCxc, message) => {
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+NewCxc.cxc} })
         .exec()
         .then(docs => {
-          this.message.channel.send("cxc wurden bei "+PingData.Ping+" entfernt")
+          this.message.channel.send("cxc wurden bei "+PingData.Ping+" hinzugefügt")
         })
       }).catch(err => {this.message.channel.send("Ein Fehler ist augetreten. Ein Fehlerbericht  wurde Bereits an den Entwickler gesendet.")
       var e = new Error(err);
@@ -214,6 +214,7 @@ exports.transfer_cxc = (PingData, NewCxc, message) => {
     })
 
     });
+    message.client.channels.get("509757254862372883").send(Author+"hat"+NewCxc.cxc+"cxc an"+PingData.Ping+"überwiesen \n transfer")
 }).catch(err => {
   var e = new Error(err);
   const Es = e.toString()
@@ -227,5 +228,4 @@ exports.transfer_cxc = (PingData, NewCxc, message) => {
   console.error(err);
 });
 
-message.client.channels.get("509757254862372883").send(Author+"hat"+NewCxc.cxc+"cxc an"+PingData.Ping+"überwiesen \n transfer")
 }
