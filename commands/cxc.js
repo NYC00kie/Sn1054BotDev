@@ -183,34 +183,38 @@ exports.transfer_cxc = (PingData, NewCxc, message) => {
       this.message.channel.send("Error: bitte deffiniere eine cxc anzahl")
       console.error(err);
     });
-}).catch(err => {
-  var e = new Error(err);
-  const Es = e.toString()
-  var mailOptions = {
-    from: process.env.Mailadress,
-    to: process.env.MyMailadress,
-    subject: "Error",
-    text: Es + Date("now")
-  };
-  transporter.sendMail(mailOptions);
-  console.error(err);
-});
-Sale.findOne({Name2:PingData.Ping})
-.exec()
-.then(docs => {
-  Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+NewCxc.cxc} })
-  .exec()
-  .then(docs => {
-  })
-}).catch(err => {
-  Sale.findOne({Name:PingData.Ping})
-  .exec()
-  .then(docs => {
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+NewCxc.cxc} })
+    Sale.findOne({Name2:PingData.Ping})
     .exec()
     .then(docs => {
+      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+NewCxc.cxc} })
+      .exec()
+      .then(docs => {
+        this.message.channel.send("cxc wurden bei "+PingData.Ping+" entfernt")
+      })
+    }).catch(err => {
+      Sale.findOne({Name:PingData.Ping})
+      .exec()
+      .then(docs => {
+        Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+NewCxc.cxc} })
+        .exec()
+        .then(docs => {
+          this.message.channel.send("cxc wurden bei "+PingData.Ping+" entfernt")
+        })
+      }).catch(err => {this.message.channel.send("Ein Fehler ist augetreten. Ein Fehlerbericht  wurde Bereits an den Entwickler gesendet.")
+      var e = new Error(err);
+      const Es = e.toString()
+      var mailOptions = {
+        from: process.env.Mailadress,
+        to: process.env.MyMailadress,
+        subject: "Error",
+        text: Es + Date("now")
+      };
+      transporter.sendMail(mailOptions);
+      console.error(err);
     })
-  }).catch(err => {this.message.channel.send("Ein Fehler ist augetreten. Ein Fehlerbericht  wurde Bereits an den Entwickler gesendet.")
+
+    });
+}).catch(err => {
   var e = new Error(err);
   const Es = e.toString()
   var mailOptions = {
@@ -221,9 +225,7 @@ Sale.findOne({Name2:PingData.Ping})
   };
   transporter.sendMail(mailOptions);
   console.error(err);
-  return;
-})
-
 });
+
 message.client.channels.get("509757254862372883").send(Author+"hat"+NewCxc.cxc+"cxc an"+PingData.Ping+"überwiesen \n transfer")
 }
