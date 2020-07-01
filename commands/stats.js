@@ -15,21 +15,23 @@ var transporter = nodemailer.createTransport({
 });
 
 exports.stats = (message) => {
-  if (!message.member.roles.some(role => role.id === "450742960678764544")){
+/*  if (!message.member.roles.some(role => role.id === "450742960678764544")){
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
-  }
+  }*/
 this.message = message;
 Sale.find()
 .exec()
 .then(docs => {
+  var savedUser = 0
   var cxcstat = 0
   var mesgstat = 0
   docs.forEach((doc, idx, message) => {
     cxcstat = doc.cxc + cxcstat
     mesgstat = mesgstat + doc.messages
+    savedUser = savedUser +1
     })
-    this.message.channel.send("```Gesamte cxc im Umlauf : "+cxcstat+"\nGeschriebene Nachrichten seit aufzeichnung : "+mesgstat+"```")
+    this.message.channel.send("```Gesamte nvc im Umlauf : "+cxcstat+"\nGeschriebene Nachrichten seit aufzeichnung : "+mesgstat+"\nGesamte Anzalh an Usern in der Datenbank: "+savedUser+"```")
   })
   .catch(err => {//message fuction
     var e = new Error(err);

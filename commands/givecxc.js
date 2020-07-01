@@ -32,7 +32,7 @@ exports.setcxc = (PingData, message, NewCxc) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc: NewCxc.cxc} })
     .exec()
     .then(docs => {
-      this.message.channel.send("cxc Betrag gesetzt")
+      this.message.channel.send("nvc Betrag gesetzt")
     }).catch(err =>{
       var e = new Error(err);
       const Es = e.toString()
@@ -42,7 +42,7 @@ exports.setcxc = (PingData, message, NewCxc) => {
         subject: "Error",
         text: Es + Date("now")
       };
-      this.message.channel.send("undefined cxc input");
+      this.message.channel.send("undefined nvc input");
       this.message.channel.send(e.toString())
       transporter.sendMail(mailOptions);
       console.error(err);
@@ -84,7 +84,7 @@ exports.remcxc = (PingData, message, NewCxc) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-NewCxc.cxc} })
     .exec()
     .then(docs => {
-      this.message.channel.send("cxc entfernt")
+      this.message.channel.send("nvc entfernt")
     }).catch(err =>{
       var e = new Error(err);
       const Es = e.toString()
@@ -94,7 +94,7 @@ exports.remcxc = (PingData, message, NewCxc) => {
         subject: "Error",
         text: Es + Date("now")
       };
-      this.message.channel.send("undefined cxc input");
+      this.message.channel.send("undefined nvc input");
       this.message.channel.send(e.toString())
       transporter.sendMail(mailOptions);
       console.error(err);
@@ -137,7 +137,7 @@ exports.givecxc = (PingData, message, NewCxc) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+NewCxc.cxc} })
     .exec()
     .then(docs => {
-      this.message.channel.send("cxc hinzugefügt")
+      this.message.channel.send("nvc hinzugefügt")
     }).catch(err =>{
       var e = new Error(err);
       const Es = e.toString()
@@ -148,7 +148,7 @@ exports.givecxc = (PingData, message, NewCxc) => {
         text: Es + Date("now")
       };
 transporter.sendMail(mailOptions);
-      this.message.channel.send("undefined cxc input");
+      this.message.channel.send("undefined nvc input");
       this.message.channel.send(e.toString())
       console.error(err);
     });

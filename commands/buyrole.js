@@ -15,195 +15,213 @@ exports.add_role = (RoleData, message) => {
     }
     else if (docs.cxc >= 50) {
       this.message.member.addRole("518395092197965845")
-      this.message.author.send("Du hast die Rolle für: **50cxc** gekauft")
+      this.message.author.send("Du hast die Rolle für: **5nvc** gekauft")
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-50,memes:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n memes \n -50cxc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n memes \n -50nvc")
       })
     }
     else {
-  this.message.channel.send("Du hast nicht genug cxc")
+  this.message.channel.send("Du hast nicht genug nvc")
 }
 
   }
-  else if (Search=="stammgast"){
+  else if (Search=="gaswolke"){
     if (docs.stammgast == 1){
       this.message.channel.send("Du hast diese Rolle schon")
     }
     else if (docs.cxc >= 5000) {
-      this.message.author.send("Du hast die Rolle für: **5000cxc** gekauft")
+      this.message.author.send("Du hast die Rolle für: **500nvc** gekauft")
       this.message.member.addRole("518395091472089101")
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-5000,stammgast:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n stammgast \n -5000cxc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n gaswolke \n -500nvc")
       })
     }
     else {
-  this.message.channel.send("Du hast nicht genug cxc")
+  this.message.channel.send("Du hast nicht genug nvc")
 }
 
   }
-  else if (Search=="bohr") {
+  else if (Search=="brauner-zwerg") {
     if (docs.Bohr == 1){
       this.message.channel.send("Du hast diese Rolle schon")
     }
     else if (docs.cxc >= 8000) {
-      this.message.author.send("Du hast die Rolle für: **8000cxc** gekauft")
+      this.message.author.send("Du hast die Rolle für: **8000nvc** gekauft")
       this.message.member.addRole("518384555007148042")
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-8000,Bohr:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n bohr \n -8000cxc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n brauner-zwerg \n -8000nvc")
       })
     }
     else {
-  this.message.channel.send("Du hast nicht genug cxc")
+  this.message.channel.send("Du hast nicht genug nvc")
 }
 
   }
-  else if (Search=="curie"){
+  else if (Search=="roter-zwerg"){
     if (docs.Curie == 1){
       this.message.channel.send("Du hast diese Rolle schon")
     }
     else if (docs.cxc >= 10000) {
-      this.message.author.send("Du hast die Rolle für: **10000cxc** gekauft")
+      this.message.author.send("Du hast die Rolle für: **1000nvc** gekauft")
       this.message.member.addRole("518384549408014343")
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-10000,Curie:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n curie \n -10000cxc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n roter-zwerg \n -1000nvc")
       })
     }
     else {
-  this.message.channel.send("Du hast nicht genug cxc")
+  this.message.channel.send("Du hast nicht genug nvc")
 }
 
   }
-  else if (Search=="tesla"){
+  else if (Search=="weißer-zwerg"){
     if (docs.Tesla == 1){
       this.message.channel.send("Du hast diese Rolle schon")
     }
     else if (docs.cxc >= 13000) {
-      this.message.author.send("Du hast die Rolle für: **13000cxc** gekauft")
+      this.message.author.send("Du hast die Rolle für: **13000nvc** gekauft")
       this.message.member.addRole("518384546492973056")
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-13000,Tesla:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n tesla \n -13000cxc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n weißer-zwerg \n -13000nvc")
       })
     }
     else {
-  this.message.channel.send("Du hast nicht genug cxc")
+  this.message.channel.send("Du hast nicht genug nvc")
 }
 
   }
-  else if (Search=="newton"){
+  else if (Search=="hauptreihenstern"){
     if (docs.Newton == 1){
       this.message.channel.send("Du hast diese Rolle schon")
     }
-    else if (docs.cxc >= 13000) {
-      this.message.author.send("Du hast die Rolle für: **13000cxc** gekauft")
+    else if (docs.cxc >= 20000) {
+      this.message.author.send("Du hast die Rolle für: **20000nvc** gekauft")
       this.message.member.addRole("518384356222566410")
-      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-13000,Newton:1} })
+      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-20000,Newton:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n newton \n -13000cxc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n hauptreihenstern \n -20000nvc")
       })
     }
     else {
-  this.message.channel.send("Du hast nicht genug cxc")
+  this.message.channel.send("Du hast nicht genug nvc")
 }
 
   }
-  else if (Search=="einstein"){
+  else if (Search=="roter-riese"){
     if (docs.Einstein == 1){
       this.message.channel.send("Du hast diese Rolle schon")
     }
-    else if (docs.cxc >= 21000) {
-      this.message.author.send("Du hast die Rolle für: **21000cxc** gekauft")
+    else if (docs.cxc >= 25000) {
+      this.message.author.send("Du hast die Rolle für: **25000nvc** gekauft")
       this.message.member.addRole("518384355698278430")
-      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-21000,Einstein:1} })
+      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-25000,Einstein:1} })
       .exec()
       .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n einstein \n -21000cxc")
+          message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n roter riese \n -25000nvc")
       })
     }
     else {
-  this.message.channel.send("Du hast nicht genug cxc")
+  this.message.channel.send("Du hast nicht genug nvc")
 }
 
   }
-  else if (Search=="hawking"){
+  else if (Search=="supernova"){
     if (docs.Hawking == 1){
       this.message.channel.send("Du hast diese Rolle schon")
     }
-    else if (docs.cxc >= 21000) {
-      this.message.author.send("Du hast die Rolle für: **21000cxc** gekauft")
+    else if (docs.cxc >= 50000) {
+      this.message.author.send("Du hast die Rolle für: **50000nvc** gekauft")
       this.message.member.addRole("518384354880258049")
-      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-21000,Hawking:1} })
+      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-50000,Hawking:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n hawking \n -21000cxc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n supernova \n -50000nvc")
       })
     }
     else {
-  this.message.channel.send("Du hast nicht genug cxc")
+  this.message.channel.send("Du hast nicht genug nvc")
 }
 
   }
-  else if (Search=="musk"){
+  else if (Search=="neutronen-stern"){
     if (docs.Musk == 1){
       this.message.channel.send("Du hast diese Rolle schon")
     }
     else if (docs.cxc >= 75000) {
-      this.message.author.send("Du hast die Rolle für: **75000cxc** gekauft")
+      this.message.author.send("Du hast die Rolle für: **75000nvc** gekauft")
       this.message.member.addRole("518384354272215060")
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-75000,Musk:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n musk \n -75000cxc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n neutronen-stern \n -75000nvc")
       })
     }
     else {
-  this.message.channel.send("Du hast nicht genug cxc")
+  this.message.channel.send("Du hast nicht genug nvc")
 }
 
   }
-  else if (Search=="vip"){
+  else if (Search=="schwarzes-loch"){
     if (docs.Vip == 1){
       this.message.channel.send("Du hast diese Rolle schon")
     }
-    else if (docs.cxc >= 82500) {
-      this.message.author.send("Du hast die Rolle für: **82500cxc** gekauft")
+    else if (docs.cxc >= 80000) {
+      this.message.author.send("Du hast die Rolle für: **80000nvc** gekauft")
       this.message.member.addRole("518384353387085845")
-      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-82500,Vip:1} })
+      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-80000,Vip:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n vip \n -82500cxc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n schwarzes-loch \n -80000nvc")
       })
     }
     else {
-  this.message.channel.send("Du hast nicht genug cxc")
+  this.message.channel.send("Du hast nicht genug nvc")
 }
 
   }
-  else if (Search=="clixoomer"){
+  else if (Search=="pulsar"){
     if (docs.Clixoomer == 1){
       this.message.channel.send("Du hast diese Rolle schon")
     }
-    else if (docs.cxc >= 100000) {
-      this.message.author.send("Du hast die Rolle für: **100000cxc** gekauft")
-      this.message.member.addRole("518384353387085845")
-      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-100000,Clixoomer:1} })
+    else if (docs.cxc >= 95000) {
+      this.message.author.send("Du hast die Rolle für: **95000nvc** gekauft")
+      this.message.member.addRole("518172524811386890")
+      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-95000,Clixoomer:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n clixoomer \n -100000cxc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n pulsar \n -95000nvc")
       })
     }
     else {
-  this.message.channel.send("Du hast nicht genug cxc")
+  this.message.channel.send("Du hast nicht genug nvc")
+}
+
+  }
+  else if (Search=="quasar"){
+    if (docs.quasar == 1){
+      this.message.channel.send("Du hast diese Rolle schon")
+    }
+    else if (docs.cxc >= 115000) {
+      this.message.author.send("Du hast die Rolle für: **115000nvc** gekauft")
+      this.message.member.addRole("700740599195893760")
+      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-115000,Quasar:1} })
+      .exec()
+      .then(docs => {
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n quasar \n -115000nvc")
+      })
+    }
+    else {
+  this.message.channel.send("Du hast nicht genug nvc")
 }
 
   }

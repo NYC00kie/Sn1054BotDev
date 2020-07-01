@@ -25,25 +25,18 @@ exports.update = (message) => {
   .exec()
   .then(docs => {
     docs.forEach((doc, idx, message) => {
-        var Name = doc.Name
-        var args = Name.split("")
-        args.pop()
-        args.shift()
-        args.shift()
-        console.log(Name)
-        console.log(args.join(''))
-        var ID = args.join('')
         const NewProfile = new Sale({
             _id: new mongoose.Types.ObjectId(),
             Name: doc.Name,
             Name2: doc.Name2,
-            MemberId: ID,
+            MemberId: doc.MemberId,
             Nickname:  doc.Nickname,
             Date: doc.Date,
             lastdaily: doc.lastdaily,
             Channelid: doc.Channelid,
             createdDate: doc.createdDate,
             cxc: doc.cxc,
+            Prestiege: doc.Prestiege,
             messages: doc.messages,
             memes: doc.memes,
             stammgast: doc.stammgast,

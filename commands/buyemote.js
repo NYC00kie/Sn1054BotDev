@@ -25,11 +25,11 @@ exports.buy_emote = (RoleData,message) => {
         this.message.channel.send("Du hast dieses Gif schon")
       }
       else if (docs.cxc >= 1000) {
-        this.message.author.send("Du hast das HappyGif für: **1000cxc** gekauft")
+        this.message.author.send("Du hast das HappyGif für: **1000nvc** gekauft")
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,happygif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n happy \n -1000cxc")
+          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n happy \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
@@ -44,7 +44,7 @@ exports.buy_emote = (RoleData,message) => {
         });
       }
       else {
-    this.message.channel.send("Du hast nicht genug cxc")
+    this.message.channel.send("Du hast nicht genug nvc")
   }
     }
     else if (Search=="bye"){
@@ -52,11 +52,11 @@ exports.buy_emote = (RoleData,message) => {
         this.message.channel.send("Du hast dieses Gif schon")
       }
       else if (docs.cxc >= 1000) {
-        this.message.author.send("Du hast das ByeGif für: **1000cxc** gekauft")
+        this.message.author.send("Du hast das ByeGif für: **100nvc** gekauft")
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,byegif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n bye \n -1000cxc")
+          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n bye \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
@@ -71,7 +71,7 @@ exports.buy_emote = (RoleData,message) => {
         });
       }
       else {
-    this.message.channel.send("Du hast nicht genug cxc")
+    this.message.channel.send("Du hast nicht genug nvc")
   }
     }
     else if (Search=="klick"){
@@ -79,11 +79,11 @@ exports.buy_emote = (RoleData,message) => {
         this.message.channel.send("Du hast dieses Gif schon")
       }
       else if (docs.cxc >= 1000) {
-        this.message.author.send("Du hast das klickGif für: **1000cxc** gekauft")
+        this.message.author.send("Du hast das klickGif für: **100nvc** gekauft")
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,klickgif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n klick \n -1000cxc")
+          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n klick \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
@@ -98,7 +98,7 @@ exports.buy_emote = (RoleData,message) => {
         });
       }
       else {
-    this.message.channel.send("Du hast nicht genug cxc")
+    this.message.channel.send("Du hast nicht genug nvc")
   }
     }
     else if (Search=="point"){
@@ -106,11 +106,11 @@ exports.buy_emote = (RoleData,message) => {
         this.message.channel.send("Du hast dieses Gif schon")
       }
       else if (docs.cxc >= 1000) {
-        this.message.author.send("Du hast das pointGif für: **1000cxc** gekauft")
+        this.message.author.send("Du hast das pointGif für: **100nvc** gekauft")
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,pointgif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n point \n -1000cxc")
+          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n point \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
@@ -125,7 +125,7 @@ exports.buy_emote = (RoleData,message) => {
         });
       }
       else {
-    this.message.channel.send("Du hast nicht genug cxc")
+    this.message.channel.send("Du hast nicht genug nvc")
   }
     }
     else if (Search=="sad"){
@@ -133,11 +133,11 @@ exports.buy_emote = (RoleData,message) => {
         this.message.channel.send("Du hast dieses Gif schon")
       }
       else if (docs.cxc >= 1000) {
-        this.message.author.send("Du hast das sadGif für: **1000cxc** gekauft")
+        this.message.author.send("Du hast das sadGif für: **100nvc** gekauft")
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,sadgif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n sad \n -1000cxc")
+          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n sad \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
@@ -152,7 +152,7 @@ exports.buy_emote = (RoleData,message) => {
         });
       }
       else {
-    this.message.channel.send("Du hast nicht genug cxc")
+    this.message.channel.send("Du hast nicht genug nvc")
   }
     }
     else if (Search=="hi"){
@@ -160,11 +160,11 @@ exports.buy_emote = (RoleData,message) => {
         this.message.channel.send("Du hast dieses Gif schon")
       }
       else if (docs.cxc >= 1000) {
-        this.message.author.send("Du hast das HiGif für: **1000cxc** gekauft")
+        this.message.author.send("Du hast das HiGif für: **100nvc** gekauft")
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,spockgif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n hi \n -1000cxc")
+          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n hi \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
@@ -179,7 +179,7 @@ exports.buy_emote = (RoleData,message) => {
         });
       }
       else {
-    this.message.channel.send("Du hast nicht genug cxc")
+    this.message.channel.send("Du hast nicht genug nvc")
   }
     }
     else if (Search=="thumbs"){
@@ -187,11 +187,11 @@ exports.buy_emote = (RoleData,message) => {
         this.message.channel.send("Du hast dieses Gif schon")
       }
       else if (docs.cxc >= 1000) {
-        this.message.author.send("Du hast das sadGif für: **1000cxc** gekauft")
+        this.message.author.send("Du hast das sadGif für: **100nvc** gekauft")
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,thumbsgif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n thumbs \n -1000cxc")
+          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n thumbs \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
@@ -206,7 +206,7 @@ exports.buy_emote = (RoleData,message) => {
         });
       }
       else {
-    this.message.channel.send("Du hast nicht genug cxc")
+    this.message.channel.send("Du hast nicht genug nvc")
   }
     }
     else {

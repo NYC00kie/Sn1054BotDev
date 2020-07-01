@@ -27,6 +27,7 @@ exports.add_Profile_new = (member) => {
       Musk: 0,
       Vip: 0,
       Clixoomer: 0,
+      quasar: 0,
       byegif: 0,
       happygif: 0,
       klickgif: 0,
@@ -78,6 +79,7 @@ exports.add_Profile_old = (message) => {
       Musk: 0,
       Vip: 0,
       Clixoomer: 0,
+      quasar: 0,
       byegif: 0,
       happygif: 0,
       klickgif: 0,
@@ -123,7 +125,7 @@ exports.reset_Profile = (PingData,message) => {
     Sale.findOne({Name2:PingData.Ping})
     .exec()
     .then(docs => {
-      Sale.updateOne({ _id: docs._id }, { $set: { Nickname:  this.message.author.username, Date: Date("now"), lastdaily: Date("now"), Channelid: "undefined", createdDate: Date("now"), cxc: 0, messages: 0, memes: 0, stammgast: 0, Bohr: 0, Curie: 0, Tesla: 0, Newton: 0, Einstein: 0, Hawking: 0, Musk: 0, Vip: 0, Clixoomer: 0, byegif: 0, happygif: 0, klickgif: 0, pointgif: 0, sadgif: 0, spockgif: 0, thumbsgif: 0}})
+      Sale.updateOne({ _id: docs._id }, { $set: { Nickname:  this.message.author.username, Date: Date("now"), lastdaily: Date("now"), Channelid: "undefined", createdDate: Date("now"), cxc: 0, messages: 0, memes: 0, stammgast: 0, Bohr: 0, Curie: 0, Tesla: 0, Newton: 0, Einstein: 0, Hawking: 0, Musk: 0, Vip: 0, Clixoomer: 0,quasar: 0, byegif: 0, happygif: 0, klickgif: 0, pointgif: 0, sadgif: 0, spockgif: 0, thumbsgif: 0}})
       .exec()
       .then(docs => {
         this.message.channel.send(PingData.Ping+"s Account wurde zurück gesetzt")

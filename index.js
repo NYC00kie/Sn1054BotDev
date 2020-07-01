@@ -26,6 +26,8 @@ const dbupdate = require('./commands/DBupdate');
 const stats = require('./commands/stats');
 const insider = require('./commands/insider');
 const start = require('./commands/start');
+const SNUpdate = require('./commands/SNUpdate');
+const Faktcheck = require('./commands/Faktcheck');
 let bot = new Discord.Client();
 
 bot.login(process.env.TOKEN);
@@ -96,8 +98,9 @@ bot.on("message",async message => {
     if (message.channel.id == "518446638335918080") {
       message.delete(1000)
     }
-    return;
+
     }
+    return;
   }//return if there is no Prefix
 
   let args = message.content.substring(PREFIX.length).split(" ");
@@ -114,6 +117,7 @@ bot.on("message",async message => {
     Ping: args[1]
   }
   let Word = args[1]
+  let Begriff = message.content.substr(PREFIX.length + args[0].length+1, 128)
   //all Commands
   switch (args[0].toLowerCase()) {
       //here the sales should be displayed
@@ -138,6 +142,9 @@ bot.on("message",async message => {
     case "buyrole":
       Buyrole.add_role(RoleData, message)
       break;
+    case "nvc":
+      Cxc.get_cxc(PingData, message);
+      break;
     case "cxc":
       Cxc.get_cxc(PingData, message);
       break;
@@ -153,25 +160,26 @@ bot.on("message",async message => {
     case "ahelp":
       ahelp.get_adminhelp(message);
       break;
-    case "givecxc":
+    case "givenvc":
       cxc.givecxc(PingData, message, NewCxc)
       break;
-    case "remcxc":
+    case "remnvc":
       cxc.remcxc(PingData, message, NewCxc)
       break;
-    case "setcxc":
+    case "setnvc":
       cxc.setcxc(PingData, message, NewCxc)
       break;
     case "buyemote":
       buyemote.buy_emote(RoleData,message)
       break;
     case "create":
-      let channelbeschreibung = message.content.substr(PREFIX.length + args[0].length + args[1].length+1, 1000)
+      message.channel.send("Um den Einstieg für die Neuen zu vereinfachen, ist dieses Modul, für eine kurze Zeit nach dem Update deaktivieren.")
+      /*let channelbeschreibung = message.content.substr(PREFIX.length + args[0].length + args[1].length+1, 1000)
       let ChannelData = {
         name: args[1],
         beschreibung: channelbeschreibung
         }
-      channel.create_channel(ChannelData,message,bot)
+      channel.create_channel(ChannelData,message,bot)*/
       break;
     case "delete":
       channel.delete_channel_User(message)
@@ -223,6 +231,12 @@ bot.on("message",async message => {
       break;
     case "start":
       start.start(message);
+      break;
+    case "snupdate":
+      SNUpdate.SNUpdate(message);
+      break;
+    case "faktcheck":
+      Faktcheck.check(message,Begriff);
       break;
   };
 });

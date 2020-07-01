@@ -18,7 +18,7 @@ exports.change_nick = (NewNick, message) => {
     .exec()
     .then(docs => {
       Author.send("Dein Nickname wurde zu "+NewNick.Nick+" geändert")
-      message.client.channels.get("509757254862372883").send(message.author+":\n Changed Nick \n -400cxc")
+      message.client.channels.get("509757254862372883").send(message.author+":\n Changed Nick \n -40nvc")
     })
   }
   else {
