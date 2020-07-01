@@ -28,6 +28,7 @@ const insider = require('./commands/insider');
 const start = require('./commands/start');
 const SNUpdate = require('./commands/SNUpdate');
 const Faktcheck = require('./commands/Faktcheck');
+const Watchblacklist = require('./commands/watchblacklist');
 let bot = new Discord.Client();
 
 bot.login(process.env.TOKEN);
@@ -233,10 +234,17 @@ bot.on("message",async message => {
       start.start(message);
       break;
     case "snupdate":
-      SNUpdate.SNUpdate(message);
+      //SNUpdate.SNUpdate(message);
+      this.message.channel.send("Die Datenbank ist schon geupdated")
       break;
     case "faktcheck":
       Faktcheck.check(message,Begriff);
+      break;
+    case "watchword":
+      Watchblacklist.word(message)
+      break;
+    case "watchchannel":
+      Watchblacklist.channel(message)
       break;
   };
 });
