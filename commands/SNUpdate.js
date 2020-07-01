@@ -140,7 +140,6 @@ exports.SNUpdate = (message) => {
           spockgif: doc.spockgif,
           thumbsgif: doc.thumbsgif
         });
-        this.message.channel.send(doc.Nickname+" wurde geupdated")
         const Oldid = doc._id
         NewProfile.save()
         .then(doc => {
