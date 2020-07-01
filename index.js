@@ -174,13 +174,13 @@ bot.on("message",async message => {
       buyemote.buy_emote(RoleData,message)
       break;
     case "create":
-      message.channel.send("Um den Einstieg für die Neuen zu vereinfachen, ist dieses Modul, für eine kurze Zeit nach dem Update deaktivieren.")
-      /*let channelbeschreibung = message.content.substr(PREFIX.length + args[0].length + args[1].length+1, 1000)
+      //message.channel.send("Um den Einstieg für die Neuen zu vereinfachen, ist dieses Modul, für eine kurze Zeit nach dem Update deaktivieren.")
+      let channelbeschreibung = message.content.substr(PREFIX.length + args[0].length + args[1].length+1, 1000)
       let ChannelData = {
         name: args[1],
         beschreibung: channelbeschreibung
         }
-      channel.create_channel(ChannelData,message,bot)*/
+      channel.create_channel(ChannelData,message,bot)
       break;
     case "delete":
       channel.delete_channel_User(message)
