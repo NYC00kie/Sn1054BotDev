@@ -140,6 +140,7 @@ exports.SNUpdate = (message) => {
           spockgif: doc.spockgif,
           thumbsgif: doc.thumbsgif
         });
+        console.log(doc.Nickname+"wurde geupdated")
         const Oldid = doc._id
         NewProfile.save()
         .then(doc => {
