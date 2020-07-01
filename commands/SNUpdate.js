@@ -23,7 +23,7 @@ exports.SNUpdate = (message) => {
   .exec()
   .then(docs => {
     docs.forEach((doc, idx, message) => {
-      let guildMember = client.users.find("id", doc.MemberId);
+      let guildMember = message.guild.members.get("id", doc.MemberId)
       if (doc.stammgast == 0){
 
          var cxc1= 0
