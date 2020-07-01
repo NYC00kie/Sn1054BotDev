@@ -20,6 +20,7 @@ exports.start = (message) => {
   if (Community_member!=Community) {
     this.message.member.addRole(Community)
     message.client.channels.get("484039225331679253").send(message.author+"hat sich verifiziert \n Verifikation")
+    message.client.channels.get("727919338606166096").send(message.author+"willkommen auf diesem Server")
   }
   else {
     this.message.channel.send("Du bist bereits verifiziert")
