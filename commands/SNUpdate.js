@@ -23,13 +23,14 @@ exports.SNUpdate = (message) => {
   .exec()
   .then(docs => {
     docs.forEach((doc, idx, message) => {
+      let guildMember = message.guild.members.get(doc.MemberId)
       if (doc.stammgast == 0){
 
          var cxc1= 0
       }
       else {
         var cxc1= 4750
-        doc.MemberId.removeRole("518395091472089101")
+        guildMember.removeRole("518395091472089101")
       }
       if (doc.Bohr == 0){
 
@@ -37,7 +38,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc2= 7600
-        doc.MemberId.removeRole("518384555007148042")
+        guildMember.removeRole("518384555007148042")
       }
       if (doc.Curie == 0){
 
@@ -45,7 +46,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc3= 9500
-        doc.MemberId.removeRole("518384549408014343")
+        guildMember.removeRole("518384549408014343")
       }
       if (doc.Tesla == 0){
 
@@ -53,7 +54,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc4= 12350
-        doc.MemberId.removeRole("518384546492973056")
+        guildMember.removeRole("518384546492973056")
       }
       if (doc.Newton == 0){
 
@@ -61,7 +62,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc5= 12350
-        doc.MemberId.removeRole("518384356222566410")
+        guildMember.removeRole("518384356222566410")
       }
       if (doc.Einstein == 0){
 
@@ -69,7 +70,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc6=19950
-        doc.MemberId.removeRole("518384355698278430")
+        guildMember.removeRole("518384355698278430")
       }
       if (doc.Hawking == 0){
 
@@ -77,7 +78,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc7= 19950
-        doc.MemberId.removeRole("518384354880258049")
+        guildMember.removeRole("518384354880258049")
       }
       if (doc.Musk == 0){
 
@@ -85,7 +86,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc8=71250
-        doc.MemberId.removeRole("518384354272215060")
+        guildMember.removeRole("518384354272215060")
       }
       if (doc.Vip == 0){
 
@@ -93,7 +94,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc9= 78375
-        doc.MemberId.removeRole("518384353387085845")
+        guildMember.removeRole("518384353387085845")
       }
       if (doc.Clixoomer == 0){
 
@@ -101,8 +102,8 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc10=95000
-        doc.MemberId.addRole("649996757052424222")
-        doc.MemberId.removeRole("518172524811386890")
+        guildMember.addRole("649996757052424222")
+        guildMember.removeRole("518172524811386890")
       }
       var cxc_next = cxc1+cxc2+cxc3+cxc4+cxc5+cxc6+cxc7+cxc8+cxc9+cxc10 + doc.cxc
 
