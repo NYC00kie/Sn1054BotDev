@@ -121,7 +121,7 @@ exports.chstats_channel_User = (message,PingData) => {
           var ChstatsEmbed = new Discord.RichEmbed()
             .setColor(0xe19517)
             .setTitle("Deine Kanal-Stats")
-            .addField("Stats:","Dein Channel:\n"+"<#"+channel+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Cxc:\n"+msgcount2*2+"\n")
+            .addField("Stats:","Dein Channel:\n"+"<#"+channel+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*2+"\n")
             .setTimestamp(Date("now"))
           this.message.channel.send(ChstatsEmbed);
 
