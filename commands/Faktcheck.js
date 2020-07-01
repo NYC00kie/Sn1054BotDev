@@ -42,8 +42,7 @@ if (err) {
    }
 
    let zeroth = Pagecontent.split("\n")
-   let zeroth2 = zeroth[0].split('')+zeroth[1].split('')
-   if (zeroth2.length>2000) {
+   if (zeroth.length>2000) {
      this.message.channel.send(zeroth[0]+"\n \nMehr Informationen findest du hier: https://de.wikipedia.org/wiki/"+Suche+" \n \nDiese Informationen wurden von Wikipedia, der freien Enzyklopädie bereitgestellt.")
    }
    if (zeroth.length>2){
