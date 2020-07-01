@@ -23,7 +23,7 @@ exports.SNUpdate = (message) => {
   .exec()
   .then(docs => {
     docs.forEach((doc, idx, message) => {
-      if (doc.stammgast == 0){
+      /*if (doc.stammgast == 0){
 
          var cxc1= 0
       }
@@ -139,15 +139,15 @@ exports.SNUpdate = (message) => {
           sadgif: doc.sadgif,
           spockgif: doc.spockgif,
           thumbsgif: doc.thumbsgif
-        });
-        const Oldid = doc._id
+        });*/
+        const Oldid = doc._id/*
         NewProfile.save()
         .then(doc => {
           console.log("person updated")
         })
         .catch(err => {
           console.error(err);
-        });
+        });*/
         Sale.deleteOne({_id:Oldid})
         .catch(err => {
           console.error(err);
