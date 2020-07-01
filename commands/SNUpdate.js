@@ -23,13 +23,13 @@ exports.SNUpdate = (message) => {
   .exec()
   .then(docs => {
     docs.forEach((doc, idx, message) => {
-      /*if (doc.stammgast == 0){
+      if (doc.stammgast == 0){
 
          var cxc1= 0
       }
       else {
         var cxc1= 4750
-        this.message.member.removeRole("518395091472089101")
+        doc.MemberId.removeRole("518395091472089101")
       }
       if (doc.Bohr == 0){
 
@@ -37,7 +37,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc2= 7600
-        this.message.member.removeRole("518384555007148042")
+        doc.MemberId.removeRole("518384555007148042")
       }
       if (doc.Curie == 0){
 
@@ -45,7 +45,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc3= 9500
-        this.message.member.removeRole("518384549408014343")
+        doc.MemberId.removeRole("518384549408014343")
       }
       if (doc.Tesla == 0){
 
@@ -53,7 +53,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc4= 12350
-        this.message.member.removeRole("518384546492973056")
+        doc.MemberId.removeRole("518384546492973056")
       }
       if (doc.Newton == 0){
 
@@ -61,7 +61,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc5= 12350
-        this.message.member.removeRole("518384356222566410")
+        doc.MemberId.removeRole("518384356222566410")
       }
       if (doc.Einstein == 0){
 
@@ -69,7 +69,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc6=19950
-        this.message.member.removeRole("518384355698278430")
+        doc.MemberId.removeRole("518384355698278430")
       }
       if (doc.Hawking == 0){
 
@@ -77,7 +77,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc7= 19950
-        this.message.member.removeRole("518384354880258049")
+        doc.MemberId.removeRole("518384354880258049")
       }
       if (doc.Musk == 0){
 
@@ -85,7 +85,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc8=71250
-        this.message.member.removeRole("518384354272215060")
+        doc.MemberId.removeRole("518384354272215060")
       }
       if (doc.Vip == 0){
 
@@ -93,7 +93,7 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc9= 78375
-        this.message.member.removeRole("518384353387085845")
+        doc.MemberId.removeRole("518384353387085845")
       }
       if (doc.Clixoomer == 0){
 
@@ -101,8 +101,8 @@ exports.SNUpdate = (message) => {
       }
       else {
         var cxc10=95000
-        this.message.member.addRole("649996757052424222")
-        this.message.member.removeRole("518172524811386890")
+        doc.MemberId.addRole("649996757052424222")
+        doc.MemberId.removeRole("518172524811386890")
       }
       var cxc_next = cxc1+cxc2+cxc3+cxc4+cxc5+cxc6+cxc7+cxc8+cxc9+cxc10 + doc.cxc
 
@@ -139,15 +139,15 @@ exports.SNUpdate = (message) => {
           sadgif: doc.sadgif,
           spockgif: doc.spockgif,
           thumbsgif: doc.thumbsgif
-        });*/
-        const Oldid = doc._id/*
+        });
+        const Oldid = doc._id
         NewProfile.save()
         .then(doc => {
           console.log("person updated")
         })
         .catch(err => {
           console.error(err);
-        });*/
+        });
         Sale.deleteOne({_id:Oldid})
         .catch(err => {
           console.error(err);
