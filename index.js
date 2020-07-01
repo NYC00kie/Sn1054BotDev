@@ -128,7 +128,7 @@ bot.on("message",async message => {
       blacklist.add_channel(message,Word)
       break;
     case "v":
-      message.channel.send("Version 1.3.3 (24.06.2020)")
+      message.channel.send("Version 1.4 (24.06.2020)")
       break;
     case "amonunser":
       insider.AmonUnser(message)
