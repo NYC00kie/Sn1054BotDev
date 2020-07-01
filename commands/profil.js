@@ -74,13 +74,13 @@ exports.get_profil = (PingData,message) => {
           var Clixoomer = "."
         }
         else {
-          var Clixoomer = "pulsar"
+          var Clixoomer = "quasar"
         }
-        if (docs.Pulsar==0){
-          var pulsar = "."
+        if (docs.quasar==0){
+          var quasar = "."
         }
         else {
-          var pulsar = "quasar"
+          var quasar = "quasar"
         }
         if (docs.Channelid == "undefined"){
           var Channel = "kein Channel"
@@ -96,7 +96,7 @@ exports.get_profil = (PingData,message) => {
         .setThumbnail(message.author.avatarURL)
         .addField("Dein Prestiegewert:",docs.Prestiege)
         .addField("Deine nvc:",docs.cxc)
-        .addField("Deine Rollen:"," "+Memes+"\n "+stammgast+"\n "+Bohr+"\n "+Curie+"\n "+Tesla+"\n "+Newton+"\n "+Einstein+"\n "+Hawking+"\n "+Musk+"\n "+Vip+"\n "+Clixoomer+"\n "+pulsar)
+        .addField("Deine Rollen:"," "+Memes+"\n "+stammgast+"\n "+Bohr+"\n "+Curie+"\n "+Tesla+"\n "+Newton+"\n "+Einstein+"\n "+Hawking+"\n "+Musk+"\n "+Vip+"\n "+Clixoomer+"\n "+quasar)
         .addField("Deine geschriebenen Nachrichten:",docs.messages)
         .addField("Dein aktueller Kanal: ",Channel)
         .addField("Dann wurde deine letzte daily abgeholt:",docs.lastdaily)
@@ -193,11 +193,11 @@ exports.get_profil = (PingData,message) => {
         else {
           var Clixoomer = "Clixoomer"
         }
-        if (docs.Pulsar==0){
-          var pulsar = "."
+        if (docs.quasar==0){
+          var quasar = "."
         }
         else {
-          var pulsar = "Pulsar"
+          var quasar = "quasar"
         }
         if (docs.Channelid == "undefined"){
           var Channel = "kein Channel"
@@ -213,7 +213,7 @@ exports.get_profil = (PingData,message) => {
         .setThumbnail(docs.Name.avatarURL)
         .addField("Dein Prestiegewert:",docs.Prestiege)
         .addField("Deine nvc:",docs.cxc)
-        .addField("Deine Rollen:"," "+Memes+"\n "+stammgast+"\n "+Bohr+"\n "+Curie+"\n "+Tesla+"\n "+Newton+"\n "+Einstein+"\n "+Hawking+"\n "+Musk+"\n "+Vip+"\n "+Clixoomer+"\n "+pulsar)
+        .addField("Deine Rollen:"," "+Memes+"\n "+stammgast+"\n "+Bohr+"\n "+Curie+"\n "+Tesla+"\n "+Newton+"\n "+Einstein+"\n "+Hawking+"\n "+Musk+"\n "+Vip+"\n "+Clixoomer+"\n "+quasar)
         .addField("Deine geschriebenen Nachrichten:",docs.messages)
         .addField("Dein aktueller Kanal: ",Channel)
         .addField("Dann wurde deine letzte daily abgeholt:",docs.lastdaily)
@@ -294,11 +294,11 @@ exports.get_profil = (PingData,message) => {
           else {
             var Clixoomer = "Clixoomer"
           }
-          if (docs.Pulsar==0){
-            var pulsar = "."
+          if (docs.quasar==0){
+            var quasar = "."
           }
           else {
-            var pulsar = "Pulsar"
+            var quasar = "quasar"
           }
           if (docs.Channelid == "undefined"){
             var Channel = "kein Channel"
@@ -314,7 +314,7 @@ exports.get_profil = (PingData,message) => {
           .setThumbnail(docs.Name.avatarURL)
           .addField("Dein Prestiegewert:",docs.Prestiege)
           .addField("Deine nvc:",docs.cxc)
-          .addField("Deine Rollen:"," "+Memes+"\n "+stammgast+"\n "+Bohr+"\n "+Curie+"\n "+Tesla+"\n "+Newton+"\n "+Einstein+"\n "+Hawking+"\n "+Musk+"\n "+Vip+"\n "+Clixoomer+"\n "+pulsar)
+          .addField("Deine Rollen:"," "+Memes+"\n "+stammgast+"\n "+Bohr+"\n "+Curie+"\n "+Tesla+"\n "+Newton+"\n "+Einstein+"\n "+Hawking+"\n "+Musk+"\n "+Vip+"\n "+Clixoomer+"\n "+quasar)
           .addField("Deine geschriebenen Nachrichten:",docs.messages)
           .addField("Dein aktueller Kanal: ",Channel)
           .addField("Dann wurde deine letzte daily abgeholt:",docs.lastdaily)
