@@ -20,13 +20,13 @@ exports.get_cxc = (PingData, message) => {
     Sale.findOne({Name2:PingData.Ping})
     .exec()
     .then(docs => {
-      this.message.channel.send(docs.Name+" hat aktuell **"+docs.cxc+"** Noca-Coins")
+      this.message.channel.send(docs.Name+" hat aktuell **"+docs.cxc+"** Nova-Coins")
     }).catch(err => {
         //this.message.channel.send("Handy Ping Version")
         Sale.findOne({Name:PingData.Ping})
         .exec()
         .then(docs => {
-          this.message.channel.send(docs.Name+" hat aktuell **"+docs.cxc+"** Noca-Coins")
+          this.message.channel.send(docs.Name+" hat aktuell **"+docs.cxc+"** Nova-Coins")
         }).catch(err => {
             this.message.channel.send("Ein Fehler ist aufgetreten. Ein Fehlerbericht  wurde Bereits an den Entwickler gesendet.")
             var e = new Error(err);
@@ -46,7 +46,7 @@ exports.get_cxc = (PingData, message) => {
     Sale.findOne({Name:this.message.author})
     .exec()
     .then(docs => {
-      this.message.channel.send(docs.Name+" hat aktuell **"+docs.cxc+"** Noca-Coins")
+      this.message.channel.send(docs.Name+" hat aktuell **"+docs.cxc+"** Nova-Coins")
     }).catch(err => {
       this.message.channel.send("Ein Fehler ist augetreten. Ein Fehlerbericht  wurde Bereits an den Entwickler gesendet.")
       var e = new Error(err);
