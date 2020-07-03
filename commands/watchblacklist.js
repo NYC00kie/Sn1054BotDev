@@ -12,7 +12,7 @@ var transporter = nodemailer.createTransport({
   }
 })
 
-exports.channel = (message) => {
+exports.word = (message) => {
   this.message = message
   if (!message.member.roles.some(role => role.id === "450742960678764544")){
      this.message.channel.send("Du hast keine Berechtigung dafür")
@@ -23,7 +23,7 @@ exports.channel = (message) => {
   })
 }
 
-exports.word = (message) => {
+exports.channel = (message) => {
   this.message = message
   if (!message.member.roles.some(role => role.id === "450742960678764544")){
      this.message.channel.send("Du hast keine Berechtigung dafür")
