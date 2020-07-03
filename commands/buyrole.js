@@ -15,7 +15,7 @@ exports.add_role = (RoleData, message) => {
     }
     else if (docs.cxc >= 50) {
       this.message.member.addRole("518395092197965845")
-      this.message.author.send("Du hast die Rolle für: **5nvc** gekauft")
+      this.message.author.send("Du hast die Rolle für: **50nvc** gekauft")
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-50,memes:1} })
       .exec()
       .then(docs => {
@@ -32,12 +32,12 @@ exports.add_role = (RoleData, message) => {
       this.message.channel.send("Du hast diese Rolle schon")
     }
     else if (docs.cxc >= 5000) {
-      this.message.author.send("Du hast die Rolle für: **500nvc** gekauft")
+      this.message.author.send("Du hast die Rolle für: **3750nvc** gekauft")
       this.message.member.addRole("518395091472089101")
-      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-5000,stammgast:1} })
+      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-3750,stammgast:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n gaswolke \n -500nvc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n gaswolke \n -3750nvc")
       })
     }
     else {
@@ -50,12 +50,12 @@ exports.add_role = (RoleData, message) => {
       this.message.channel.send("Du hast diese Rolle schon")
     }
     else if (docs.cxc >= 8000) {
-      this.message.author.send("Du hast die Rolle für: **8000nvc** gekauft")
+      this.message.author.send("Du hast die Rolle für: **6000nvc** gekauft")
       this.message.member.addRole("518384555007148042")
-      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-8000,Bohr:1} })
+      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-6000,Bohr:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n brauner-zwerg \n -8000nvc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n brauner-zwerg \n -6000nvc")
       })
     }
     else {
@@ -68,12 +68,12 @@ exports.add_role = (RoleData, message) => {
       this.message.channel.send("Du hast diese Rolle schon")
     }
     else if (docs.cxc >= 10000) {
-      this.message.author.send("Du hast die Rolle für: **1000nvc** gekauft")
+      this.message.author.send("Du hast die Rolle für: **7500nvc** gekauft")
       this.message.member.addRole("518384549408014343")
-      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-10000,Curie:1} })
+      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-7500,Curie:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n roter-zwerg \n -1000nvc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n roter-zwerg \n -7500nvc")
       })
     }
     else {

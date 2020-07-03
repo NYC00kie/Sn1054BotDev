@@ -16,10 +16,10 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("518395091472089101")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+4750,stammgast:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+3562,stammgast:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n gaswolke \n +4750nvc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n gaswolke \n +3562nvc")
     })
   }
 
@@ -30,10 +30,10 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("518384555007148042")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+7600,Bohr:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+5700,Bohr:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n brauner-zwerg \n +7600nvc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n brauner-zwerg \n +5700nvc")
     })
   }
 
@@ -44,10 +44,10 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("518384549408014343")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+9500,Curie:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+7125,Curie:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n roter-zwerg \n +9500nvc")
+        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n roter-zwerg \n +7125nvc")
     })
   }
 
