@@ -30,7 +30,7 @@ exports.add_cxc =  (message) => {
                 var Messagecount = docs.messages + 1
 
                 if (Today > d2) {//wenn der hinterlegte Zeitpunkt nicht mehr der jetzige ist , dann bitte speichern
-                    message.client.channels.get("509757254862372883").send(message.author+"hat 300nvc bekommen \n nvcdaily")
+                    message.client.channels.get("509757254862372883").send(docs.Nickname+"hat 300nvc bekommen \n nvcdaily")
                     this.message.react('💸')
                 var CXC = docs.cxc + 300
                 console.log("1 day later")
