@@ -16,7 +16,7 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("518395091472089101")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+3562,stammgast:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+3750,stammgast:0} })
     .exec()
     .then(docs => {
         message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n gaswolke \n +3562nvc")
@@ -30,7 +30,7 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("518384555007148042")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+5700,Bohr:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+6000,Bohr:0} })
     .exec()
     .then(docs => {
         message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n brauner-zwerg \n +5700nvc")
@@ -44,7 +44,7 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("518384549408014343")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+7125,Curie:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+7500,Curie:0} })
     .exec()
     .then(docs => {
         message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n roter-zwerg \n +7125nvc")
@@ -58,7 +58,7 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("518384546492973056")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+12350,Tesla:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+13000,Tesla:0} })
     .exec()
     .then(docs => {
         message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n weißer-zwerg \n +12350nvc")
@@ -72,7 +72,7 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("518384356222566410")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+19000,Newton:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+20000,Newton:0} })
     .exec()
     .then(docs => {
         message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n hauptreihenstern \n +12350nvc")
@@ -86,7 +86,7 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("518384355698278430")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+23750 ,Einstein:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+25000 ,Einstein:0} })
     .exec()
     .then(docs => {
         message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n roter-riese \n 23750,‬nvc")
@@ -100,7 +100,7 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("518384354880258049")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+47500,Hawking:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+50000,Hawking:0} })
     .exec()
     .then(docs => {
         message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n supernova \n +47500nvc")
@@ -114,7 +114,7 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("518384354272215060")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+71250,Musk:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+75000,Musk:0} })
     .exec()
     .then(docs => {
         message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n neutronen-stern \n +71250nvc")
@@ -128,7 +128,7 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("518384353387085845")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+76000,Vip:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+80000,Vip:0} })
     .exec()
     .then(docs => {
         message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n schwarzes-loch \n +76000nvc")
@@ -142,7 +142,7 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("518172524811386890")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+90250,Clixoomer:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+95000,Clixoomer:0} })
     .exec()
     .then(docs => {
         message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n pulsar \n +90250nvc")
@@ -156,7 +156,7 @@ exports.remove_role = (RoleData, message) => {
       }
       else {
     this.message.member.removeRole("700740599195893760")
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+109250,quasar:0} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+115000,quasar:0} })
     .exec()
     .then(docs => {
         message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n quasar \n 109250+nvc")
@@ -166,37 +166,37 @@ exports.remove_role = (RoleData, message) => {
     }
     else if (Search== "all"){
       if (docs.stammgast == 1){
-        var cxc=cxc + 4750
+        var cxc=cxc + 3750
       }
       if (docs.Bohr == 1){
-        var cxc=cxc + 7600
+        var cxc=cxc + 6000
       }
       if (docs.Curie == 1){
-        var cxc=cxc + 9500
+        var cxc=cxc + 7500
       }
       if (docs.Tesla == 1){
-        var cxc=cxc + 12350
+        var cxc=cxc + 13000
       }
       if (docs.Newton == 1){
-        var cxc=cxc + 19000
+        var cxc=cxc + 20000
       }
       if (docs.Einstein == 1){
-        var cxc=cxc + 23750
+        var cxc=cxc + 25000
       }
       if (docs.Hawking == 1){
-        var cxc=cxc + 47500
+        var cxc=cxc + 50000
       }
       if (docs.Musk == 1){
-        var cxc=cxc + 71250
+        var cxc=cxc + 75000
       }
       if (docs.Vip == 1){
-        var cxc=cxc + 76000
+        var cxc=cxc + 80000
       }
       if (docs.Clixoomer == 1){
-        var cxc=cxc + 90250
+        var cxc=cxc + 95000
       }
       if (docs.quasar == 1){
-        var cxc=cxc + 109250
+        var cxc=cxc + 115000
       }
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+cxc,memes:0,stammgast:0,Bohr:0,Curie:0,Tesla:0,Newton:0,Einstein:0,Hawking:0,Musk:0,Vip:0,Clixoomer:0,quasar:0} })
       .exec()
