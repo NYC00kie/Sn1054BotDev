@@ -4,11 +4,15 @@
   "description": "Clixoom Bot",
   "main": "index.js",
   "dependencies": {
+    "@discordjs/uws": "^10.149.0",
+    "cron": "^1.8.2",
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.7.13",
-    "nodemailer": "^6.4.0",
+    "mongoose": "^5.9.25",
+    "nodemailer": "^6.4.10",
     "request": "^2.88.2",
+    "tar": "^6.0.2",
+    "uws": "^100.0.1",
     "wikijs": "^6.0.1"
   },
   "devDependencies": {},
