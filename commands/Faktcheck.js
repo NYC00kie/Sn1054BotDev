@@ -30,7 +30,6 @@ if (err) {
  var error = "cannot connect to the server";
  console.log(error);
 } else {
-    console.log(body);
    var wiki = JSON.parse(body);
    let Pageid0 = wiki.query.pageids
    let Pageid1 = Pageid0[0]
@@ -42,12 +41,13 @@ if (err) {
    }
 
    let zeroth = Pagecontent.split("\n")
-   if (zeroth.length>2000) {
-     this.message.channel.send(zeroth[0]+"\n \nMehr Informationen findest du hier: https://de.wikipedia.org/wiki/"+Suche+" \n \nDiese Informationen wurden von Wikipedia, der freien Enzyklopädie bereitgestellt.")
-   }
-   if (zeroth.length>2){
-   this.message.channel.send(zeroth[0]+"\n"+zeroth[1]+"\n \nMehr Informationen findest du hier: https://de.wikipedia.org/wiki/"+Suche+" \n \nDiese Informationen wurden von Wikipedia, der freien Enzyklopädie bereitgestellt.")
-   .catch(err => {
+   let actuallength = Pagecontent.split("")
+   let shorter = zeroth[0].substr(0,1800)
+   console.log("\n------------------\n"+shorter+"\n-----------------\n")
+   console.log(actuallength.length)
+   if (actuallength.length>=1800) {
+     this.message.channel.send(shorter+"\n \nMehr Informationen findest du hier: https://de.wikipedia.org/wiki/"+Suche+" \n \nDiese Informationen wurden von Wikipedia, der freien Enzyklopädie bereitgestellt.")
+     .catch(err => {
      console.log(err)
    })
  }
