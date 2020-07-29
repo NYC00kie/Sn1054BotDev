@@ -49,7 +49,7 @@ exports.add_role = (RoleData, message) => {
     if (docs.Bohr == 1){
       this.message.channel.send("Du hast diese Rolle schon")
     }
-    else if (docs.cxc >= 8000) {
+    else if (docs.cxc >= 6000) {
       this.message.author.send("Du hast die Rolle für: **6000nvc** gekauft")
       this.message.member.addRole("518384555007148042")
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-6000,Bohr:1} })
@@ -67,7 +67,7 @@ exports.add_role = (RoleData, message) => {
     if (docs.Curie == 1){
       this.message.channel.send("Du hast diese Rolle schon")
     }
-    else if (docs.cxc >= 10000) {
+    else if (docs.cxc >= 7500) {
       this.message.author.send("Du hast die Rolle für: **7500nvc** gekauft")
       this.message.member.addRole("518384549408014343")
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-7500,Curie:1} })
