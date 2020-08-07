@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const fs = require('fs');
+const Loghandler = require('./Loghandler');
 dotenv.config();
 
 var transporter = nodemailer.createTransport({
@@ -87,11 +88,10 @@ var Today = new Date () //Heutigen Tag bekommen. mit Date("now") gehts ned
 var d1 = docs.Date, //Datum der zuzletzt geschriebenen Nachricht bekommen
     d2 = new Date ( d1 );
 d2.setMinutes ( d1.getMinutes() + 1 );
-    var Messagecount = docs.messages + 1
 
     if (Today > d2) {//wenn der hinterlegte Zeitpunkt nicht mehr der jetzige ist , dann bitte speichern
     var CXC = docs.cxc + 10
-    Sale.updateOne({ _id: docs._id }, { $set: { cxc:CXC , messages:Messagecount , Date:Date("now")} })
+    Sale.updateOne({ _id: docs._id }, { $set: { cxc:CXC , Date:Date("now")} })
     .exec()
     .then(docs => {
     }).catch(err => {
@@ -111,7 +111,7 @@ d2.setMinutes ( d1.getMinutes() + 1 );
 
 else {//wenn der hinterlegte Zeitpunkt der jetzige ist , dann bitte nicht speichern
   var CXC = docs.cxc
-  Sale.updateOne({ _id: docs._id }, { $set: { cxc:CXC , messages:Messagecount} })
+  Sale.updateOne({ _id: docs._id }, { $set: { cxc:CXC , } })
   .exec()
   .then(docs => {
   }).catch(err => {
@@ -214,7 +214,7 @@ exports.transfer_cxc = (PingData, NewCxc, message) => {
     })
 
     });
-    message.client.channels.get("509757254862372883").send(Author+"hat"+NewCxc.cxc+"nvc an"+PingData.Ping+"überwiesen \n transfer")
+    Loghandler.log(message,Author,PingData.Ping,"transfer",undefined,undefined)
 }).catch(err => {
   var e = new Error(err);
   const Es = e.toString()

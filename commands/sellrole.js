@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Sale = require('../models/sale');
 const Discord = require('discord.js');
+const Loghandler = require('./Loghandler');
 
 exports.remove_role = (RoleData, message) => {
   this.message = message;
@@ -19,7 +20,7 @@ exports.remove_role = (RoleData, message) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+3750,stammgast:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n gaswolke \n +3562nvc")
+        Loghandler.log(message,Author,undefined,"sellrole","518395091472089101",undefined)
     })
   }
 
@@ -33,7 +34,7 @@ exports.remove_role = (RoleData, message) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+6000,Bohr:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n brauner-zwerg \n +5700nvc")
+        Loghandler.log(message,Author,undefined,"sellrole","518384555007148042",undefined)
     })
   }
 
@@ -47,7 +48,7 @@ exports.remove_role = (RoleData, message) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+7500,Curie:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n roter-zwerg \n +7125nvc")
+        Loghandler.log(message,Author,undefined,"sellrole","518384549408014343",undefined)
     })
   }
 
@@ -61,7 +62,7 @@ exports.remove_role = (RoleData, message) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+13000,Tesla:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n weißer-zwerg \n +12350nvc")
+        Loghandler.log(message,Author,undefined,"sellrole","518384546492973056",undefined)
     })
   }
 
@@ -75,7 +76,7 @@ exports.remove_role = (RoleData, message) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+20000,Newton:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n hauptreihenstern \n +12350nvc")
+        Loghandler.log(message,Author,undefined,"sellrole","518384356222566410",undefined)
     })
   }
 
@@ -89,7 +90,7 @@ exports.remove_role = (RoleData, message) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+25000 ,Einstein:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n roter-riese \n 23750,‬nvc")
+        Loghandler.log(message,Author,undefined,"sellrole","518384355698278430",undefined)
     })
   }
 
@@ -103,7 +104,7 @@ exports.remove_role = (RoleData, message) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+50000,Hawking:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n supernova \n +47500nvc")
+        Loghandler.log(message,Author,undefined,"sellrole","518384354880258049",undefined)
     })
   }
 
@@ -117,7 +118,7 @@ exports.remove_role = (RoleData, message) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+75000,Musk:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n neutronen-stern \n +71250nvc")
+        Loghandler.log(message,Author,undefined,"sellrole","518384354272215060",undefined)
     })
   }
 
@@ -131,7 +132,7 @@ exports.remove_role = (RoleData, message) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+80000,Vip:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n schwarzes-loch \n +76000nvc")
+        Loghandler.log(message,Author,undefined,"sellrole","518384353387085845",undefined)
     })
   }
 
@@ -145,7 +146,7 @@ exports.remove_role = (RoleData, message) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+95000,Clixoomer:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n pulsar \n +90250nvc")
+        Loghandler.log(message,Author,undefined,"sellrole","518172524811386890",undefined)
     })
   }
 
@@ -159,7 +160,7 @@ exports.remove_role = (RoleData, message) => {
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+115000,quasar:0} })
     .exec()
     .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle verkauft:\n quasar \n 109250+nvc")
+        Loghandler.log(message,Author,undefined,"sellrole","700740599195893760",undefined)
     })
   }
 
@@ -215,7 +216,7 @@ exports.remove_role = (RoleData, message) => {
         this.message.member.removeRole("700740599195893760")
         this.message.channel.send("alle dein Rollen wurden verkauft")
         this.message.author.send("Alle deine Rollen wurden verkauft und es wird keine Rückerstattung geben.")
-        message.client.channels.get("509757254862372883").send(message.author+":\n alle Rollen verkauft.\n +"+cxc)
+        Loghandler.log(message,Author,undefined,"sellroleall",undefined,undefined)
       }).catch(console.error)
     }
     else if (Search== undefined){

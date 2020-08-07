@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Sale = require('../models/sale');
 const Discord = require('discord.js');
 const fs = require('fs');
+const Loghandler = require('./Loghandler');
 
 exports.add_cxc =  (message) => {
   this.message = message;
@@ -27,14 +28,14 @@ exports.add_cxc =  (message) => {
             var d1 = docs.lastdaily, //Datum der zuzletzt geschriebenen cxcdailynachricht bekommen
                 d2 = new Date ( d1 );
             d2.setDate ( d1.getDate() + 1 );
-                var Messagecount = docs.messages + 1
+
 
                 if (Today > d2) {//wenn der hinterlegte Zeitpunkt nicht mehr der jetzige ist , dann bitte speichern
-                    message.client.channels.get("509757254862372883").send(docs.Nickname+"hat 300nvc bekommen \n nvcdaily")
+                    Loghandler.log(message,Author,undefined,"daily",undefined,undefined)
                     this.message.react('💸')
                 var CXC = docs.cxc + 300
                 console.log("1 day later")
-                Sale.updateOne({ _id: docs._id }, { $set: { cxc:CXC , messages:Messagecount, lastdaily:Date("now")} })
+                Sale.updateOne({ _id: docs._id }, { $set: { cxc:CXC , lastdaily:Date("now")} })
                 .exec()
                 .then(docs => {
                 })

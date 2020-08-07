@@ -5,6 +5,7 @@ const Sale = require('../models/sale');
 const Cxc = require("../commands/cxc");
 const Discord = require('discord.js');
 const nodemailer = require('nodemailer');
+const howmany = require('./howmany');
 
 var transporter = nodemailer.createTransport({
    host: "smtp.gmail.com",
@@ -15,23 +16,51 @@ var transporter = nodemailer.createTransport({
 });
 
 exports.stats = (message) => {
-/*  if (!message.member.roles.some(role => role.id === "450742960678764544")){
+  if (!message.member.roles.some(role => role.id === "450742960678764544")){
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
-  }*/
+  }
 this.message = message;
+
 Sale.find()
 .exec()
-.then(docs => {
+.then(async docs => {
+  this.message.channel.send("Datenbank wird geladen")
   var savedUser = 0
   var cxcstat = 0
   var mesgstat = 0
-  docs.forEach((doc, idx, message) => {
-    cxcstat = doc.cxc + cxcstat
-    mesgstat = mesgstat + doc.messages
+  var Stammgast = 0
+  var Bohr = 0
+  var Curie = 0
+  var Tesla = 0
+  var Newton = 0
+  var Einstein = 0
+  var Hawking = 0
+  var Musk = 0
+  var Vip = 0
+  var Clixoomer = 0
+  var Quasar = 0
+  for (var i = 0; i < docs.length; i++) {
+    let Wert = await howmany.roleseach(docs[i].MemberId)
+    cxcstat = docs[i].cxc + cxcstat
+    mesgstat = mesgstat + docs[i].messages
     savedUser = savedUser +1
-    })
-    this.message.channel.send("```Gesamte nvc im Umlauf : "+cxcstat+"\nGeschriebene Nachrichten seit aufzeichnung : "+mesgstat+"\nGesamte Anzalh an Usern in der Datenbank: "+savedUser+"```")
+    Stammgast = Wert.Stammgast + Stammgast
+    Bohr = Wert.Bohr + Bohr
+    Curie = Wert.Curie +Curie
+    Tesla = Wert.Tesla + Tesla,
+    Newton = Wert.Newton + Newton
+    Einstein = Wert.Einstein + Einstein
+    Hawking = Wert.Hawking +  Hawking
+    Musk = Wert.Musk + Musk
+    Vip = Wert.Vip + Vip
+    Clixoomer = Wert.Clixoomer + Clixoomer
+    Quasar = Wert.Quasar + Quasar
+
+    }
+await sleep(3000)
+await Statsembedfunction(Stammgast,Bohr,Curie,Tesla,Newton,Einstein,Hawking,Musk,Vip,Clixoomer,Quasar,cxcstat,mesgstat,savedUser,message)
+
   })
   .catch(err => {//message fuction
     var e = new Error(err);
@@ -45,4 +74,33 @@ Sale.find()
     transporter.sendMail(mailOptions);
     console.error(err);
     });
+
+}
+function Statsembedfunction(Stammgast,Bohr,Curie,Tesla,Newton,Einstein,Hawking,Musk,Vip,Clixoomer,Quasar,cxcstat,mesgstat,savedUser,message) {
+  this.message = message;
+
+  var Statsembed = new Discord.RichEmbed()
+    .setColor(0xe19517)
+    .setTitle("Statistiken:")
+    .addField("Gesamte User:",savedUser)
+    .addField("Gesamte NVC:",cxcstat)
+    .addField("Gesamt gespeicherte Nachrichten:",mesgstat)
+    .addField("User mit Gaswolke",Stammgast)
+    .addField("User mit Brauner Zwerg",Bohr)
+    .addField("User mit Roter zwerg",Curie)
+    .addField("User mit Weißer zwerg",Tesla)
+    .addField("User mit hauptreihenstern",Newton)
+    .addField("User mit Roter Riese",Einstein)
+    .addField("User mit Supernova",Hawking)
+    .addField("User mit Neutronen Stern",Musk)
+    .addField("User mit Schwarzes Loch",Vip)
+    .addField("User mit Pulsar",Clixoomer)
+    .addField("User mit Quasar",Quasar)
+  this.message.channel.send(Statsembed)
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 }

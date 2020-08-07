@@ -11,8 +11,8 @@
     "mongoose": "^5.9.25",
     "nodemailer": "^6.4.10",
     "request": "^2.88.2",
+    "string-similarity": "^4.0.1",
     "tar": "^6.0.2",
-    "uws": "^100.0.1",
     "wikijs": "^6.0.1"
   },
   "devDependencies": {},

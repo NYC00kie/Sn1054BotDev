@@ -3,7 +3,6 @@ dotenv.config();
 const Discord = require('discord.js');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
-
 const PREFIX = "."
 var fs = require("fs");
 const Help = require("./commands/help");
@@ -29,7 +28,35 @@ const start = require('./commands/start');
 const SNUpdate = require('./commands/SNUpdate');
 const Faktcheck = require('./commands/Faktcheck');
 const Watchblacklist = require('./commands/watchblacklist');
+const howmany = require('./commands/howmany');
+const top = require('./commands/toplist');
+const trello = require('./commands/trello');
+const count = require('./commands/count');
+const verbrauch = require('./commands/verbrauch');
 let bot = new Discord.Client();
+
+const token = process.env.Trellotoken
+const key = process.env.Trellokey
+
+function rewriteVersion(){
+let output = getVersion()
+
+var Version2 = output.Version.split(".")
+
+let finalVersion= Number(Version2[2])+1
+var data = {
+  Version: Version2[0]+"."+Version2[1]+"."+finalVersion,
+  Date: new Date()
+}
+var data = JSON.stringify(data)
+
+fs.writeFile("Version.json",data, 'utf8',err => {
+  if (err) {
+    console.error(err)
+  }
+})
+}
+rewriteVersion()
 
 bot.login(process.env.TOKEN);
 bot.on('error',console.error)
@@ -89,6 +116,9 @@ bot.on("message",async message => {
   if (message.author.bot) {
     return;//leave if the Author is a Bot or the Bot itself
   };
+
+  count.message_count(message)
+  checkblacklist.suizid(message)
   if (message.channel instanceof Discord.DMChannel)return;//return if the Channel the message got send in is the PM channel
   manageprofile.add_Profile_old(message);
   if(!message.content.startsWith(PREFIX)) {
@@ -122,6 +152,7 @@ bot.on("message",async message => {
   //all Commands
   switch (args[0].toLowerCase()) {
       //here the sales should be displayed
+
     case "addblacklist":
       blacklist.add_word(message,Word)
       break;
@@ -129,7 +160,9 @@ bot.on("message",async message => {
       blacklist.add_channel(message,Word)
       break;
     case "v":
-      message.channel.send("Version 1.4 SN update (2.07.2020)")
+      let data = getVersion()
+      d1 = new Date(data.Date)
+      message.channel.send(`Version ${data.Version} vom ${d1.getHours()}:${d1.getMinutes()} ${d1.getDate()}.${d1.getMonth()}.${d1.getFullYear()} `)
       break;
     case "amonunser":
       insider.AmonUnser(message)
@@ -183,7 +216,7 @@ bot.on("message",async message => {
       channel.create_channel(ChannelData,message,bot)
       break;
     case "delete":
-      channel.delete_channel_User(message)
+      channel.delete_channel_User(PingData,message)
       break;
     case "archiv":
       channel.delete_channel_Admin(PingData,message)
@@ -192,7 +225,7 @@ bot.on("message",async message => {
       channel.unlink_channel_Admin(PingData,message)
       break;
     case "chstats":
-      channel.chstats_channel_User(message,PingData)
+      channel.chstats_channel_User(PingData,message)
       break;
     case "transfer":
       Cxc.transfer_cxc(PingData, NewCxc, message);
@@ -241,10 +274,28 @@ bot.on("message",async message => {
       Faktcheck.check(message,Begriff);
       break;
     case "watchword":
-      Watchblacklist.word(message)
+      Watchblacklist.word(message);
       break;
     case "watchchannel":
-      Watchblacklist.channel(message)
+      Watchblacklist.channel(message);
+      break;
+    case "nvctop":
+      top.nvctop(message);
+      break;
+    case "pwtop":
+      top.pwtop(message);
+      break;
+    case "messagetop":
+      top.messagetop(message);
+      break;
+    case "dev":
+      trello.whatsontrello(message,token,key);
+      break;
+    case "ey":
+      trello.whatsontrello(message,token,key);
+      break;
+    case "verbrauch":
+      verbrauch.verbrauch(message)
       break;
   };
 });
@@ -253,4 +304,11 @@ function sleep(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
+}
+//gets the current Bot Version from Version.json
+function getVersion(){
+  var data = fs.readFileSync('Version.json','utf8')
+  var data = JSON.parse(data)
+
+  return data
 }

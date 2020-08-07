@@ -34,7 +34,9 @@ exports.update = (message) => {
             Date: doc.Date,
             lastdaily: doc.lastdaily,
             Channelid: doc.Channelid,
+            Channelid2: "undefined",
             createdDate: doc.createdDate,
+            createdDate2: Date("now"),
             cxc: doc.cxc,
             Prestiege: doc.Prestiege,
             messages: doc.messages,
@@ -49,6 +51,7 @@ exports.update = (message) => {
             Musk: doc.Musk,
             Vip: doc.Vip,
             Clixoomer: doc.Clixoomer,
+            quasar: doc.quasar,
             byegif: doc.byegif,
             happygif: doc.happygif,
             klickgif: doc.klickgif,
@@ -61,6 +64,7 @@ exports.update = (message) => {
           NewProfile.save()
           .then(doc => {
             console.log("person updated")
+            sleep(200)
           })
           .catch(err => {
             console.error(err);
@@ -84,4 +88,10 @@ exports.update = (message) => {
     console.error(err);
     });
     this.message.channel.send("DB update durchgeführt")
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 }

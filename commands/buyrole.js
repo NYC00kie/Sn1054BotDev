@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Sale = require('../models/sale');
 const Discord = require('discord.js');
+const Loghandler = require('./Loghandler');
 
 exports.add_role = (RoleData, message) => {
   this.message = message;
@@ -19,7 +20,7 @@ exports.add_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-50,memes:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n memes \n -50nvc")
+        Loghandler.log(message,Author,undefined,"buyrole","518395092197965845",undefined)
       })
     }
     else {
@@ -37,7 +38,7 @@ exports.add_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-3750,stammgast:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n gaswolke \n -3750nvc")
+         Loghandler.log(message,Author,undefined,"buyrole","518395091472089101",undefined)
       })
     }
     else {
@@ -55,7 +56,7 @@ exports.add_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-6000,Bohr:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n brauner-zwerg \n -6000nvc")
+         Loghandler.log(message,Author,undefined,"buyrole","518384555007148042",undefined)
       })
     }
     else {
@@ -73,8 +74,7 @@ exports.add_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-7500,Curie:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n roter-zwerg \n -7500nvc")
-      })
+         Loghandler.log(message,Author,undefined,"buyrole","518384549408014343",undefined)      })
     }
     else {
   this.message.channel.send("Du hast nicht genug nvc")
@@ -91,7 +91,7 @@ exports.add_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-13000,Tesla:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n weißer-zwerg \n -13000nvc")
+         Loghandler.log(message,Author,undefined,"buyrole","518384546492973056",undefined)
       })
     }
     else {
@@ -109,7 +109,7 @@ exports.add_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-20000,Newton:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n hauptreihenstern \n -20000nvc")
+         Loghandler.log(message,Author,undefined,"buyrole","518384356222566410",undefined)
       })
     }
     else {
@@ -127,7 +127,7 @@ exports.add_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-25000,Einstein:1} })
       .exec()
       .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n roter riese \n -25000nvc")
+           Loghandler.log(message,Author,undefined,"buyrole","518384355698278430",undefined)
       })
     }
     else {
@@ -145,7 +145,7 @@ exports.add_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-50000,Hawking:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n supernova \n -50000nvc")
+         Loghandler.log(message,Author,undefined,"buyrole","518384354880258049",undefined)
       })
     }
     else {
@@ -163,7 +163,7 @@ exports.add_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-75000,Musk:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n neutronen-stern \n -75000nvc")
+         Loghandler.log(message,Author,undefined,"buyrole","518384354272215060",undefined)
       })
     }
     else {
@@ -181,7 +181,7 @@ exports.add_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-80000,Vip:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n schwarzes-loch \n -80000nvc")
+         Loghandler.log(message,Author,undefined,"buyrole","518384353387085845",undefined)
       })
     }
     else {
@@ -199,7 +199,7 @@ exports.add_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-95000,Clixoomer:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n pulsar \n -95000nvc")
+         Loghandler.log(message,Author,undefined,"buyrole","518172524811386890",undefined)
       })
     }
     else {
@@ -217,7 +217,7 @@ exports.add_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-115000,Quasar:1} })
       .exec()
       .then(docs => {
-        message.client.channels.get("509757254862372883").send(message.author+":\n Rolle gekauft:\n quasar \n -115000nvc")
+         Loghandler.log(message,Author,undefined,"buyrole","700740599195893760",undefined)
       })
     }
     else {

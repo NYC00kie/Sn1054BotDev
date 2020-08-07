@@ -74,7 +74,7 @@ exports.get_profil = (PingData,message) => {
           var Clixoomer = "."
         }
         else {
-          var Clixoomer = "quasar"
+          var Clixoomer = "pulsar"
         }
         if (docs.quasar==0){
           var quasar = "."
