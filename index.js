@@ -38,15 +38,16 @@ let bot = new Discord.Client();
 const token = process.env.Trellotoken
 const key = process.env.Trellokey
 
-function rewriteVersion(){
-let output = getVersion()
+async function rewriteVersion(){
+let output = await getVersion()
 
-var Version2 = output.Version.split(".")
-
-let finalVersion= Number(Version2[2])+1
+var Version2 = output.Version
+console.log(output.Version)
+console.log(Version2)
+let finalVersion= Version2+0.01
 var data = {
-  Version: Version2[0]+"."+Version2[1]+"."+finalVersion,
-  Date: new Date()
+  Version: finalVersion,
+  Date: Date("now")
 }
 var data = JSON.stringify(data)
 
@@ -162,6 +163,7 @@ bot.on("message",async message => {
     case "v":
       let data = getVersion()
       d1 = new Date(data.Date)
+      console.log(d1)
       message.channel.send(`Version ${data.Version} vom ${d1.getHours()}:${d1.getMinutes()} ${d1.getDate()}.${d1.getMonth()}.${d1.getFullYear()} `)
       break;
     case "amonunser":
@@ -308,7 +310,7 @@ function sleep(ms) {
 //gets the current Bot Version from Version.json
 function getVersion(){
   var data = fs.readFileSync('Version.json','utf8')
-  var data = JSON.parse(data)
-
-  return data
+  var data2 = JSON.parse(data)
+  console.log(data)
+  return data2
 }
