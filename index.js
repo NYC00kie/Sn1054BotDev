@@ -164,7 +164,8 @@ bot.on("message",async message => {
       let data = getVersion()
       d1 = new Date(data.Date)
       console.log(d1)
-      message.channel.send(`Version ${data.Version} vom ${d1.getHours()}:${d1.getMinutes()} ${d1.getDate()}.${d1.getMonth()}.${d1.getFullYear()} `)
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      message.channel.send(`Version ${data.Version} vom ${d1.getHours()}:${d1.getMinutes()} ${d1.getDate()} ${months[d1.getMonth()]} ${d1.getFullYear()} `)
       break;
     case "amonunser":
       insider.AmonUnser(message)
