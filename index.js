@@ -41,12 +41,12 @@ const key = process.env.Trellokey
 async function rewriteVersion(){
 let output = await getVersion()
 
-var Version2 = output.Version
+var Version2 = output.Version.split(".")
 console.log(output.Version)
 console.log(Version2)
-let finalVersion= Version2+0.01
+let finalVersion= Number(Version2[1])+1
 var data = {
-  Version: finalVersion,
+  Version: Version2[0]+"."+finalVersion,
   Date: Date("now")
 }
 var data = JSON.stringify(data)
