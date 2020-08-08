@@ -32,7 +32,7 @@ exports.add_role = (RoleData, message) => {
     if (docs.stammgast == 1){
       this.message.channel.send("Du hast diese Rolle schon")
     }
-    else if (docs.cxc >= 5000) {
+    else if (docs.cxc >= 3750) {
       this.message.author.send("Du hast die Rolle für: **3750nvc** gekauft")
       this.message.member.addRole("518395091472089101")
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-3750,stammgast:1} })
