@@ -44,12 +44,13 @@ exports.check_channel =  (message) => {
 exports.suizid = (message) => {
   this.message = message
   let content = this.message.content.toLowerCase()
-  let badword = ["suizid","selbstmord","freitod","selbsttötung","selbstentleibung"]
+  let badword = ["suizid","selbstmord","freitod","selbsttötung","selbstentleibung","suicide"]
   let letter = content.split("")
 
   for (var i = 0; i < letter.length; i++) {
 
     var suizid = letter[i]+letter[i+1]+letter[i+2]+letter[i+3]+letter[i+4]+letter[i+5]
+    var suicide = letter[i]+letter[i+1]+letter[i+2]+letter[i+3]+letter[i+4]+letter[i+5]+letter[i+6]
     var selbstmord = letter[i]+letter[i+1]+letter[i+2]+letter[i+3]+letter[i+4]+letter[i+5]+letter[i+6]+letter[i+7]+letter[i+8]+letter[i+9]
     var freitod =letter[i]+letter[i+1]+letter[i+2]+letter[i+3]+letter[i+4]+letter[i+5]+letter[i+6]
     var selbsttötung = letter[i]+letter[i+1]+letter[i+2]+letter[i+3]+letter[i+4]+letter[i+5]+letter[i+6]+letter[i+7]+letter[i+8]+letter[i+9]+letter[i+10]+letter[i+11]
@@ -59,23 +60,27 @@ exports.suizid = (message) => {
     for (var j = 0; j < badword.length; j++) {
 
       if (suizid==badword[j]) {
-        this.message.channel.send("Wir haben erkannt, dass du potentiell Selbstmordgedanken hast.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern **0800 – 111 0 111** \n**0800 – 111 0 222**\n**116 111** ")
+        this.message.channel.send("Wir haben erkannt, dass du potentiell Selbstmordgedanken hast.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern \n**0800 – 111 0 111** \n**0800 – 111 0 222**\n**116 111** ")
         break;
       }
       else if (selbstmord==badword[j]) {
-        this.message.channel.send("Wir haben erkannt, dass du potentiell Selbstmordgedanken hast.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern **0800 – 111 0 111** \n**0800 – 111 0 222**\n**116 111** ")
+        this.message.channel.send("Wir haben erkannt, dass du potentiell Selbstmordgedanken hast.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern \n**0800 – 111 0 111** \n**0800 – 111 0 222**\n**116 111** ")
         break;
       }
       else if (freitod==badword[j]) {
-        this.message.channel.send("Wir haben erkannt, dass du potentiell Selbstmordgedanken hast.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern **0800 – 111 0 111** \n**0800 – 111 0 222**\n**116 111** ")
+        this.message.channel.send("Wir haben erkannt, dass du potentiell Selbstmordgedanken hast.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern \n**0800 – 111 0 111** \n**0800 – 111 0 222**\n**116 111** ")
         break;
       }
       else if (selbsttötung==badword[j]) {
-        this.message.channel.send("Wir haben erkannt, dass du potentiell Selbstmordgedanken hast.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern **0800 – 111 0 111** \n**0800 – 111 0 222**\n**116 111** ")
+        this.message.channel.send("Wir haben erkannt, dass du potentiell Selbstmordgedanken hast.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern \n**0800 – 111 0 111** \n**0800 – 111 0 222**\n**116 111** ")
         break;
        }
       else if (selbstentleibung==badword[j]) {
-        this.message.channel.send("Wir haben erkannt, dass du potentiell Selbstmordgedanken hast.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern **0800 – 111 0 111** \n**0800 – 111 0 222**\n**116 111** ")
+        this.message.channel.send("Wir haben erkannt, dass du potentiell Selbstmordgedanken hast.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern \n**0800 – 111 0 111** \n**0800 – 111 0 222**\n**116 111** ")
+        break;
+      }
+      else if (suicide==badword[j]) {
+        this.message.channel.send("Wir haben erkannt, dass du potentiell Selbstmordgedanken hast.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern \n**0800 – 111 0 111** \n**0800 – 111 0 222**\n**116 111** ")
         break;
       }
     }
