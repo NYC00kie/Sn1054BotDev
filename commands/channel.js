@@ -53,8 +53,9 @@ async function how_many_messages_are_there_actually(msgcount){
 exports.create_channel = async (ChannelData,message) => {
   this.message = message;
   const Author = this.message.author
+  const MemberID = this.message.author.id
 
-let docs = await Sale.findOne({Name:Author})
+let docs = await Sale.findOne({MemberId:MemberID})
 
   if (docs.Channelid == "undefined"){//testen , ob der User bereits einen Channel hat
   message.delete(1000)
@@ -137,9 +138,10 @@ else {
 exports.chstats_channel_User = (PingData,message) => {
 
   this.message = message;
+  const MemberID = this.message.author.id
   const Author = this.message.author
   if (PingData.Ping == undefined) {
-  Sale.findOne({Name:Author})
+  Sale.findOne({MemberId:MemberID})
   .exec()
   .then(docs => {
     message.delete(1000)
@@ -220,20 +222,21 @@ exports.chstats_channel_User = (PingData,message) => {
   }
 }
 
-exports.delete_channel_User = (message,PingData) => {
+exports.delete_channel_User = async (message,PingData) => {
   this.message = message;
   const Author = this.message.author
-  Sale.findOne({Name:Author})
-  .exec()
-  .then(docs => {
+  const MemberID = this.message.author.id
+  let docs = await Sale.findOne({MemberId:MemberID}).then(docs => console.log(docs))
 
+  return;
+    var channel = docs.Channelid
     if (channel != "undefined"&&docs.Channelid2=="undefined"){//channel 1 definiert, channel 2 undefiniert
 
       var Today = new Date () //Heutigen Tag bekommen. mit Date("now") gehts ned
       var d1 = docs.createdDate, //Datum bekommen, wann der Kanal erstellt wurde
       d2 = new Date ( d1 );
       d2.setDate ( d1.getDate() + 1 );
-      var channel = docs.Channelid
+
 
       if (d2 > Today){
         this.message.channel.send("Dein Kanal wurde vor weniger als 24h erstellt. Um ihn jetzt löschen zu können , musst du mindestens 24h warten. Ansonsten kann sich dein Thema doch gar nicht entfalten.")
@@ -360,18 +363,6 @@ exports.delete_channel_User = (message,PingData) => {
     }else {
       this.message.channel.send("Du hast keinen Kanal!")
     }
-  }).catch(err => {
-      var e = new Error(err);
-      const Es = e.toString()
-      var mailOptions = {
-        from: process.env.Mailadress,
-        to: process.env.MyMailadress,
-        subject: "Error",
-        text: Es + Date("now")
-      };
-      transporter.sendMail(mailOptions);
-      console.error(err);
-    });
 
 }
 

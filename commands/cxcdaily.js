@@ -7,6 +7,7 @@ const Loghandler = require('./Loghandler');
 exports.add_cxc =  (message) => {
   this.message = message;
   const Author = this.message.author
+  const MemberID = this.message.author.id
   Splitmessage = this.message.content.split(" ")
   fs.readFile('./bannedwords/blacklist.txt',"utf8",(err, data) => {
     if (err) throw err;
@@ -20,7 +21,7 @@ exports.add_cxc =  (message) => {
           }
         }
 
-              Sale.findOne({Name:Author})
+              Sale.findOne({MemberId:MemberID})
               .exec()
               .then(docs => {
 

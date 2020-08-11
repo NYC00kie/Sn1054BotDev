@@ -16,6 +16,7 @@ var transporter = nodemailer.createTransport({
 });
 //cxc auslesen
 exports.get_cxc = (PingData, message) => {
+  const MemberID = this.message.author.id
   this.message = message;
   if (PingData.Ping != undefined) {
     Sale.findOne({Name2:PingData.Ping})
@@ -44,7 +45,7 @@ exports.get_cxc = (PingData, message) => {
     });
   }
   else {
-    Sale.findOne({Name:this.message.author})
+    Sale.findOne({MemberId:MemberID})
     .exec()
     .then(docs => {
       this.message.channel.send(docs.Name+" hat aktuell **"+docs.cxc+"** Nova-Coins")
@@ -67,7 +68,7 @@ exports.get_cxc = (PingData, message) => {
 exports.add_cxc =  (message) => {
   this.message = message;
   const Author = this.message.author
-
+  const MemberID = this.message.author.id
   Splitmessage = this.message.content.split(" ")
   fs.readFile('./bannedwords/blacklist.txt',"utf8",(err, data) => {
     if (err) throw err;
@@ -146,6 +147,7 @@ else {//wenn der hinterlegte Zeitpunkt der jetzige ist , dann bitte nicht speich
 exports.transfer_cxc = (PingData, NewCxc, message) => {
   this.message = message;
   const Author = this.message.author
+  const MemberID = this.message.author.id
   if (NewCxc.cxc < 10) {
     this.message.channel.send("Der bezahlte Betrag muss mindestens 10nvc betragen");
     return;
@@ -192,7 +194,7 @@ exports.transfer_cxc = (PingData, NewCxc, message) => {
         this.message.channel.send("nvc wurden bei "+PingData.Ping+" hinzugefügt")
       })
     }).catch(err => {
-      Sale.findOne({Name:PingData.Ping})
+      Sale.findOne({Name2:PingData.Ping})
       .exec()
       .then(docs => {
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+NewCxc.cxc} })

@@ -8,7 +8,8 @@ dotenv.config();
 exports.bye_gif = (message) => {
 this.message = message;
 const Author = this.message.author
-Sale.findOne({Name:Author})
+const MemberID = this.message.author.id
+Sale.findOne({MemberId:MemberID})
 .exec()
 .then(docs => {
 if (docs.byegif==0) {
@@ -24,7 +25,8 @@ message.channel.send({ files: ["./commands/cxgifs/bye.gif"] });
 exports.happy_gif = (message) => {
 this.message = message;
 const Author = this.message.author
-Sale.findOne({Name:Author})
+const MemberID = this.message.author.id
+Sale.findOne({MemberId:MemberID})
 .exec()
 .then(docs => {
 if (docs.happygif==0) {
@@ -40,7 +42,8 @@ message.channel.send({ files: ["./commands/cxgifs/happy.gif"] });
 exports.klick_gif = (message) => {
 this.message = message;
 const Author = this.message.author
-Sale.findOne({Name:Author})
+const MemberID = this.message.author.id
+Sale.findOne({MemberId:MemberID})
 .exec()
 .then(docs => {
 if (docs.klickgif==0) {
@@ -57,7 +60,8 @@ message.channel.send({ files: ["./commands/cxgifs/klick.gif"] });
 exports.point_gif = (message) => {
 this.message = message;
 const Author = this.message.author
-Sale.findOne({Name:Author})
+const MemberID = this.message.author.id
+Sale.findOne({MemberId:MemberID})
 .exec()
 .then(docs => {
 if (docs.pointgif==0) {
@@ -74,7 +78,9 @@ message.channel.send({ files: ["./commands/cxgifs/point.gif"] });
 exports.sad_gif = (message) => {
 this.message = message;
 const Author = this.message.author
-Sale.findOne({Name:Author})
+const MemberID = this.message.author.id
+
+Sale.findOne({MemberId:MemberID})
 .exec()
 .then(docs => {
 if (docs.sadgif==0) {
@@ -91,7 +97,8 @@ message.channel.send({ files: ["./commands/cxgifs/sad.gif"] });
 exports.spock_gif = (message) => {
 this.message = message;
 const Author = this.message.author
-Sale.findOne({Name:Author})
+const MemberID = this.message.author.id
+Sale.findOne({MemberId:MemberID})
 .exec()
 .then(docs => {
 if (docs.spockgif==0) {
@@ -108,7 +115,8 @@ message.channel.send({ files: ["./commands/cxgifs/spock.gif"] });
 exports.thumbs_gif = (message) => {
 this.message = message;
 const Author = this.message.author
-Sale.findOne({Name:Author})
+const MemberID = this.message.author.id
+Sale.findOne({MemberId:MemberID})
 .exec()
 .then(docs => {
 if (docs.thumbsgif==0) {

@@ -5,8 +5,9 @@ const Discord = require('discord.js');
 exports.get_profil = (PingData,message) => {
   this.message = message;
   const Author = this.message.author
+  const MemberID = this.message.author.id
   if (!PingData.Ping) {
-    Sale.findOne({Name:Author})
+    Sale.findOne({MemberId:MemberID})
     .exec()
     .then(docs => {
         //All of this if else things are just to Test if there are Any roles

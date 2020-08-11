@@ -16,8 +16,9 @@ var transporter = nodemailer.createTransport({
 exports.buy_emote = (RoleData,message) => {
   this.message = message;
   const Author = this.message.author
+  const MemberID = this.message.author.id
   const Search = RoleData.Whirole
-  Sale.findOne({Name:Author})
+  Sale.findOne({MemberId:MemberID})
   .exec()
   .then(docs => {
     if (Search=="happy"){
