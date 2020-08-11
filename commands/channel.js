@@ -222,11 +222,11 @@ exports.chstats_channel_User = (PingData,message) => {
   }
 }
 
-exports.delete_channel_User = async (message,PingData) => {
+exports.delete_channel_User = async (PingData,message) => {
   this.message = message;
   const Author = this.message.author
   const MemberID = this.message.author.id
-  let docs = await Sale.findOne({MemberId:MemberID}).then(docs => console.log(docs))
+  let docs = await Sale.findOne({MemberId:MemberID})
 
   return;
     var channel = docs.Channelid
