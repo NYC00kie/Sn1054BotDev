@@ -228,7 +228,7 @@ exports.delete_channel_User = async (PingData,message) => {
   const MemberID = this.message.author.id
   let docs = await Sale.findOne({MemberId:MemberID})
 
-  return;
+
     var channel = docs.Channelid
     if (channel != "undefined"&&docs.Channelid2=="undefined"){//channel 1 definiert, channel 2 undefiniert
 
