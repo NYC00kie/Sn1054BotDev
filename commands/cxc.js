@@ -16,7 +16,7 @@ var transporter = nodemailer.createTransport({
 });
 //cxc auslesen
 exports.get_cxc = (PingData, message) => {
-  const MemberID = this.message.author.id
+
   this.message = message;
   if (PingData.Ping != undefined) {
     Sale.findOne({Name2:PingData.Ping})
@@ -45,6 +45,7 @@ exports.get_cxc = (PingData, message) => {
     });
   }
   else {
+    const MemberID = this.message.author.id
     Sale.findOne({MemberId:MemberID})
     .exec()
     .then(docs => {
