@@ -186,7 +186,7 @@ exports.chstats_channel_User = (PingData,message) => {
     .exec()
     .then(docs => {
       var channel = docs.Channelid
-      if (channel != "undefined"){
+      if (docs.Channelid != "undefined") {
           message.delete(1000)
           .then(async () => {
             let msgcount1 = await lots_of_messages_getter(message.client.channels.get(channel))
@@ -204,7 +204,7 @@ exports.chstats_channel_User = (PingData,message) => {
       .exec()
       .then(docs => {
         var channel = docs.Channelid
-        if (channel != "undefined"){
+        if (docs.Channelid2 != "undefined") {
             message.delete(1000)
             .then(async () => {
               let msgcount1 = await lots_of_messages_getter(message.client.channels.get(channel))
