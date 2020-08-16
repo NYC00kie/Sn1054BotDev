@@ -186,7 +186,7 @@ exports.chstats_channel_User = (PingData,message) => {
     .exec()
     .then(docs => {
       var channel = docs.Channelid
-      if (docs.Channelid != "undefined") {
+      if (channel != "undefined"){
           message.delete(1000)
           .then(async () => {
             let msgcount1 = await lots_of_messages_getter(message.client.channels.get(channel))
@@ -199,12 +199,25 @@ exports.chstats_channel_User = (PingData,message) => {
             this.message.channel.send(ChstatsEmbed);
           })
         }
+        if (docs.Channelid2 != "undefined"){
+          message.delete(1000)
+          .then(async () => {
+            let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid2))
+            let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
+            var ChstatsEmbed = new Discord.RichEmbed()
+              .setColor(0xe19517)
+              .setTitle("Deine Kanal-Stats")
+              .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid2+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
+              .setTimestamp(Date("now"))
+            this.message.channel.send(ChstatsEmbed);
+          })
+        }
     }).catch(err => {
       Sale.findOne({Name2:PingData.Ping})
       .exec()
       .then(docs => {
         var channel = docs.Channelid
-        if (docs.Channelid2 != "undefined") {
+        if (channel != "undefined"){
             message.delete(1000)
             .then(async () => {
               let msgcount1 = await lots_of_messages_getter(message.client.channels.get(channel))
@@ -213,6 +226,19 @@ exports.chstats_channel_User = (PingData,message) => {
                 .setColor(0xe19517)
                 .setTitle("Deine Kanal-Stats")
                 .addField("Stats:","Dein Channel:\n"+"<#"+channel+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
+                .setTimestamp(Date("now"))
+              this.message.channel.send(ChstatsEmbed);
+            })
+          }
+          if (docs.Channelid2 != "undefined"){
+            message.delete(1000)
+            .then(async () => {
+              let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid2))
+              let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
+              var ChstatsEmbed = new Discord.RichEmbed()
+                .setColor(0xe19517)
+                .setTitle("Deine Kanal-Stats")
+                .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid2+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
                 .setTimestamp(Date("now"))
               this.message.channel.send(ChstatsEmbed);
             })
