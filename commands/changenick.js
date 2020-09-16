@@ -23,7 +23,7 @@ exports.change_nick = (NewNick, message) => {
     })
   }
   else {
-    Author.send("du hast nicht genug cxc")
+    Author.send("du hast nicht genug nvc")
   }
   })
 
