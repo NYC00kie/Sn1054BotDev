@@ -117,7 +117,7 @@ bot.on("message",async message => {
   if (message.author.bot) {
     return;//leave if the Author is a Bot or the Bot itself
   };
-  console.log(message.content)
+
   count.message_count(message)
   checkblacklist.suizid(message)
   if (message.channel instanceof Discord.DMChannel)return;//return if the Channel the message got send in is the PM channel
