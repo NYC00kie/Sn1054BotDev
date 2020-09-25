@@ -138,61 +138,61 @@ exports.get_profil = (PingData,message) => {
           var stammgast = "."
         }
         else {
-          var stammgast = "stammgast"
+          var stammgast = "gaswolke"
         }
         if (docs.Bohr==0){
           var Bohr = "."
         }
         else {
-          var Bohr = "Bohr"
+          var Bohr = "brauner-zwerg"
         }
         if (docs.Curie==0){
           var Curie = "."
         }
         else {
-          var Curie = "Curie"
+          var Curie = "roter-zwerg"
         }
         if (docs.Tesla==0){
           var Tesla = "."
         }
         else {
-          var Tesla = "Tesla"
+          var Tesla = "weißer-zwerg"
         }
         if (docs.Newton==0){
           var Newton = "."
         }
         else {
-          var Newton = "Newton"
+          var Newton = "hauptreihenstern"
         }
         if (docs.Einstein==0){
           var Einstein = "."
         }
         else {
-          var Einstein = "Einstein"
+          var Einstein = "roter-riese"
         }
         if (docs.Hawking==0){
           var Hawking = "."
         }
         else {
-          var Hawking = "Hawking"
+          var Hawking = "supernova"
         }
         if (docs.Musk==0){
           var Musk = "."
         }
         else {
-          var Musk = "Musk"
+          var Musk = "neutronen-stern"
         }
         if (docs.Vip==0){
           var Vip = "."
         }
         else {
-          var Vip = "Vip"
+          var Vip = "schwarzes-loch"
         }
         if (docs.Clixoomer==0){
           var Clixoomer = "."
         }
         else {
-          var Clixoomer = "Clixoomer"
+          var Clixoomer = "pulsar"
         }
         if (docs.quasar==0){
           var quasar = "."
@@ -239,61 +239,61 @@ exports.get_profil = (PingData,message) => {
             var stammgast = "."
           }
           else {
-            var stammgast = "stammgast"
+            var stammgast = "gaswolke"
           }
           if (docs.Bohr==0){
             var Bohr = "."
           }
           else {
-            var Bohr = "Bohr"
+            var Bohr = "brauner-zwerg"
           }
           if (docs.Curie==0){
             var Curie = "."
           }
           else {
-            var Curie = "Curie"
+            var Curie = "roter-zwerg"
           }
           if (docs.Tesla==0){
             var Tesla = "."
           }
           else {
-            var Tesla = "Tesla"
+            var Tesla = "weißer-zwerg"
           }
           if (docs.Newton==0){
             var Newton = "."
           }
           else {
-            var Newton = "Newton"
+            var Newton = "hauptreihenstern"
           }
           if (docs.Einstein==0){
             var Einstein = "."
           }
           else {
-            var Einstein = "Einstein"
+            var Einstein = "roter-riese"
           }
           if (docs.Hawking==0){
             var Hawking = "."
           }
           else {
-            var Hawking = "Hawking"
+            var Hawking = "supernova"
           }
           if (docs.Musk==0){
             var Musk = "."
           }
           else {
-            var Musk = "Musk"
+            var Musk = "neutronen-stern"
           }
           if (docs.Vip==0){
             var Vip = "."
           }
           else {
-            var Vip = "Vip"
+            var Vip = "schwarzes-loch"
           }
           if (docs.Clixoomer==0){
             var Clixoomer = "."
           }
           else {
-            var Clixoomer = "Clixoomer"
+            var Clixoomer = "pulsar"
           }
           if (docs.quasar==0){
             var quasar = "."
