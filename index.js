@@ -117,7 +117,7 @@ bot.on("message",async message => {
   if (message.author.bot) {
     return;//leave if the Author is a Bot or the Bot itself
   };
-
+  console.log(message.content)
   count.message_count(message)
   checkblacklist.suizid(message)
   if (message.channel instanceof Discord.DMChannel)return;//return if the Channel the message got send in is the PM channel
@@ -261,7 +261,7 @@ bot.on("message",async message => {
       dbupdate.update(message);
       break;
     case "reset":
-      manageprofile.reset_Profile(PingData,message);
+      manageprofile.reset_Profile(PingData,message,bot);
       break;
     case "stats":
       stats.stats(message);

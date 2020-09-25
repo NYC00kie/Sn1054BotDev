@@ -2,6 +2,16 @@ const mongoose = require('mongoose');
 const Sale = require('../models/sale');
 const Cxc = require("../commands/cxc");
 const Discord = require('discord.js');
+const nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+   host: "smtp.gmail.com",
+  auth: {
+    user: process.env.Mailadress,
+    pass: process.env.Mailpw
+  }
+});
+
 
 exports.add_Profile_new = (member) => {
   const Profile = new Sale({
@@ -122,16 +132,16 @@ Sale.deleteOne({MemberId:member.id})
 }
 
 
-exports.reset_Profile = (PingData,message) => {
+exports.reset_Profile = (PingData,message,client) => {
   this.message = message;
-  if (!message.member.roles.some(role => role.id === "450742960678764544")){
+  /*if (!message.member.roles.some(role => role.id === "450742960678764544")){
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
-  }
+  }*/
     Sale.findOne({Name2:PingData.Ping})
     .exec()
     .then(docs => {
-      Sale.updateOne({ _id: docs._id }, { $set: { Nickname:  this.message.author.username, Date: Date("now"), lastdaily: Date("now"), Channelid: "undefined", createdDate: Date("now"), cxc: 0, messages: 0, memes: 0, stammgast: 0, Bohr: 0, Curie: 0, Tesla: 0, Newton: 0, Einstein: 0, Hawking: 0, Musk: 0, Vip: 0, Clixoomer: 0,quasar: 0, byegif: 0, happygif: 0, klickgif: 0, pointgif: 0, sadgif: 0, spockgif: 0, thumbsgif: 0}})
+      Sale.updateOne({ _id: docs._id }, { $set: { Nickname:  client.users.get(docs.MemberId).username, Date: Date("now"), lastdaily: Date("now"), Channelid: "undefined", createdDate: Date("now"), cxc: 0, messages: 0, memes: 0, stammgast: 0, Bohr: 0, Curie: 0, Tesla: 0, Newton: 0, Einstein: 0, Hawking: 0, Musk: 0, Vip: 0, Clixoomer: 0,quasar: 0, byegif: 0, happygif: 0, klickgif: 0, pointgif: 0, sadgif: 0, spockgif: 0, thumbsgif: 0}})
       .exec()
       .then(docs => {
         this.message.channel.send(PingData.Ping+"s Account wurde zurück gesetzt")
@@ -160,5 +170,5 @@ exports.reset_Profile = (PingData,message) => {
     transporter.sendMail(mailOptions);
     console.error(err);
   });
-  message.client.channels.get("509757254862372883").send(PingData.Ping+"s Account wurde zurückgesetzt \n Reset")
+  //message.client.channels.get("509757254862372883").send(PingData.Ping+"s Account wurde zurückgesetzt \n Reset")
     }
