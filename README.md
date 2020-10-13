@@ -1,8 +1,11 @@
 # ClixoomBotDev
 
 This is a Discord Bot for the Sn1054 Discord Server. (https:discord.gg/Sn1054)
+
 It is based on the **discord.js** package.
+
 It Runs in NodeJS and is hosted on a Raspberrypi 3B+.
+
 I use a MongoDB Database because I some what know how it works.
 
 
