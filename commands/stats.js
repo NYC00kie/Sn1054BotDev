@@ -17,7 +17,7 @@ var transporter = nodemailer.createTransport({
 
 exports.stats = (message) => {
   this.message = message;
-  if (!this.message.member.roles.some(role => role.id === "450742960678764544")){
+  if (!this.message.member.roles.cache.some(role => role.id === "450742960678764544")){
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
   }
@@ -80,7 +80,7 @@ await Statsembedfunction(Stammgast,Bohr,Curie,Tesla,Newton,Einstein,Hawking,Musk
 function Statsembedfunction(Stammgast,Bohr,Curie,Tesla,Newton,Einstein,Hawking,Musk,Vip,Clixoomer,Quasar,cxcstat,mesgstat,savedUser,message) {
   this.message = message;
 
-  var Statsembed = new Discord.RichEmbed()
+  var Statsembed = new Discord.MessageEmbed()
     .setColor(0xe19517)
     .setTitle("Statistiken:")
     .addField("Gesamte User:",savedUser)

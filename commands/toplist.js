@@ -41,7 +41,7 @@ exports.nvctop = (message) => {
     }
   }
 //hier den Code zur benutztung des Sortierten Array
-var TopEmbed = new Discord.RichEmbed()
+var TopEmbed = new Discord.MessageEmbed()
   .setColor(0xe19517)
   .setTitle("Die 10 Leute mit den meisten nvc")
   .addField("឵឵ ឵឵ ឵឵","1. "+ Personarray[0]+" mit "+Searcharray[0]+"\n\n2. "+ Personarray[1]+" mit "+Searcharray[1]+"\n\n3. "+ Personarray[2]+" mit "+Searcharray[2]+"\n\n4. "+ Personarray[3]+" mit "+Searcharray[3]+"\n\n5. "+ Personarray[4]+" mit "+Searcharray[4]+"\n\n6. "+ Personarray[5]+" mit "+Searcharray[5]+"\n\n7. "+ Personarray[6]+" mit "+Searcharray[6]+"\n\n8. "+ Personarray[7]+" mit "+Searcharray[7]+"\n\n9. "+ Personarray[8]+" mit "+Searcharray[8]+"\n\n10. "+ Personarray[9]+" mit "+Searcharray[9])
@@ -78,7 +78,7 @@ exports.pwtop = (message) => {
     }
   }
 //hier den Code zur benutztung des Sortierten Array
-var TopEmbed = new Discord.RichEmbed()
+var TopEmbed = new Discord.MessageEmbed()
   .setColor(0xe19517)
   .setTitle("Die 10 Leute mit dem meisten Prestiegewert")
   .addField("឵឵ ឵឵ ឵឵","1. "+ Personarray[0]+" mit "+Searcharray[0]+"\n\n2. "+ Personarray[1]+" mit "+Searcharray[1]+"\n\n3. "+ Personarray[2]+" mit "+Searcharray[2]+"\n\n4. "+ Personarray[3]+" mit "+Searcharray[3]+"\n\n5. "+ Personarray[4]+" mit "+Searcharray[4]+"\n\n6. "+ Personarray[5]+" mit "+Searcharray[5]+"\n\n7. "+ Personarray[6]+" mit "+Searcharray[6]+"\n\n8. "+ Personarray[7]+" mit "+Searcharray[7]+"\n\n9. "+ Personarray[8]+" mit "+Searcharray[8]+"\n\n10. "+ Personarray[9]+" mit "+Searcharray[9])
@@ -116,7 +116,7 @@ exports.messagetop = (message) => {
     }
   }
 //hier den Code zur benutztung des Sortierten Array
-var TopEmbed = new Discord.RichEmbed()
+var TopEmbed = new Discord.MessageEmbed()
   .setColor(0xe19517)
   .setTitle("Die 10 Leute mit den meisten Nachrichten")
   .addField("឵឵ ឵឵ ឵឵","1. "+ Personarray[0]+" mit "+Searcharray[0]+"\n\n2. "+ Personarray[1]+" mit "+Searcharray[1]+"\n\n3. "+ Personarray[2]+" mit "+Searcharray[2]+"\n\n4. "+ Personarray[3]+" mit "+Searcharray[3]+"\n\n5. "+ Personarray[4]+" mit "+Searcharray[4]+"\n\n6. "+ Personarray[5]+" mit "+Searcharray[5]+"\n\n7. "+ Personarray[6]+" mit "+Searcharray[6]+"\n\n8. "+ Personarray[7]+" mit "+Searcharray[7]+"\n\n9. "+ Personarray[8]+" mit "+Searcharray[8]+"\n\n10. "+ Personarray[9]+" mit "+Searcharray[9])

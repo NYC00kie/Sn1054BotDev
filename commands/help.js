@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 exports.get_help = (message) => {
   this.message = message;
 
-  var Helpembed = new Discord.RichEmbed()
+  var Helpembed = new Discord.MessageEmbed()
   .setColor(0xe19517)
   .setTitle("ClixoomBot Commands:")
   .addField("Hinweise"," Achte darauf, dass du vor jeden Befehl einen . setzen musst. \nBeispiel: ``.help`` \nAchtung! Benutze keine eckigen Klammern in den Befehlen:\n ``.transfer @user [betrag] = .transfer @Maxmustermann#0000 1000`` \n\nAußerdem solltest du allgemein darauf achten, dass du den Syntax und die Rechtschreibung des Befehls richtig nutzt.")
@@ -24,7 +24,7 @@ exports.get_help = (message) => {
 
 exports.get_shophelp = (message) => {
   this.message = message;
-  var ShopHelpembed = new Discord.RichEmbed()
+  var ShopHelpembed = new Discord.MessageEmbed()
   .setColor(0xe19517)
   .setTitle("ClixoomBot Shop")
   .addField("Commands",".shop -> Alle Items anzeigen\n ``.buyemote [Itemname]``-> Ein Gif kaufen\n ``.buyrole [Itemname]`` -> Eine Rolle kaufen\n ``.sellrole [Itemnname]`` -> Eine verkaufbare Rolle verkaufen (5% Wertverlust)\n Die Commands ohne Klammern schreiben\n Bsp.: ``.buyemote happy``")

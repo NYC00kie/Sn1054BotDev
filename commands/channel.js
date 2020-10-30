@@ -151,7 +151,7 @@ exports.chstats_channel_User = (PingData,message) => {
         .then(async () => {
           let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid))
           let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
-          var ChstatsEmbed = new Discord.RichEmbed()
+          var ChstatsEmbed = new Discord.MessageEmbed()
             .setColor(0xe19517)
             .setTitle("Deine Kanal-Stats")
             .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
@@ -166,7 +166,7 @@ exports.chstats_channel_User = (PingData,message) => {
       .then(async () => {
         let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid2))
         let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
-        var ChstatsEmbed = new Discord.RichEmbed()
+        var ChstatsEmbed = new Discord.MessageEmbed()
           .setColor(0xe19517)
           .setTitle("Deine Kanal-Stats")
           .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid2+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
@@ -194,7 +194,7 @@ exports.chstats_channel_User = (PingData,message) => {
 
             let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid))
             let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
-            var ChstatsEmbed = new Discord.RichEmbed()
+            var ChstatsEmbed = new Discord.MessageEmbed()
               .setColor(0xe19517)
               .setTitle("Deine Kanal-Stats")
               .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
@@ -206,7 +206,7 @@ exports.chstats_channel_User = (PingData,message) => {
 
             let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid2))
             let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
-            var ChstatsEmbed2 = new Discord.RichEmbed()
+            var ChstatsEmbed2 = new Discord.MessageEmbed()
               .setColor(0xe19517)
               .setTitle("Deine Kanal-Stats")
               .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid2+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
@@ -230,7 +230,7 @@ exports.chstats_channel_User = (PingData,message) => {
 
                     let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid))
                     let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
-                    var ChstatsEmbed = new Discord.RichEmbed()
+                    var ChstatsEmbed = new Discord.MessageEmbed()
                       .setColor(0xe19517)
                       .setTitle("Deine Kanal-Stats")
                       .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
@@ -242,7 +242,7 @@ exports.chstats_channel_User = (PingData,message) => {
 
                     let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid2))
                     let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
-                    var ChstatsEmbed2 = new Discord.RichEmbed()
+                    var ChstatsEmbed2 = new Discord.MessageEmbed()
                       .setColor(0xe19517)
                       .setTitle("Deine Kanal-Stats")
                       .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid2+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
@@ -408,7 +408,7 @@ exports.delete_channel_Admin = (PingData,message) => {
   let prechannelid = preprechannelid[1].split(">")
   let channelid = prechannelid[0]
   this.message = message;
-  if (!message.member.roles.some(role => role.id === "450742960678764544")){
+  if (!message.member.roles.cache.some(role => role.id === "450742960678764544")){
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
   }
@@ -468,7 +468,7 @@ exports.delete_channel_Admin = (PingData,message) => {
 
 exports.unlink_channel_Admin = (PingData,message) => {
   this.message = message;
-  if (!message.member.roles.some(role => role.id === "450742960678764544")){
+  if (!message.member.roles.cache.some(role => role.id === "450742960678764544")){
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
   }

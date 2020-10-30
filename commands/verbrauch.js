@@ -17,7 +17,7 @@ fetch('http://wechsel1.fritz.box/solar_api/v1/GetInverterRealtimeData.cgi?Scope=
   var ErgebnisJahr = Math.round((Jahresverbrauch/Jahresertrag)*100000)
   var ErgebnisTag = Math.round(((Jahresverbrauch/365)/Tagesertrag)*100000)
 
-  let Verbrauchembed = new Discord.RichEmbed()
+  let Verbrauchembed = new Discord.MessageEmbed()
   .setTitle("Verbrauch")
   .setColor(0x59e330)
   .addField("Heute","Prozentualer Verbauch des Server vom Stroms am heutigen Tag von der Photovoltaik anlage \n"+ErgebnisTag/1000)

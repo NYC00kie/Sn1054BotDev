@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 
-exports.log = (message,User,User2,Type,Role,Channel) => {
+exports.log = (message,User,User2,Type,Role,Channel) => {return;
   this.message = message;
-  let LogEmbed = new Discord.RichEmbed()
+  let LogEmbed = new Discord.MessageEmbed()
   if (Type == "daily") {
     var logmessage = `${User}\n hat 300 nvc bekommen`
 

@@ -14,7 +14,7 @@ var transporter = nodemailer.createTransport({
 });
 exports.setcxc = (PingData, message, NewCxc) => {
   this.message = message;
-  if (!message.member.roles.some(role => role.id === "450742960678764544")){
+  if (!message.member.roles.cache.some(role => role.id === "450742960678764544")){
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
   }
@@ -66,7 +66,7 @@ exports.setcxc = (PingData, message, NewCxc) => {
 
 exports.remcxc = (PingData, message, NewCxc) => {
   this.message = message;
-  if (!message.member.roles.some(role => role.id === "450742960678764544")){
+  if (!message.member.roles.cache.some(role => role.id === "450742960678764544")){
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
   }
@@ -119,7 +119,7 @@ exports.remcxc = (PingData, message, NewCxc) => {
 
 exports.givecxc = (PingData, message, NewCxc) => {
   this.message = message;
-  if (!message.member.roles.some(role => role.id === "450742960678764544")){
+  if (!message.member.roles.cache.some(role => role.id === "450742960678764544")){
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
   }
