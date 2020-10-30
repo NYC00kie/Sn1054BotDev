@@ -7,7 +7,7 @@
     "@discordjs/uws": "^10.149.0",
     "bl": "^2.2.1",
     "cron": "^1.8.2",
-    "discord.js": "^11.5.1",
+    "discord.js": "^11.6.4",
     "dotenv": "^8.2.0",
     "mongoose": "^5.9.25",
     "nodemailer": "^6.4.10",
