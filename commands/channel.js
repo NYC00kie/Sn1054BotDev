@@ -43,7 +43,7 @@ async function how_many_messages_are_there_actually(msgcount){
   let y = Actuall_messages_v0.length
 
   var count = 0
-  for (i=0; i< y; i++) {
+  for (i = 0; i < y; i++) {
     var count = count + parseInt(Actuall_messages_v0[i])
   }
   actuall_messages = count
@@ -62,6 +62,7 @@ let docs = await Sale.findOne({MemberId:MemberID})
   this.message.member.guild.createChannel(ChannelData.name, {type:"text",topic: ChannelData.beschreibung+" | "+this.message.author,parent:"451776378938064897"})//Channel erstellen
   .then(newchannel => {
     var channelidid = newchannel.id
+
 
 
     Loghandler.log(message,Author,undefined,"channelcreate",undefined,channelidid)
