@@ -23,15 +23,15 @@ async function lots_of_messages_getter(channel, limit = 10000) {
     const options = { limit: 100 };
     if (last_id) {
     options.before = last_id;
-  }
+    }
 
-  const messages = await channel.fetchMessages(options);
-  sum_messages.push(messages.size);
-  last_id = messages.last().id;
+    const messages = await channel.messages.fetch(options);
+    sum_messages.push(messages.size);
+    last_id = messages.last().id;
 
     if (messages.size != 100 || sum_messages >= limit) {
       break;
-  }
+    }
 }
 
 return sum_messages;
@@ -59,18 +59,16 @@ let docs = await Sale.findOne({MemberId:MemberID})
 
   if (docs.Channelid == "undefined"){//testen , ob der User bereits einen Channel hat
   message.delete(1000)
-  this.message.member.guild.createChannel(ChannelData.name, "text")//Channel erstellen
+  this.message.member.guild.createChannel(ChannelData.name, {type:"text",topic: ChannelData.beschreibung+" | "+this.message.author,parent:"451776378938064897"})//Channel erstellen
   .then(newchannel => {
     var channelidid = newchannel.id
+
+
     Loghandler.log(message,Author,undefined,"channelcreate",undefined,channelidid)
-    message.client.channels.get(channelidid).setTopic(ChannelData.beschreibung+" | "+this.message.author)//beschreibung eingeben
-    .then(() => {message.client.channels.get(channelidid).setParent("451776378938064897")//in die Richtige Kategorie verschieben
-    .then(() => {
-      message.client.channels.get(channelidid).lockPermissions()//Permissions syncen
-      })
-    })
-      .catch(console.error);
-    message.client.channels.get(channelidid).send(this.message.author+" dein Channel wurde erstellt")
+
+    message.client.channels.cache.get(channelidid).lockPermissions()
+
+    message.client.channels.cache.get(channelidid).send(this.message.author+" dein Channel wurde erstellt")
       Sale.updateOne({ _id: docs.id }, { $set: { Channelid: channelidid ,createdDate: Date("now")} })//update Channel in DB
       .exec()
       .then(docs =>{
@@ -98,14 +96,12 @@ else if (docs.Channelid2=="undefined") {
     this.message.member.guild.createChannel(ChannelData.name, "text")//Channel erstellen
     .then(newchannel => {
       var channelidid = newchannel.id
-      message.client.channels.get(channelidid).setTopic(ChannelData.beschreibung+" | "+this.message.author)//beschreibung eingeben
-      .then(() => {message.client.channels.get(channelidid).setParent("451776378938064897")//in die Richtige Kategorie verschieben
-      .then(() => {
-        message.client.channels.get(channelidid).lockPermissions()//Permissions syncen
-        })
-      })
-        .catch(console.error);
-      message.client.channels.get(channelidid).send(this.message.author+" dein Channel wurde erstellt")
+
+      Loghandler.log(message,Author,undefined,"channelcreate",undefined,channelidid)
+
+        message.client.channels.cache.get(channelidid).lockPermissions()
+
+      message.client.channels.cache.get(channelidid).send(this.message.author+" dein Channel wurde erstellt")
         Sale.updateOne({ _id: docs.id }, { $set: { Channelid2: channelidid ,createdDate2: Date("now")} })//update Channel in DB
         .exec()
         .then(docs =>{
@@ -149,8 +145,9 @@ exports.chstats_channel_User = (PingData,message) => {
 
         Promise.resolve()
         .then(async () => {
-          let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid))
+          let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(docs.Channelid))
           let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
+
           var ChstatsEmbed = new Discord.MessageEmbed()
             .setColor(0xe19517)
             .setTitle("Deine Kanal-Stats")
@@ -164,7 +161,7 @@ exports.chstats_channel_User = (PingData,message) => {
 
       Promise.resolve()
       .then(async () => {
-        let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid2))
+        let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(docs.Channelid2))
         let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
         var ChstatsEmbed = new Discord.MessageEmbed()
           .setColor(0xe19517)
@@ -192,7 +189,7 @@ exports.chstats_channel_User = (PingData,message) => {
 
       if (docs.Channelid != "undefined"){
 
-            let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid))
+            let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(docs.Channelid))
             let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
             var ChstatsEmbed = new Discord.MessageEmbed()
               .setColor(0xe19517)
@@ -204,7 +201,7 @@ exports.chstats_channel_User = (PingData,message) => {
         }
         if (docs.Channelid2 != "undefined"){
 
-            let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid2))
+            let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(docs.Channelid2))
             let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
             var ChstatsEmbed2 = new Discord.MessageEmbed()
               .setColor(0xe19517)
@@ -228,7 +225,7 @@ exports.chstats_channel_User = (PingData,message) => {
 
               if (docs.Channelid != "undefined"){
 
-                    let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid))
+                    let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(docs.Channelid))
                     let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
                     var ChstatsEmbed = new Discord.MessageEmbed()
                       .setColor(0xe19517)
@@ -240,7 +237,7 @@ exports.chstats_channel_User = (PingData,message) => {
                 }
                 if (docs.Channelid2 != "undefined"){
 
-                    let msgcount1 = await lots_of_messages_getter(message.client.channels.get(docs.Channelid2))
+                    let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(docs.Channelid2))
                     let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
                     var ChstatsEmbed2 = new Discord.MessageEmbed()
                       .setColor(0xe19517)
@@ -280,12 +277,12 @@ exports.delete_channel_User = async (PingData,message) => {
         return;
       }
 
-        message.client.channels.get(channel).setParent("518452814691827731");
-        message.client.channels.get(channel).send("Channel archived")
+        message.client.channels.cache.get(channel).setParent("518452814691827731");
+        message.client.channels.cache.get(channel).send("Channel archived")
         .then(async () => {
 
-          message.client.channels.get(channel).lockPermissions()
-          let msgcount1 = await lots_of_messages_getter(message.client.channels.get(channel))
+          message.client.channels.cache.get(channel).lockPermissions()
+          let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
           let newcxc = await how_many_messages_are_there_actually(msgcount1)*5
 
           if (newcxc == NaN) {
@@ -310,12 +307,12 @@ exports.delete_channel_User = async (PingData,message) => {
         this.message.channel.send("Dein Kanal wurde vor weniger als 24h erstellt. Um ihn jetzt löschen zu können , musst du mindestens 24h warten. Ansonsten kann sich dein Thema doch gar nicht entfalten.")
         return;
       }
-      message.client.channels.get(channel).setParent("518452814691827731");
-      message.client.channels.get(channel).send("Channel archived")
+      message.client.channels.cache.get(channel).setParent("518452814691827731");
+      message.client.channels.cache.get(channel).send("Channel archived")
       .then(async () => {
 
-        message.client.channels.get(channel).lockPermissions()
-        let msgcount1 = await lots_of_messages_getter(message.client.channels.get(channel))
+        message.client.channels.cache.get(channel).lockPermissions()
+        let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
         let newcxc = await how_many_messages_are_there_actually(msgcount1)*5
 
         if (newcxc == NaN) {
@@ -344,12 +341,12 @@ exports.delete_channel_User = async (PingData,message) => {
           this.message.channel.send("Dein Kanal wurde vor weniger als 24h erstellt. Um ihn jetzt löschen zu können , musst du mindestens 24h warten. Ansonsten kann sich dein Thema doch gar nicht entfalten.")
           return;
         }
-        message.client.channels.get(channel).setParent("518452814691827731");
-        message.client.channels.get(channel).send("Channel archived")
+        message.client.channels.cache.get(channel).setParent("518452814691827731");
+        message.client.channels.cache.get(channel).send("Channel archived")
         .then(async () => {
 
-          message.client.channels.get(channel).lockPermissions()
-          let msgcount1 = await lots_of_messages_getter(message.client.channels.get(channel))
+          message.client.channels.cache.get(channel).lockPermissions()
+          let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
           let newcxc = await how_many_messages_are_there_actually(msgcount1)*5
 
           if (newcxc == NaN) {
@@ -374,12 +371,12 @@ exports.delete_channel_User = async (PingData,message) => {
           this.message.channel.send("Dein Kanal wurde vor weniger als 24h erstellt. Um ihn jetzt löschen zu können , musst du mindestens 24h warten. Ansonsten kann sich dein Thema doch gar nicht entfalten.")
           return;
         }
-        message.client.channels.get(channel).setParent("518452814691827731");
-        message.client.channels.get(channel).send("Channel archived")
+        message.client.channels.cache.get(channel).setParent("518452814691827731");
+        message.client.channels.cache.get(channel).send("Channel archived")
         .then(async () => {
 
-          message.client.channels.get(channel).lockPermissions()
-          let msgcount1 = await lots_of_messages_getter(message.client.channels.get(channel))
+          message.client.channels.cache.get(channel).lockPermissions()
+          let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
           let newcxc = await how_many_messages_are_there_actually(msgcount1)*5
 
           if (newcxc == NaN) {
@@ -417,11 +414,11 @@ exports.delete_channel_Admin = (PingData,message) => {
   .then(docs => {
     var channel = docs.Channelid
 
-        message.client.channels.get(channel).setParent("518452814691827731");
-        message.client.channels.get(channel).send("Channel :"+channel+"\n archived")
+        message.client.channels.cache.get(channel).setParent("518452814691827731");
+        message.client.channels.cache.get(channel).send("Channel :"+channel+"\n archived")
         .then(async () => {
-          message.client.channels.get(channel).lockPermissions()
-          let msgcount1 = await lots_of_messages_getter(message.client.channels.get(channel))
+          message.client.channels.cache.get(channel).lockPermissions()
+          let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
           let newcxc = await how_many_messages_are_there_actually(msgcount1)*2
           console.log(newcxc)
           Sale.updateOne({ _id: docs.id }, { $set: { Channelid: "undefined" , cxc: docs.cxc+newcxc} })
@@ -437,11 +434,11 @@ exports.delete_channel_Admin = (PingData,message) => {
   .then(docs => {
     var channel = docs.Channelid2
 
-        message.client.channels.get(channel).setParent("518452814691827731");
-        message.client.channels.get(channel).send("Channel :"+channel+"\n archived")
+        message.client.channels.cache.get(channel).setParent("518452814691827731");
+        message.client.channels.cache.get(channel).send("Channel :"+channel+"\n archived")
         .then(async () => {
-          message.client.channels.get(channel).lockPermissions()
-          let msgcount1 = await lots_of_messages_getter(message.client.channels.get(channel))
+          message.client.channels.cache.get(channel).lockPermissions()
+          let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
           let newcxc = await how_many_messages_are_there_actually(msgcount1)*2
           console.log(newcxc)
           Sale.updateOne({ _id: docs.id }, { $set: { Channelid2: "undefined" , cxc: docs.cxc+newcxc} })
@@ -476,11 +473,11 @@ exports.unlink_channel_Admin = (PingData,message) => {
   .exec()
   .then(docs => {
     var channel = docs.Channelid
-    message.client.channels.get(channel).send("Dieser Channel wurde entlinkt. Der User: "+docs.Name+" erhält nun keine cxc mehr für diesen Channel.")
+    message.client.channels.cache.get(channel).send("Dieser Channel wurde entlinkt. Der User: "+docs.Name+" erhält nun keine cxc mehr für diesen Channel.")
         Sale.updateOne({ _id: docs.id }, { $set: { Channelid: "undefined"} })
         .exec()
         .then(docs =>{
-          message.client.channels.get("509757254862372883").send("channel von "+PingData.Ping+" wurde enlinkt \n unlink")
+          message.client.channels.cache.get("509757254862372883").send("channel von "+PingData.Ping+" wurde enlinkt \n unlink")
         })
       }).catch(err => {
           var e = new Error(err);
