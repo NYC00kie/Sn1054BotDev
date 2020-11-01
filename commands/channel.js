@@ -221,7 +221,7 @@ exports.chstats_channel_User = (PingData,message) => {
       .exec()
       .then(async docs => {
 
-            if (docs.Channelid != "undefined" && docs.Channelid2 != "undefined") {
+            if (docs.Channelid != "undefined" || docs.Channelid2 != "undefined") {
 
 
               if (docs.Channelid != "undefined"){
