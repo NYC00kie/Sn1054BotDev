@@ -59,7 +59,7 @@ let docs = await Sale.findOne({MemberId:MemberID})
 
   if (docs.Channelid == "undefined"){//testen , ob der User bereits einen Channel hat
   message.delete(1000)
-  this.message.member.guild.channels.create(ChannelData.name, {type:"text",topic: ChannelData.beschreibung+" | "+this.message.author,parent:"451776378938064897"})//Channel erstellen
+  this.message.member.guild.channels.create(ChannelData.name, {type:"text",topic: ChannelData.beschreibung+" | <@"+this.message.author+">",parent:"451776378938064897"})//Channel erstellen
   .then(newchannel => {
     var channelidid = newchannel.id
 
@@ -94,7 +94,7 @@ let docs = await Sale.findOne({MemberId:MemberID})
 else if (docs.Channelid2=="undefined") {
   if (await howmany.roles(this.message.author.id) > 1) {
     message.delete(1000)
-    this.message.member.guild.channels.create(ChannelData.name, "text")//Channel erstellen
+    this.message.member.guild.channels.create(ChannelData.name, {type:"text",topic: ChannelData.beschreibung+" | <@"+this.message.author+">",parent:"451776378938064897"})//Channel erstellen
     .then(newchannel => {
       var channelidid = newchannel.id
 
@@ -185,7 +185,7 @@ exports.chstats_channel_User = (PingData,message) => {
     .exec()
     .then(async docs => {
 
-    if (docs.Channelid != "undefined" && docs.Channelid2 != "undefined") {
+    if (docs.Channelid != "undefined" || docs.Channelid2 != "undefined") {
 
 
       if (docs.Channelid != "undefined"){
