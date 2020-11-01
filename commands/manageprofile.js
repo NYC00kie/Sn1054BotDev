@@ -134,7 +134,7 @@ Sale.deleteOne({MemberId:member.id})
 
 exports.reset_Profile = (PingData,message,client) => {
   this.message = message;
-  /*if (!message.member.roles.some(role => role.id === "450742960678764544")){
+  /*if (!message.member.roles.cache.some(role => role.id === "450742960678764544")){
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
   }*/
@@ -170,5 +170,5 @@ exports.reset_Profile = (PingData,message,client) => {
     transporter.sendMail(mailOptions);
     console.error(err);
   });
-  //message.client.channels.get("509757254862372883").send(PingData.Ping+"s Account wurde zurückgesetzt \n Reset")
+  //message.client.channels.cache.get("509757254862372883").send(PingData.Ping+"s Account wurde zurückgesetzt \n Reset")
     }

@@ -14,10 +14,12 @@ var transporter = nodemailer.createTransport({
 
 exports.SNUpdate = (message) => {
   this.message = message;
- if (!message.member.roles.some(role => role.id === "450742960678764544")){
+ if (!message.member.roles.cache.some(role => role.id === "450742960678764544")){
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
   }
+  this.message.channel.send("Nope")
+  return
   var cxc = 0
   Sale.find()
   .exec()

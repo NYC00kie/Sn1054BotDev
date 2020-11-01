@@ -3,13 +3,16 @@ const Sale = require('../models/sale');
 const Discord = require('discord.js');
 
 exports.get_profil = (PingData,message) => {
+
   this.message = message;
   const Author = this.message.author
   const MemberID = this.message.author.id
   if (!PingData.Ping) {
+
     Sale.findOne({MemberId:MemberID})
     .exec()
-    .then(docs => {
+    .then(async docs => {
+
         //All of this if else things are just to Test if there are Any roles
         if (docs.memes==0){
           var Memes = "."
@@ -91,10 +94,10 @@ exports.get_profil = (PingData,message) => {
         }
 
         var Footertext = "Server beigetreten:" + new Date(this.message.member.joinedTimestamp)+" "
-        var Profilembed = new Discord.RichEmbed()
+        var Profilembed = new Discord.MessageEmbed()
         .setColor(0xe19517)
         .setTitle(docs.Nickname+"´s Profile:")
-        .setThumbnail(message.author.avatarURL)
+        .setThumbnail(message.author.displayAvatarURL())
         .addField("Dein Prestiegewert:",docs.Prestiege)
         .addField("Deine nvc:",docs.cxc)
         .addField("Deine Rollen:"," "+Memes+"\n "+stammgast+"\n "+Bohr+"\n "+Curie+"\n "+Tesla+"\n "+Newton+"\n "+Einstein+"\n "+Hawking+"\n "+Musk+"\n "+Vip+"\n "+Clixoomer+"\n "+quasar)
@@ -102,23 +105,13 @@ exports.get_profil = (PingData,message) => {
         .addField("Dein aktueller Kanal: ",Channel)
         .addField("Dann wurde deine letzte daily abgeholt:",docs.lastdaily)
         .setFooter(Footertext)
+
         //check if the message author is the same as the author from the docs
 
-        if (PingData.Ping == docs.Name) {
-          this.message.channel.send(Profilembed);
-          return;
-        }
-        else if (PingData.Ping) {
-          return;
-        }
-        else if (this.message.author == docs.Name){
-              this.message.channel.send(Profilembed);
-              return;
 
-        }
-        else {
-          return;
-        }
+          this.message.channel.send(Profilembed);
+
+
     })
     .catch(console.error)
     return;
@@ -206,12 +199,12 @@ exports.get_profil = (PingData,message) => {
         else {
           var Channel = "<#"+docs.Channelid+">"
         }
-        var UserID = message.guild.members.find(m => m.id === docs.MemberId);
+        var UserID = message.guild.members.cache.find(m => m.id === docs.MemberId);
         var Footertext = "Server beigetreten:" + new Date(UserID.joinedTimestamp)+" "
-        var Profilembed = new Discord.RichEmbed()
+        var Profilembed = new Discord.MessageEmbed()
         .setColor(0xe19517)
         .setTitle(docs.Nickname+"´s Profile:")
-        .setThumbnail(docs.Name.avatarURL)
+        .setThumbnail(UserID.avatarURL)
         .addField("Dein Prestiegewert:",docs.Prestiege)
         .addField("Deine nvc:",docs.cxc)
         .addField("Deine Rollen:"," "+Memes+"\n "+stammgast+"\n "+Bohr+"\n "+Curie+"\n "+Tesla+"\n "+Newton+"\n "+Einstein+"\n "+Hawking+"\n "+Musk+"\n "+Vip+"\n "+Clixoomer+"\n "+quasar)
@@ -225,6 +218,7 @@ exports.get_profil = (PingData,message) => {
 
     })
     .catch(err => {
+      console.error(err);
       Sale.findOne({Name:PingData.Ping})
       .exec()
       .then(docs => {
@@ -307,12 +301,12 @@ exports.get_profil = (PingData,message) => {
           else {
             var Channel = "<#"+docs.Channelid+">"
           }
-          var UserID = message.guild.members.find(m => m.id === docs.MemberId);
+          var UserID = message.guild.members.cache.find(m => m.id === docs.MemberId);
           var Footertext = "Server beigetreten:" + new Date(UserID.joinedTimestamp)+" "
-          var Profilembed = new Discord.RichEmbed()
+          var Profilembed = new Discord.MessageEmbed()
           .setColor(0xe19517)
           .setTitle(docs.Nickname+"´s Profile:")
-          .setThumbnail(docs.Name.avatarURL)
+          .setThumbnail(UserID.avatarURL)
           .addField("Dein Prestiegewert:",docs.Prestiege)
           .addField("Deine nvc:",docs.cxc)
           .addField("Deine Rollen:"," "+Memes+"\n "+stammgast+"\n "+Bohr+"\n "+Curie+"\n "+Tesla+"\n "+Newton+"\n "+Einstein+"\n "+Hawking+"\n "+Musk+"\n "+Vip+"\n "+Clixoomer+"\n "+quasar)

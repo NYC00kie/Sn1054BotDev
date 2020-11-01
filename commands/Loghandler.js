@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 
-exports.log = (message,User,User2,Type,Role,Channel) => {
+exports.log = (message,User,User2,Type,Role,Channel) => {return;
   this.message = message;
-  let LogEmbed = new Discord.RichEmbed()
+  let LogEmbed = new Discord.MessageEmbed()
   if (Type == "daily") {
     var logmessage = `${User}\n hat 300 nvc bekommen`
 
@@ -31,9 +31,13 @@ exports.log = (message,User,User2,Type,Role,Channel) => {
     var logmessage = `<#${Channel}>\n wurde von einem Admin archiviert`
 
   }
+  else if (Type == "cxcgifs") {
+    var logmessage = `${User}\n hat ${Role} gekauft`
+
+  }
   LogEmbed.setTitle(Type)
   LogEmbed.setColor(0xe19517)
   LogEmbed.addField(`${Type}`,`${logmessage}`)
-  this.message.client.channels.get("509757254862372883").send(LogEmbed)
+  this.message.client.channels.cache.get("509757254862372883").send(LogEmbed)
 
 }

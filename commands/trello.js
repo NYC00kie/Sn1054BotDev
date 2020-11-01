@@ -62,7 +62,7 @@ fetch('https://api.trello.com/1/boards/5ef8e43cd6f9a86d5de0c914/lists?key='+key+
           break;
         }
 
-      var Trelloembed = new Discord.RichEmbed()
+      var Trelloembed = new Discord.MessageEmbed()
       .setTitle(`${Board[j].ListName}`)
       .setColor(0x229bf2)
       for (var i = 0; i < Board[j].card.length; i++) {
