@@ -33,6 +33,7 @@ const top = require('./commands/toplist');
 const trello = require('./commands/trello');
 const count = require('./commands/count');
 const verbrauch = require('./commands/verbrauch');
+const ping = require('./commands/ping');
 let bot = new Discord.Client();
 
 const token = process.env.Trellotoken
@@ -62,11 +63,10 @@ rewriteVersion()
 bot.login(process.env.TOKEN);
 bot.on('error',console.error)
 bot.on('ready', async () => {
-  bot.user.setPresence({game: {name: 'type .help to start'}})
-  .then(console.log)
+  bot.user.setPresence({ activity: { name: 'type .help',type:0},status: 'online' })
   .catch(console.error);
   try {
-    let link = await bot.generateInvite(["ADMINISTRATOR"]);
+    let link = await bot.generateInvite({permissions:['ADMINISTRATOR']});
     console.log(link);
   } catch(e) {
     console.log(e.stack);
@@ -303,6 +303,9 @@ bot.on("message",async message => {
       break;
     case "verbrauch":
       verbrauch.verbrauch(message)
+      break;
+    case "ping":
+      ping.ping(message,bot)
       break;
   };
 });
