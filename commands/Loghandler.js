@@ -34,6 +34,6 @@ exports.log = (message,User,User2,Type,Role,Channel) => {return;
   LogEmbed.setTitle(Type)
   LogEmbed.setColor(0xe19517)
   LogEmbed.addField(`${Type}`,`${logmessage}`)
-  this.message.client.channels.get("509757254862372883").send(LogEmbed)
+  this.message.client.channels.cache.get("509757254862372883").send(LogEmbed)
 
 }

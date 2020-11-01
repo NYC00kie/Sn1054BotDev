@@ -170,5 +170,5 @@ exports.reset_Profile = (PingData,message,client) => {
     transporter.sendMail(mailOptions);
     console.error(err);
   });
-  //message.client.channels.get("509757254862372883").send(PingData.Ping+"s Account wurde zurückgesetzt \n Reset")
+  //message.client.channels.cache.get("509757254862372883").send(PingData.Ping+"s Account wurde zurückgesetzt \n Reset")
     }

@@ -30,7 +30,7 @@ exports.buy_emote = (RoleData,message) => {
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,happygif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n happy \n -100nvc")
+          message.client.channels.cache.get("509757254862372883").send(message.author+":\n Emote gekauft:\n happy \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
@@ -57,7 +57,7 @@ exports.buy_emote = (RoleData,message) => {
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,byegif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n bye \n -100nvc")
+          message.client.channels.cache.get("509757254862372883").send(message.author+":\n Emote gekauft:\n bye \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
@@ -84,7 +84,7 @@ exports.buy_emote = (RoleData,message) => {
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,klickgif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n klick \n -100nvc")
+          message.client.channels.cache.get("509757254862372883").send(message.author+":\n Emote gekauft:\n klick \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
@@ -111,7 +111,7 @@ exports.buy_emote = (RoleData,message) => {
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,pointgif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n point \n -100nvc")
+          message.client.channels.cache.get("509757254862372883").send(message.author+":\n Emote gekauft:\n point \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
@@ -138,7 +138,7 @@ exports.buy_emote = (RoleData,message) => {
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,sadgif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n sad \n -100nvc")
+          message.client.channels.cache.get("509757254862372883").send(message.author+":\n Emote gekauft:\n sad \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
@@ -165,7 +165,7 @@ exports.buy_emote = (RoleData,message) => {
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,spockgif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n hi \n -100nvc")
+          message.client.channels.cache.get("509757254862372883").send(message.author+":\n Emote gekauft:\n hi \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
@@ -192,7 +192,7 @@ exports.buy_emote = (RoleData,message) => {
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,thumbsgif:1} })
         .exec()
         .then(docs => {
-          message.client.channels.get("509757254862372883").send(message.author+":\n Emote gekauft:\n thumbs \n -100nvc")
+          message.client.channels.cache.get("509757254862372883").send(message.author+":\n Emote gekauft:\n thumbs \n -100nvc")
         }).catch(err =>{
           var e = new Error(err);
           const Es = e.toString()
