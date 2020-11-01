@@ -188,7 +188,7 @@ exports.buy_emote = (RoleData,message) => {
         this.message.channel.send("Du hast dieses Gif schon")
       }
       else if (docs.cxc >= 1000) {
-        this.message.author.send("Du hast das sadGif für: **100nvc** gekauft")
+        this.message.author.send("Du hast das thumbsGif für: **100nvc** gekauft")
         Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-1000,thumbsgif:1} })
         .exec()
         .then(docs => {
