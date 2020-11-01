@@ -31,6 +31,10 @@ exports.log = (message,User,User2,Type,Role,Channel) => {return;
     var logmessage = `<#${Channel}>\n wurde von einem Admin archiviert`
 
   }
+  else if (Type == "cxcgifs") {
+    var logmessage = `${User}\n hat ${Role} gekauft`
+
+  }
   LogEmbed.setTitle(Type)
   LogEmbed.setColor(0xe19517)
   LogEmbed.addField(`${Type}`,`${logmessage}`)
