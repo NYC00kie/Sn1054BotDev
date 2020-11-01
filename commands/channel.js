@@ -24,7 +24,7 @@ async function lots_of_messages_getter(channel, limit = 10000) {
     if (last_id) {
     options.before = last_id;
     }
-
+    console.log(options)
     const messages = await channel.messages.fetch(options);
     sum_messages.push(messages.size);
     last_id = messages.last().id;
