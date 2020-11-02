@@ -25,5 +25,5 @@ exports.start = (message) => {
   else {
     this.message.channel.send("Du bist bereits verifiziert")
   }
-  message.delete(1000)
+  message.delete({timeout:1000})
 }
