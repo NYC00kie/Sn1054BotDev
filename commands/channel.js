@@ -69,7 +69,7 @@ let docs = await Sale.findOne({MemberId:MemberID})
 
     message.client.channels.cache.get(channelidid).lockPermissions()
 
-    message.client.channels.cache.get(channelidid).send(this.message.author+" dein Channel wurde erstellt")
+    message.client.channels.cache.get(channelidid).send("<@"+this.message.author+"> dein Channel wurde erstellt")
       Sale.updateOne({ _id: docs.id }, { $set: { Channelid: channelidid ,createdDate: Date("now")} })//update Channel in DB
       .exec()
       .then(docs =>{
@@ -102,7 +102,7 @@ else if (docs.Channelid2=="undefined") {
 
         message.client.channels.cache.get(channelidid).lockPermissions()
 
-      message.client.channels.cache.get(channelidid).send(this.message.author+" dein Channel wurde erstellt")
+      message.client.channels.cache.get(channelidid).send("<@"+this.message.author+"> dein Channel wurde erstellt")
         Sale.updateOne({ _id: docs.id }, { $set: { Channelid2: channelidid ,createdDate2: Date("now")} })//update Channel in DB
         .exec()
         .then(docs =>{
@@ -278,11 +278,10 @@ exports.delete_channel_User = async (PingData,message) => {
         return;
       }
 
-        message.client.channels.cache.get(channel).setParent("518452814691827731");
+        message.client.channels.cache.get(channel).setParent("518452814691827731",{ lockPermissions: true });
         message.client.channels.cache.get(channel).send("Channel archived")
         .then(async () => {
 
-          message.client.channels.cache.get(channel).lockPermissions()
           let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
           let newcxc = await how_many_messages_are_there_actually(msgcount1)*5
 
@@ -308,11 +307,11 @@ exports.delete_channel_User = async (PingData,message) => {
         this.message.channel.send("Dein Kanal wurde vor weniger als 24h erstellt. Um ihn jetzt löschen zu können , musst du mindestens 24h warten. Ansonsten kann sich dein Thema doch gar nicht entfalten.")
         return;
       }
-      message.client.channels.cache.get(channel).setParent("518452814691827731");
+      message.client.channels.cache.get(channel).setParent("518452814691827731",{ lockPermissions: true });
       message.client.channels.cache.get(channel).send("Channel archived")
       .then(async () => {
 
-        message.client.channels.cache.get(channel).lockPermissions()
+
         let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
         let newcxc = await how_many_messages_are_there_actually(msgcount1)*5
 
@@ -342,11 +341,11 @@ exports.delete_channel_User = async (PingData,message) => {
           this.message.channel.send("Dein Kanal wurde vor weniger als 24h erstellt. Um ihn jetzt löschen zu können , musst du mindestens 24h warten. Ansonsten kann sich dein Thema doch gar nicht entfalten.")
           return;
         }
-        message.client.channels.cache.get(channel).setParent("518452814691827731");
+        message.client.channels.cache.get(channel).setParent("518452814691827731",{ lockPermissions: true });
         message.client.channels.cache.get(channel).send("Channel archived")
         .then(async () => {
 
-          message.client.channels.cache.get(channel).lockPermissions()
+
           let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
           let newcxc = await how_many_messages_are_there_actually(msgcount1)*5
 
@@ -372,11 +371,11 @@ exports.delete_channel_User = async (PingData,message) => {
           this.message.channel.send("Dein Kanal wurde vor weniger als 24h erstellt. Um ihn jetzt löschen zu können , musst du mindestens 24h warten. Ansonsten kann sich dein Thema doch gar nicht entfalten.")
           return;
         }
-        message.client.channels.cache.get(channel).setParent("518452814691827731");
+        message.client.channels.cache.get(channel).setParent("518452814691827731",{ lockPermissions: true });;
         message.client.channels.cache.get(channel).send("Channel archived")
         .then(async () => {
 
-          message.client.channels.cache.get(channel).lockPermissions()
+
           let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
           let newcxc = await how_many_messages_are_there_actually(msgcount1)*5
 
