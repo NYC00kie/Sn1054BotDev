@@ -294,6 +294,11 @@ exports.delete_channel_User = async (PingData,message) => {
           .exec()
           .then(docs =>{
             Loghandler.log(message,Author,undefined,"channeldelete",undefined,channel)
+            var DelEmbed = new Discord.MessageEmbed()
+            .addColor(0xe19517)
+            .setTitle("Channel Entfernungs Info")
+            .addField("Channel Statistiken",`Dein Channel ${message.client.channels.cache.get(channel).name} wurde archiviert.\nNachrichtenanzahl: ${newcxc/5} \nNVC ertrag: ${newcxc}`)
+            this.message.channel.send(DelEmbed)
           }).catch(console.error);
         }).catch(console.error);
     }
@@ -324,6 +329,11 @@ exports.delete_channel_User = async (PingData,message) => {
         .exec()
         .then(docs =>{
           Loghandler.log(message,Author,undefined,"channeldelete",undefined,channel)
+          var DelEmbed = new Discord.MessageEmbed()
+          .addColor(0xe19517)
+          .setTitle("Channel Entfernungs Info")
+          .addField("Channel Statistiken",`Dein Channel ${message.client.channels.cache.get(channel).name} wurde archiviert.\nNachrichtenanzahl: ${newcxc/5} \nNVC ertrag: ${newcxc}`)
+          this.message.channel.send(DelEmbed)
         }).catch(console.error);
       }).catch(console.error);
     }
@@ -358,6 +368,11 @@ exports.delete_channel_User = async (PingData,message) => {
           .exec()
           .then(docs =>{
             Loghandler.log(message,Author,undefined,"channeldelete",undefined,channel)
+            var DelEmbed = new Discord.MessageEmbed()
+            .addColor(0xe19517)
+            .setTitle("Channel Entfernungs Info")
+            .addField("Channel Statistiken",`Dein Channel ${message.client.channels.cache.get(channel).name} wurde archiviert.\nNachrichtenanzahl: ${newcxc/5} \nNVC ertrag: ${newcxc}`)
+            this.message.channel.send(DelEmbed)
           }).catch(console.error);
         }).catch(console.error);
       }
@@ -388,6 +403,11 @@ exports.delete_channel_User = async (PingData,message) => {
           .exec()
           .then(docs =>{
             Loghandler.log(message,Author,undefined,"channeldelete",undefined,channel)
+            var DelEmbed = new Discord.MessageEmbed()
+            .addColor(0xe19517)
+            .setTitle("Channel Entfernungs Info")
+            .addField("Channel Statistiken",`Dein Channel ${message.client.channels.cache.get(channel).name} wurde archiviert.\nNachrichtenanzahl: ${newcxc/5} \nNVC ertrag: ${newcxc}`)
+            this.message.channel.send(DelEmbed)
           }).catch(console.error);
         }).catch(console.error);
       }
