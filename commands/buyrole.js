@@ -75,7 +75,8 @@ exports.add_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-7500,Curie:1} })
       .exec()
       .then(docs => {
-         Loghandler.log(message,Author,undefined,"buyrole","518384549408014343",undefined)      })
+         Loghandler.log(message,Author,undefined,"buyrole","518384549408014343",undefined)
+       })
     }
     else {
   this.message.channel.send("Du hast nicht genug nvc")
