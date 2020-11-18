@@ -17,7 +17,7 @@ exports.remove_role = (RoleData, message) => {
         this.message.channel.send("Du hast diese Rolle noch nicht.")
       }
       else {
-    this.message.member.removeRole("518395091472089101")
+    this.message.member.roles.remove("518395091472089101")
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+3750,stammgast:0} })
     .exec()
     .then(docs => {
@@ -31,7 +31,7 @@ exports.remove_role = (RoleData, message) => {
         this.message.channel.send("Du hast diese Rolle noch nicht.")
       }
       else {
-    this.message.member.removeRole("518384555007148042")
+    this.message.member.roles.remove("518384555007148042")
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+6000,Bohr:0} })
     .exec()
     .then(docs => {
@@ -45,7 +45,7 @@ exports.remove_role = (RoleData, message) => {
         this.message.channel.send("Du hast diese Rolle noch nicht.")
       }
       else {
-    this.message.member.removeRole("518384549408014343")
+    this.message.member.roles.remove("518384549408014343")
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+7500,Curie:0} })
     .exec()
     .then(docs => {
@@ -59,7 +59,7 @@ exports.remove_role = (RoleData, message) => {
         this.message.channel.send("Du hast diese Rolle noch nicht.")
       }
       else {
-    this.message.member.removeRole("518384546492973056")
+    this.message.member.roles.remove("518384546492973056")
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+13000,Tesla:0} })
     .exec()
     .then(docs => {
@@ -73,7 +73,7 @@ exports.remove_role = (RoleData, message) => {
         this.message.channel.send("Du hast diese Rolle noch nicht.")
       }
       else {
-    this.message.member.removeRole("518384356222566410")
+    this.message.member.roles.remove("518384356222566410")
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+20000,Newton:0} })
     .exec()
     .then(docs => {
@@ -87,7 +87,7 @@ exports.remove_role = (RoleData, message) => {
         this.message.channel.send("Du hast diese Rolle noch nicht.")
       }
       else {
-    this.message.member.removeRole("518384355698278430")
+    this.message.member.roles.remove("518384355698278430")
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+25000 ,Einstein:0} })
     .exec()
     .then(docs => {
@@ -101,7 +101,7 @@ exports.remove_role = (RoleData, message) => {
         this.message.channel.send("Du hast diese Rolle noch nicht.")
       }
       else {
-    this.message.member.removeRole("518384354880258049")
+    this.message.member.roles.remove("518384354880258049")
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+50000,Hawking:0} })
     .exec()
     .then(docs => {
@@ -115,7 +115,7 @@ exports.remove_role = (RoleData, message) => {
         this.message.channel.send("Du hast diese Rolle noch nicht.")
       }
       else {
-    this.message.member.removeRole("518384354272215060")
+    this.message.member.roles.remove("518384354272215060")
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+75000,Musk:0} })
     .exec()
     .then(docs => {
@@ -129,7 +129,7 @@ exports.remove_role = (RoleData, message) => {
         this.message.channel.send("Du hast diese Rolle noch nicht.")
       }
       else {
-    this.message.member.removeRole("518384353387085845")
+    this.message.member.roles.remove("518384353387085845")
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+80000,Vip:0} })
     .exec()
     .then(docs => {
@@ -143,7 +143,7 @@ exports.remove_role = (RoleData, message) => {
         this.message.channel.send("Du hast diese Rolle noch nicht.")
       }
       else {
-    this.message.member.removeRole("518172524811386890")
+    this.message.member.roles.remove("518172524811386890")
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+95000,Clixoomer:0} })
     .exec()
     .then(docs => {
@@ -157,7 +157,7 @@ exports.remove_role = (RoleData, message) => {
         this.message.channel.send("Du hast diese Rolle noch nicht.")
       }
       else {
-    this.message.member.removeRole("700740599195893760")
+    this.message.member.roles.remove("700740599195893760")
     Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+115000,quasar:0} })
     .exec()
     .then(docs => {
@@ -203,18 +203,18 @@ exports.remove_role = (RoleData, message) => {
       Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+cxc,memes:0,stammgast:0,Bohr:0,Curie:0,Tesla:0,Newton:0,Einstein:0,Hawking:0,Musk:0,Vip:0,Clixoomer:0,quasar:0} })
       .exec()
       .then(docs => {
-        this.message.member.removeRole("518395092197965845")
-        this.message.member.removeRole("518395091472089101")
-        this.message.member.removeRole("518384555007148042")
-        this.message.member.removeRole("518384549408014343")
-        this.message.member.removeRole("518384546492973056")
-        this.message.member.removeRole("518384356222566410")
-        this.message.member.removeRole("518384355698278430")
-        this.message.member.removeRole("518384354880258049")
-        this.message.member.removeRole("518172524811386890")
-        this.message.member.removeRole("518384353387085845")
-        this.message.member.removeRole("518384354272215060")
-        this.message.member.removeRole("700740599195893760")
+        this.message.member.roles.remove("518395092197965845")
+        this.message.member.roles.remove("518395091472089101")
+        this.message.member.roles.remove("518384555007148042")
+        this.message.member.roles.remove("518384549408014343")
+        this.message.member.roles.remove("518384546492973056")
+        this.message.member.roles.remove("518384356222566410")
+        this.message.member.roles.remove("518384355698278430")
+        this.message.member.roles.remove("518384354880258049")
+        this.message.member.roles.remove("518172524811386890")
+        this.message.member.roles.remove("518384353387085845")
+        this.message.member.roles.remove("518384354272215060")
+        this.message.member.roles.remove("700740599195893760")
         this.message.channel.send("alle dein Rollen wurden verkauft")
         this.message.author.send("Alle deine Rollen wurden verkauft und es wird keine Rückerstattung geben.")
         Loghandler.log(message,Author,undefined,"sellroleall",undefined,undefined)
