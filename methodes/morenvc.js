@@ -34,7 +34,7 @@ exports.morenvc = async (message) => {
         .exec()
         .then(docs => {
 
-          Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+200 ,} })
+          Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+200} })
           .exec()
           .then(docs => {
           }).catch(err => {
