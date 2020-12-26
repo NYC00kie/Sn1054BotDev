@@ -28,7 +28,6 @@ exports.morenvc = async (message) => {
       .then(collected => {
         let tmp = collected.get('👌')
         tmp = JSON.parse(JSON.stringify(tmp.users.cache))
-        this.message.channel.send(`${tmp[1].id}`)
 
         Sale.findOne({MemberId:tmp[1].id})
         .exec()
