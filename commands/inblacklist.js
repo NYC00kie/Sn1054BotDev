@@ -12,10 +12,11 @@ exports.check_word = (message) => {
     let amount = false
     Splitmessage = this.message.content.split(" ")
     var data = fs.readFileSync('./bannedwords/blacklist.txt',"utf8")
+    data = data.split("|")
     let punctuation = ["!","\"","§","$","%","&","/","#","+","*","-","|","3","4"]
         for (i=0;i<Splitmessage.length;i++) {
           if (!punctuation.includes(Splitmessage[i])) {
-            if(data.search(Splitmessage[i])>=0){
+            if(data.includes(Splitmessage[i])){
               Loghandler.log(message,message.author,undefined,"blacklist",Splitmessage[i],this.message.channel.id)
               amount = true
               break;
@@ -32,7 +33,7 @@ exports.check_channel =  (message) => {
   this.message = message;
 
   var data = fs.readFileSync('./bannedwords/channelblacklist.txt',"utf8")
-      if(data.search(this.message.channel.id)>=0){
+      if(data.includes(this.message.channel.id)){
         return false;
       }
       else {
