@@ -9,7 +9,7 @@ const fs = require('fs');
 dotenv.config();
 exports.check_word = (message) => {
   this.message = message;
-
+  let amount = true
   Splitmessage = this.message.content.split(" ")
   var data = fs.readFileSync('./bannedwords/blacklist.txt',"utf8")
       let words = data.split("|")
@@ -17,11 +17,11 @@ exports.check_word = (message) => {
           for (j = 0; j< words.length;j++) {
             if (Splitmessage[i]==words[j]) {
               Loghandler.log(words[j],this.message.author,undefined,"blacklist",undefined,undefined)
-              return false;
+              amount = false;
             }
           }
         }
-        return true;
+        return amount;
 }
 
 exports.check_channel =  (message) => {
