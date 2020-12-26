@@ -9,18 +9,7 @@ exports.add_cxc =  (message) => {
   const Author = this.message.author
   const MemberID = this.message.author.id
   Splitmessage = this.message.content.split(" ")
-  fs.readFile('./bannedwords/blacklist.txt',"utf8",(err, data) => {
-    if (err) throw err;
-      let words = data.split("|")
-        for (i=0;i<Splitmessage.length;i++) {
-          for (j = 0; j< words.length;j++) {
-            if (Splitmessage[i]==words[j]) {
-              message.client.channels.cache.get("509757254862372883").send(message.author+"hat ein geblacklistetes Wort geschriebenen \n Blacklist")
-              return;
-            }
-          }
-        }
-
+  
               Sale.findOne({MemberId:MemberID})
               .exec()
               .then(docs => {
@@ -49,5 +38,4 @@ exports.add_cxc =  (message) => {
             })
             .catch(console.error)
 
-})
 }

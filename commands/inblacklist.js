@@ -17,15 +17,11 @@ exports.check_word = (message) => {
           for (j = 0; j< words.length;j++) {
             if (Splitmessage[i]==words[j]) {
               Log.log(words[j],this.message.author,undefined,"blacklist",undefined,undefined)
-                      message,User,User2,Type,Role,Channel
-              message.client.channels.cache.get("509757254862372883").send(message.author+"hat ein geblacklistetes Wort ("+words[j]+") geschriebenen \n Blacklist")
               return false;
-            }
-            if (j == words.length-1 ) {
-              return true;
             }
           }
         }
+        return true;
 }
 
 exports.check_channel =  (message) => {
@@ -37,11 +33,8 @@ exports.check_channel =  (message) => {
         if (this.message.channel.id==channelid[i]) {
           return false;
         }
-        if (i == channelid.length-1) {
-          return true;
-        }
       }
-
+      return true;
 }
 
 exports.suizid = (message) => {
