@@ -12,13 +12,14 @@ exports.check_word = (message) => {
     let amount = false
     Splitmessage = this.message.content.split(" ")
     var data = fs.readFileSync('./bannedwords/blacklist.txt',"utf8")
-
+    let punctuation = ["!","\"","§","$","%","&","/","#","+","*","-","",""]
         for (i=0;i<Splitmessage.length;i++) {
-
-          if(data.search(Splitmessage[i])>=0){
-            Loghandler.log(message,message.author,undefined,"blacklist",Splitmessage[i],this.message.channel.id)
-            amount = true
-            break;
+          if (!punctuation.includes(Splitmessage[i])) {
+            if(data.search(Splitmessage[i])>=0){
+              Loghandler.log(message,message.author,undefined,"blacklist",Splitmessage[i],this.message.channel.id)
+              amount = true
+              break;
+              }
             }
           }
 
