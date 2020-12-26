@@ -124,8 +124,8 @@ bot.on("message",async message => {
   if (message.channel instanceof Discord.DMChannel)return;//return if the Channel the message got send in is the PM channel
   manageprofile.add_Profile_old(message);
   if (!message.content.startsWith(PREFIX)) {
-
-    if (checkblacklist.check_channel(message)||checkblacklist.check_word(message)) {
+    console.log(checkblacklist.check_word(message))
+    if (checkblacklist.check_word(message)) {
 
       if (message.channel.id != "518446638335918080") {
         Cxc.add_cxc(message);
