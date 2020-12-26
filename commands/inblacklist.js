@@ -15,7 +15,7 @@ exports.check_word = (message) => {
 
         for (i=0;i<Splitmessage.length;i++) {
           console.log(data.search(Splitmessage[i]))
-          if(data.search(Splitmessage[i])<0){
+          if(data.search(Splitmessage[i])>=0){
             amount = true
             break;
             }
@@ -30,7 +30,7 @@ exports.check_channel =  (message) => {
   this.message = message;
 
   var data = fs.readFileSync('./bannedwords/channelblacklist.txt',"utf8")
-      if(data.search(this.message.channel.id)<0){
+      if(data.search(this.message.channel.id)>=0){
         return false;
       }
       else {
