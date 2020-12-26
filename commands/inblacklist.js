@@ -16,7 +16,7 @@ exports.check_word = (message) => {
         for (i=0;i<Splitmessage.length;i++) {
           for (j = 0; j< words.length;j++) {
             if (Splitmessage[i]==words[j]) {
-              Log.log(words[j],this.message.author,undefined,"blacklist",undefined,undefined)
+              Loghandler.log(words[j],this.message.author,undefined,"blacklist",undefined,undefined)
               return false;
             }
           }

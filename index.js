@@ -125,7 +125,7 @@ bot.on("message",async message => {
   manageprofile.add_Profile_old(message);
   if (!message.content.startsWith(PREFIX)) {
 
-    if (await checkblacklist.check_channel(message)||await checkblacklist.check_word(message)) {
+    if (checkblacklist.check_channel(message)||checkblacklist.check_word(message)) {
 
       if (message.channel.id != "518446638335918080") {
         Cxc.add_cxc(message);
