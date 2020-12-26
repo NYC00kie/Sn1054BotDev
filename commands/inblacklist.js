@@ -16,7 +16,7 @@ exports.check_word = (message) => {
         for (i=0;i<Splitmessage.length;i++) {
           console.log(data.search(Splitmessage[i]))
           if(data.search(Splitmessage[i])>=0){
-            Loghandler.log(message,message.author,undfined,"blacklist",undefined,this.message.channel.id)
+            Loghandler.log(message,message.author,undefined,"blacklist",undefined,this.message.channel.id)
             amount = true
             break;
             }
