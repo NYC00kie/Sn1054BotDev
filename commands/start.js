@@ -22,7 +22,7 @@ exports.start = (message) => {
     this.message.member.roles.add("518385317229625364")
     message.client.channels.cache.get("484039225331679253").send("<@"+message.author+">hat sich verifiziert \n Verifikation")
     message.client.channels.cache.get("727919338606166096").send("<@"+message.author+"> Willkommen auf diesem Server")
-    Loghandler.log(this.message,this.message.member,undefined,"start",undefined,undefined)
+    Loghandler.log(this.message,this.message.author,undefined,"start",undefined,undefined)
   }
   else {
     this.message.channel.send("Du bist bereits verifiziert")
