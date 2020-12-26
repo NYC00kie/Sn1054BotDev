@@ -12,7 +12,7 @@ exports.check_word = (message) => {
     let amount = false
     Splitmessage = this.message.content.split(" ")
     var data = fs.readFileSync('./bannedwords/blacklist.txt',"utf8")
-    let punctuation = ["!","\"","§","$","%","&","/","#","+","*","-","",""]
+    let punctuation = ["!","\"","§","$","%","&","/","#","+","*","-","|","3","4"]
         for (i=0;i<Splitmessage.length;i++) {
           if (!punctuation.includes(Splitmessage[i])) {
             if(data.search(Splitmessage[i])>=0){
