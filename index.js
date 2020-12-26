@@ -34,6 +34,7 @@ const trello = require('./commands/trello');
 const count = require('./commands/count');
 const verbrauch = require('./commands/verbrauch');
 const ping = require('./commands/ping');
+const morenvc = require('./methodes/morenvc');
 let bot = new Discord.Client();
 
 const token = process.env.Trellotoken
@@ -122,14 +123,19 @@ bot.on("message",async message => {
   checkblacklist.suizid(message)
   if (message.channel instanceof Discord.DMChannel)return;//return if the Channel the message got send in is the PM channel
   manageprofile.add_Profile_old(message);
-  if(!message.content.startsWith(PREFIX)) {
+  if (!message.content.startsWith(PREFIX)) {
+
     if (await checkblacklist.check_channel(message)) {
-    Cxc.add_cxc(message);
-    await sleep(1000);
-    Cxcdaily.add_cxc(message);
-    if (message.channel.id == "518446638335918080") {
-      message.delete(1000)
-    }
+
+      if (message.channel.id != "518446638335918080") {
+        Cxc.add_cxc(message);
+        await sleep(1000);
+        Cxcdaily.add_cxc(message);
+        morenvc.morenvc(message);
+      }
+      else {
+        message.delete({timeout:1000})
+      }
 
     }
     return;
