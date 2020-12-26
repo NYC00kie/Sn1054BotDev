@@ -43,9 +43,8 @@ const key = process.env.Trellokey
 async function rewriteVersion(){
 let output = await getVersion()
 
-var Version2 = output.Version.split(".")
-console.log(output.Version)
-console.log(Version2)
+
+
 let finalVersion= Number(Version2[1])+1
 var data = {
   Version: Version2[0]+"."+finalVersion,
@@ -168,7 +167,7 @@ bot.on("message",async message => {
     case "v":
       let data = getVersion()
       d1 = new Date(data.Date)
-      console.log(d1)
+
       var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       zero = ""
       if (d1.getMinutes()<10){
@@ -324,6 +323,6 @@ function sleep(ms) {
 function getVersion(){
   var data = fs.readFileSync('Version.json','utf8')
   var data2 = JSON.parse(data)
-  console.log(data)
+
   return data2
 }

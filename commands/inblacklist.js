@@ -14,7 +14,7 @@ exports.check_word = (message) => {
     var data = fs.readFileSync('./bannedwords/blacklist.txt',"utf8")
 
         for (i=0;i<Splitmessage.length;i++) {
-          console.log(data.search(Splitmessage[i]))
+
           if(data.search(Splitmessage[i])>=0){
             Loghandler.log(message,message.author,undefined,"blacklist",undefined,this.message.channel.id)
             amount = true
