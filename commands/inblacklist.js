@@ -31,7 +31,6 @@ exports.check_channel =  (message) => {
   var data = fs.readFileSync('./bannedwords/channelblacklist.txt',"utf8")
       if(data.search(this.message.channel.id)<0){
         return false;
-        break;
       }
       else {
         return true
