@@ -138,7 +138,7 @@ bot.on("message",async message => {
       }
 
     }
-    return;
+    
   }//return if there is no Prefix
 
   let args = message.content.substring(PREFIX.length).split(" ");
