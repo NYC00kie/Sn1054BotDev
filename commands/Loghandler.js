@@ -40,7 +40,7 @@ exports.log = (message,User,User2,Type,Role,Channel) => {
 
   }
   else if (Type == "blacklist") {
-    var logmessage = `${User}\n hat ein blacklisted Wort geschrieben (${message})`
+    var logmessage = `${User}\n hat ein blacklisted Wort geschrieben (${Role})`
 
   }
   LogEmbed.setTitle(Type)
