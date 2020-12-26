@@ -8,33 +8,34 @@ const stringsimilarity = require('string-similarity');
 const fs = require('fs');
 dotenv.config();
 exports.check_word = (message) => {
-  this.message = message;
-  let amount = true
-  Splitmessage = this.message.content.split(" ")
-  var data = fs.readFileSync('./bannedwords/blacklist.txt',"utf8")
-      let words = data.split("|")
+    this.message = message;
+    let amount = true
+    Splitmessage = this.message.content.split(" ")
+    var data = fs.readFileSync('./bannedwords/blacklist.txt',"utf8")
+
         for (i=0;i<Splitmessage.length;i++) {
-          for (j = 0; j< words.length;j++) {
-            if (Splitmessage[i]==words[j]) {
-              Loghandler.log(words[j],this.message.author,undefined,"blacklist",undefined,undefined)
-              amount = false;
+          if(data.search(Splitmessage[i])<0){
+            amount = false
+            break;
             }
           }
-        }
-        return amount;
+
+
+
+    return amount;
 }
 
 exports.check_channel =  (message) => {
   this.message = message;
 
   var data = fs.readFileSync('./bannedwords/channelblacklist.txt',"utf8")
-    let channelid = data.split("|")
-      for (i = 0; i < channelid.length; i++) {
-        if (this.message.channel.id==channelid[i]) {
-          return false;
-        }
+      if(data.search(this.message.channel.id)<0){
+        return false;
+        break;
       }
-      return true;
+      else {
+        return true
+      }
 }
 
 exports.suizid = (message) => {
