@@ -42,7 +42,7 @@ const key = process.env.Trellokey
 
 async function rewriteVersion(){
 let output = await getVersion()
-
+Version2 = output.Version.split(".")
 
 
 let finalVersion= Number(Version2[1])+1
