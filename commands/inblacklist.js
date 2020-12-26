@@ -9,14 +9,14 @@ const fs = require('fs');
 dotenv.config();
 exports.check_word = (message) => {
     this.message = message;
-    let amount = true
+    let amount = false
     Splitmessage = this.message.content.split(" ")
     var data = fs.readFileSync('./bannedwords/blacklist.txt',"utf8")
 
         for (i=0;i<Splitmessage.length;i++) {
           console.log(data.search(Splitmessage[i]))
           if(data.search(Splitmessage[i])<0){
-            amount = false
+            amount = true
             break;
             }
           }
