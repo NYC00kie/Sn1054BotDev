@@ -14,6 +14,7 @@ exports.check_word = (message) => {
     var data = fs.readFileSync('./bannedwords/blacklist.txt',"utf8")
 
         for (i=0;i<Splitmessage.length;i++) {
+          console.log(data.search(Splitmessage[i]))
           if(data.search(Splitmessage[i])<0){
             amount = false
             break;
