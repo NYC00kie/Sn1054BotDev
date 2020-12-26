@@ -3,6 +3,7 @@ const Sale = require('../models/sale');
 const Discord = require('discord.js');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
+const Loghandler = require('./Loghandler');
 const stringsimilarity = require('string-similarity');
 const fs = require('fs');
 dotenv.config();
@@ -15,6 +16,7 @@ exports.check_word = (message) => {
         for (i=0;i<Splitmessage.length;i++) {
           for (j = 0; j< words.length;j++) {
             if (Splitmessage[i]==words[j]) {
+              Log.log(words[j],this.message.author,undefined,"blacklist",undefined,undefined)
               message.client.channels.cache.get("509757254862372883").send(message.author+"hat ein geblacklistetes Wort ("+words[j]+") geschriebenen \n Blacklist")
               return false;
             }

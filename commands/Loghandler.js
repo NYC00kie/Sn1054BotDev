@@ -39,6 +39,10 @@ exports.log = (message,User,User2,Type,Role,Channel) => {return;
     var logmessage = `${User}\n hat sich freigeschaltet`
 
   }
+  else if (Type == "blacklist") {
+    var logmessage = `${User}\n hat das Wort ${message} geschrieben`
+
+  }
   LogEmbed.setTitle(Type)
   LogEmbed.setColor(0xe19517)
   LogEmbed.addField(`${Type}`,`${logmessage}`)
