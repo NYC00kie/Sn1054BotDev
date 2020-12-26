@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-exports.log = (message,User,User2,Type,Role,Channel) => {return;
+exports.log = (message,User,User2,Type,Role,Channel) => {
   this.message = message;
   let LogEmbed = new Discord.MessageEmbed()
   if (Type == "daily") {
