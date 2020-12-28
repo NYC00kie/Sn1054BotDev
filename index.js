@@ -138,180 +138,181 @@ bot.on("message",async message => {
     }
 
   }//return if there is no Prefix
-
-  let args = message.content.substring(PREFIX.length).split(" ");
-  let NewCxc = {
-    cxc: Number(args[2])
-  }
-  let NewNick = {
-    Nick: message.content.substr(PREFIX.length + args[0].length+1, 32)
-  }
-  let RoleData = {
-    Whirole: args[1]
-  }
-  let PingData = {
-    Ping: args[1]
-  }
-  let Word = args[1]
-  let Begriff = message.content.substr(PREFIX.length + args[0].length+1, 128)
-  //all Commands
-  switch (args[0].toLowerCase()) {
-      //here the sales should be displayed
-
-    case "addblacklist":
-      blacklist.add_word(message,Word)
-      break;
-    case "addchannel":
-      blacklist.add_channel(message,Word)
-      break;
-    case "v":
-      let data = getVersion()
-      d1 = new Date(data.Date)
-
-      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      zero = ""
-      if (d1.getMinutes()<10){
-      zero = 0
+  else {
+    let args = message.content.substring(PREFIX.length).split(" ");
+    let NewCxc = {
+      cxc: Number(args[2])
     }
-      message.channel.send(`Version ${data.Version} vom ${d1.getDate()}. ${months[d1.getMonth()]} ${d1.getFullYear()} ${d1.getHours()}:${zero}${d1.getMinutes()}`)
-      break;
-    case "amonunser":
-      insider.AmonUnser(message)
-      break;
-    case "changenick":
-      Nick.change_nick(NewNick,message)
-      break;
-    case "sellrole":
-      Sellrole.remove_role(RoleData, message)
+    let NewNick = {
+      Nick: message.content.substr(PREFIX.length + args[0].length+1, 32)
+    }
+    let RoleData = {
+      Whirole: args[1]
+    }
+    let PingData = {
+      Ping: args[1]
+    }
+    let Word = args[1]
+    let Begriff = message.content.substr(PREFIX.length + args[0].length+1, 128)
+    //all Commands
+    switch (args[0].toLowerCase()) {
+        //here the sales should be displayed
+
+      case "addblacklist":
+        blacklist.add_word(message,Word)
         break;
-    case "buyrole":
-      Buyrole.add_role(RoleData, message)
-      break;
-    case "nvc":
-      Cxc.get_cxc(PingData, message);
-      break;
-    case "cxc":
-      Cxc.get_cxc(PingData, message);
-      break;
-    case "profil":
-      Profil.get_profil(PingData, message)
-      break;
-    case "shop":
-      Help.get_shophelp(message);
-      break;
-    case "help"://help Command
-      Help.get_help(message);
-      break;
-    case "ahelp":
-      ahelp.get_adminhelp(message);
-      break;
-    case "givenvc":
-      cxc.givecxc(PingData, message, NewCxc)
-      break;
-    case "remnvc":
-      cxc.remcxc(PingData, message, NewCxc)
-      break;
-    case "setnvc":
-      cxc.setcxc(PingData, message, NewCxc)
-      break;
-    case "buyemote":
-      buyemote.buy_emote(RoleData,message)
-      break;
-    case "create":
-      //message.channel.send("Um den Einstieg für die Neuen zu vereinfachen, ist dieses Modul, für eine kurze Zeit nach dem Update deaktivieren.")
-      let channelbeschreibung = message.content.substr(PREFIX.length + args[0].length + args[1].length+1, 1000)
-      let ChannelData = {
-        name: args[1],
-        beschreibung: channelbeschreibung
-        }
-      channel.create_channel(ChannelData,message,bot)
-      break;
-    case "delete":
-      channel.delete_channel_User(PingData,message)
-      break;
-    case "archiv":
-      channel.delete_channel_Admin(PingData,message)
-      break;
-    case "unlink":
-      channel.unlink_channel_Admin(PingData,message)
-      break;
-    case "chstats":
-      channel.chstats_channel_User(PingData,message)
-      break;
-    case "transfer":
-      Cxc.transfer_cxc(PingData, NewCxc, message);
-      break;
-    case "bye":
-      cxgifs.bye_gif(message)
-      break;
-    case "happy":
-      cxgifs.happy_gif(message);
-      break;
-    case "klick":
-      cxgifs.klick_gif(message);
-      break;
-    case "point":
-      cxgifs.point_gif(message);
-      break;
-    case "sad":
-      cxgifs.sad_gif(message);
-      break;
-    case "spock":
-      cxgifs.spock_gif(message);
-      break;
-    case "lebelangundinfrieden":
-      cxgifs.spock_gif(message);
-      break;
-    case "thumbs":
-      cxgifs.thumbs_gif(message);
-      break;
-    case "dbupdate":
-      dbupdate.update(message);
-      break;
-    case "reset":
-      manageprofile.reset_Profile(PingData,message,bot);
-      break;
-    case "stats":
-      stats.stats(message);
-      break;
-    case "start":
-      start.start(message);
-      break;
-    case "snupdate":
-      //SNUpdate.SNUpdate(message);
-      this.message.channel.send("Die Datenbank ist schon geupdated")
-      break;
-    case "faktcheck":
-      Faktcheck.check(message,Begriff);
-      break;
-    case "watchword":
-      Watchblacklist.word(message);
-      break;
-    case "watchchannel":
-      Watchblacklist.channel(message);
-      break;
-    case "nvctop":
-      top.nvctop(message);
-      break;
-    case "pwtop":
-      top.pwtop(message);
-      break;
-    case "messagetop":
-      top.messagetop(message);
-      break;
-    case "dev":
-      trello.whatsontrello(message,token,key);
-      break;
-    case "ey":
-      trello.whatsontrello(message,token,key);
-      break;
-    case "verbrauch":
-      verbrauch.verbrauch(message)
-      break;
-    case "ping":
-      ping.ping(message,bot)
-      break;
-  };
+      case "addchannel":
+        blacklist.add_channel(message,Word)
+        break;
+      case "v":
+        let data = getVersion()
+        d1 = new Date(data.Date)
+
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        zero = ""
+        if (d1.getMinutes()<10){
+        zero = 0
+      }
+        message.channel.send(`Version ${data.Version} vom ${d1.getDate()}. ${months[d1.getMonth()]} ${d1.getFullYear()} ${d1.getHours()}:${zero}${d1.getMinutes()}`)
+        break;
+      case "amonunser":
+        insider.AmonUnser(message)
+        break;
+      case "changenick":
+        Nick.change_nick(NewNick,message)
+        break;
+      case "sellrole":
+        Sellrole.remove_role(RoleData, message)
+          break;
+      case "buyrole":
+        Buyrole.add_role(RoleData, message)
+        break;
+      case "nvc":
+        Cxc.get_cxc(PingData, message);
+        break;
+      case "cxc":
+        Cxc.get_cxc(PingData, message);
+        break;
+      case "profil":
+        Profil.get_profil(PingData, message)
+        break;
+      case "shop":
+        Help.get_shophelp(message);
+        break;
+      case "help"://help Command
+        Help.get_help(message);
+        break;
+      case "ahelp":
+        ahelp.get_adminhelp(message);
+        break;
+      case "givenvc":
+        cxc.givecxc(PingData, message, NewCxc)
+        break;
+      case "remnvc":
+        cxc.remcxc(PingData, message, NewCxc)
+        break;
+      case "setnvc":
+        cxc.setcxc(PingData, message, NewCxc)
+        break;
+      case "buyemote":
+        buyemote.buy_emote(RoleData,message)
+        break;
+      case "create":
+        //message.channel.send("Um den Einstieg für die Neuen zu vereinfachen, ist dieses Modul, für eine kurze Zeit nach dem Update deaktivieren.")
+        let channelbeschreibung = message.content.substr(PREFIX.length + args[0].length + args[1].length+1, 1000)
+        let ChannelData = {
+          name: args[1],
+          beschreibung: channelbeschreibung
+          }
+        channel.create_channel(ChannelData,message,bot)
+        break;
+      case "delete":
+        channel.delete_channel_User(PingData,message)
+        break;
+      case "archiv":
+        channel.delete_channel_Admin(PingData,message)
+        break;
+      case "unlink":
+        channel.unlink_channel_Admin(PingData,message)
+        break;
+      case "chstats":
+        channel.chstats_channel_User(PingData,message)
+        break;
+      case "transfer":
+        Cxc.transfer_cxc(PingData, NewCxc, message);
+        break;
+      case "bye":
+        cxgifs.bye_gif(message)
+        break;
+      case "happy":
+        cxgifs.happy_gif(message);
+        break;
+      case "klick":
+        cxgifs.klick_gif(message);
+        break;
+      case "point":
+        cxgifs.point_gif(message);
+        break;
+      case "sad":
+        cxgifs.sad_gif(message);
+        break;
+      case "spock":
+        cxgifs.spock_gif(message);
+        break;
+      case "lebelangundinfrieden":
+        cxgifs.spock_gif(message);
+        break;
+      case "thumbs":
+        cxgifs.thumbs_gif(message);
+        break;
+      case "dbupdate":
+        dbupdate.update(message);
+        break;
+      case "reset":
+        manageprofile.reset_Profile(PingData,message,bot);
+        break;
+      case "stats":
+        stats.stats(message);
+        break;
+      case "start":
+        start.start(message);
+        break;
+      case "snupdate":
+        //SNUpdate.SNUpdate(message);
+        this.message.channel.send("Die Datenbank ist schon geupdated")
+        break;
+      case "faktcheck":
+        Faktcheck.check(message,Begriff);
+        break;
+      case "watchword":
+        Watchblacklist.word(message);
+        break;
+      case "watchchannel":
+        Watchblacklist.channel(message);
+        break;
+      case "nvctop":
+        top.nvctop(message);
+        break;
+      case "pwtop":
+        top.pwtop(message);
+        break;
+      case "messagetop":
+        top.messagetop(message);
+        break;
+      case "dev":
+        trello.whatsontrello(message,token,key);
+        break;
+      case "ey":
+        trello.whatsontrello(message,token,key);
+        break;
+      case "verbrauch":
+        verbrauch.verbrauch(message)
+        break;
+      case "ping":
+        ping.ping(message,bot)
+        break;
+    };
+  }
 });
 
 function sleep(ms) {
