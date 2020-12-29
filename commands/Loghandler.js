@@ -43,6 +43,10 @@ exports.log = (message,User,User2,Type,Role,Channel) => {
     var logmessage = `${User}\n hat ein blacklisted Wort geschrieben (${Role})`
 
   }
+  else if (Type == "morenvc") {
+    var logmessage = `${User}\n hat mehr NVC bekommen durch ein Chat Event.`
+
+  }
   LogEmbed.setTitle(Type)
   LogEmbed.setColor(0xe19517)
   LogEmbed.addField(`${Type}`,`${logmessage}`)

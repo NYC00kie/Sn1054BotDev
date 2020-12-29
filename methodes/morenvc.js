@@ -32,7 +32,9 @@ exports.morenvc = async (message) => {
         Sale.findOne({MemberId:tmp[1].id})
         .exec()
         .then(docs => {
-
+          let Nachricht = this.message.channel.send(`<@${tmp[1].id}>`)
+           Nachricht.delete({timeout:10000})
+           Loghandler.log(message,`<@${tmp[1].id}>`,undefined,"cxcgifs",undefined,undefined)
           Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+200} })
           .exec()
           .then(docs => {
