@@ -7,15 +7,17 @@ const fs = require('fs');
 const Loghandler = require('../commands/Loghandler');
 dotenv.config();
 
-var transporter = nodemailer.createTransport({
-   host: "smtp.gmail.com",
-  auth: {
-    user: process.env.Mailadress,
-    pass: process.env.Mailpw
-  }
-});
 
 exports.morenvc = async (message) => {
+
+  var transporter = nodemailer.createTransport({
+     host: "smtp.gmail.com",
+    auth: {
+      user: process.env.Mailadress,
+      pass: process.env.Mailpw
+    }
+  });
+
     this.message = message
     function getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max));
@@ -34,7 +36,7 @@ exports.morenvc = async (message) => {
         .then(docs => {
           let Nachricht = this.message.channel.send(`<@${tmp[1].id}>`)
            Nachricht.delete({timeout:10000})
-           Loghandler.log(message,`<@${tmp[1].id}>`,undefined,"cxcgifs",undefined,undefined)
+           Loghandler.log(message,`<@${tmp[1].id}>`,undefined,"morenvc",undefined,undefined)
           Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+200} })
           .exec()
           .then(docs => {
