@@ -30,15 +30,15 @@ exports.morenvc = async (message) => {
       .then(collected => {
         let tmp = collected.get('👌')
         tmp = JSON.parse(JSON.stringify(tmp.users.cache))
-
-        Sale.findOne({MemberId:tmp[1].id})
+        let id =  tmp[1].id
+        Sale.findOne({MemberId:id})
         .exec()
         .then(docs => {
-          this.message.reply(".")
+          this.message.channel.send(`<@${id}> du hast das Race gewonnen du Lucker`)
             .then(msg => {
               msg.delete({timeout:10000})
             })
-           Loghandler.log(message,`<@${tmp[1].id}>`,undefined,"morenvc",undefined,undefined)
+          Loghandler.log(message,`<@${id}>`,undefined,"morenvc",undefined,undefined)
           Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+200} })
           .exec()
           .then(docs => {
