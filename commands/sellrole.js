@@ -153,7 +153,7 @@ exports.remove_role = (RoleData, message) => {
 
     }
     else if (Search=="quasar"){
-      if (docs.Clixoomer == 0){
+      if (docs.quasar == 0){
         this.message.channel.send("Du hast diese Rolle noch nicht.")
       }
       else {

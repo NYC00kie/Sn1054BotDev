@@ -104,6 +104,10 @@ var transporter = nodemailer.createTransport({
   }
 });
 
+bot.on("guildMemberUpdate", function(oldMember, newMember){
+    console.error(`a guild member changes - i.e. new role, removed role, nickname.`);
+});
+
 bot.on("guildMemberAdd" , member => {
   manageprofile.add_Profile_new(member);//addprofile to DB when entering the Server
 })
@@ -266,7 +270,7 @@ bot.on("message",async message => {
         cxgifs.thumbs_gif(message);
         break;
       case "dbupdate":
-        dbupdate.update(message);
+        //dbupdate.update(message);
         break;
       case "reset":
         manageprofile.reset_Profile(PingData,message,bot);
