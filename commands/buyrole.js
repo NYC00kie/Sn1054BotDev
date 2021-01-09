@@ -216,7 +216,7 @@ exports.add_role = (RoleData, message) => {
     else if (docs.cxc >= 115000) {
       this.message.author.send("Du hast die Rolle für: **115000nvc** gekauft")
       this.message.member.roles.add("700740599195893760")
-      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-115000,Quasar:1} })
+      Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc-115000,quasar:1} })
       .exec()
       .then(docs => {
          Loghandler.log(message,Author,undefined,"buyrole","700740599195893760",undefined)
