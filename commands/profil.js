@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Sale = require('../models/sale');
 const Discord = require('discord.js');
 
-exports.get_profil = (PingData,message) => {
+exports.get_profil = (PingData,message,bot) => {
 
   this.message = message;
   const Author = this.message.author
@@ -204,7 +204,7 @@ exports.get_profil = (PingData,message) => {
         var Profilembed = new Discord.MessageEmbed()
         .setColor(0xe19517)
         .setTitle(docs.Nickname+"´s Profile:")
-        .setThumbnail(message.guild.members.cache.get(docs.MemberId).displayAvatarURL())
+        .setThumbnail(bot.users.cache.get(docs.MemberId).displayAvatarURL())
         .addField("Dein Prestiegewert:",docs.Prestiege)
         .addField("Deine nvc:",docs.cxc)
         .addField("Deine Rollen:"," "+Memes+"\n "+stammgast+"\n "+Bohr+"\n "+Curie+"\n "+Tesla+"\n "+Newton+"\n "+Einstein+"\n "+Hawking+"\n "+Musk+"\n "+Vip+"\n "+Clixoomer+"\n "+quasar)
@@ -306,7 +306,7 @@ exports.get_profil = (PingData,message) => {
           var Profilembed = new Discord.MessageEmbed()
           .setColor(0xe19517)
           .setTitle(docs.Nickname+"´s Profile:")
-          .setThumbnail(message.guild.members.cache.get(docs.MemberId).displayAvatarURL())
+          .setThumbnail(bot.users.cache.get(docs.MemberId).displayAvatarURL())
           .addField("Dein Prestiegewert:",docs.Prestiege)
           .addField("Deine nvc:",docs.cxc)
           .addField("Deine Rollen:"," "+Memes+"\n "+stammgast+"\n "+Bohr+"\n "+Curie+"\n "+Tesla+"\n "+Newton+"\n "+Einstein+"\n "+Hawking+"\n "+Musk+"\n "+Vip+"\n "+Clixoomer+"\n "+quasar)
