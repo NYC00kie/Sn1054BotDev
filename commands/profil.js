@@ -200,6 +200,7 @@ exports.get_profil = (PingData,message) => {
           var Channel = "<#"+docs.Channelid+">"
         }
         var UserID = message.guild.members.cache.find(m => m.id === docs.MemberId);
+        console.log(UserID)
         var Footertext = "Server beigetreten:" + new Date(UserID.joinedTimestamp)+" "
         var Profilembed = new Discord.MessageEmbed()
         .setColor(0xe19517)
