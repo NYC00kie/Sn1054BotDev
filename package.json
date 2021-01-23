@@ -10,6 +10,7 @@
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
     "mongoose": "^5.10.11",
+    "mquery": "^3.2.3",
     "nodemailer": "^6.4.14",
     "request": "^2.88.2",
     "string-similarity": "^4.0.2",
