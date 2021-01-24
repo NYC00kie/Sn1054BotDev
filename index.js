@@ -41,22 +41,22 @@ const token = process.env.Trellotoken
 const key = process.env.Trellokey
 
 async function rewriteVersion(){
-let output = await getVersion()
-Version2 = output.Version.split(".")
+  let output = await getVersion()
+  Version2 = output.Version.split(".")
 
 
-let finalVersion= Number(Version2[1])+1
-var data = {
-  Version: Version2[0]+"."+finalVersion,
-  Date: Date("now")
-}
-var data = JSON.stringify(data)
-
-fs.writeFile("Version.json",data, 'utf8',err => {
-  if (err) {
-    console.error(err)
+  let finalVersion= Number(Version2[1])+1
+  var data = {
+    Version: Version2[0]+"."+finalVersion,
+    Date: Date("now")
   }
-})
+  var data = JSON.stringify(data)
+
+  fs.writeFile("Version.json",data, 'utf8',err => {
+    if (err) {
+      console.error(err)
+    }
+  })
 }
 rewriteVersion()
 
@@ -105,7 +105,20 @@ var transporter = nodemailer.createTransport({
 });
 
 bot.on("guildMemberUpdate", function(oldMember, newMember){
-    console.error(`a guild member changes - i.e. new role, removed role, nickname.`);
+    if (oldMember._roles != newMember._roles) {
+      for (var i = 0; i < oldMember._roles.length; i++) {
+        if (oldMember._roles[i]=="518385317229625364") {
+          return;
+        }
+      }
+      for (var j = 0; j < newMember._roles.length; j++) {
+        if (newMember._roles[j]=="518385317229625364"){
+          bot.channels.cache.get("727919338606166096").send(`<@${newMember.user.id}> Willkommen und schön, dass du es bis hier her geschafft hast 👍`)
+          return;
+        }
+      }
+    }
+
 });
 
 bot.on("guildMemberAdd" , member => {
