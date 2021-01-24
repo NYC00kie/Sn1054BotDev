@@ -189,7 +189,7 @@ bot.on("message",async message => {
         zero = ""
         if (d1.getMinutes()<10){
         zero = 0
-      }
+        }
         message.channel.send(`Version ${data.Version} vom ${d1.getDate()}. ${months[d1.getMonth()]} ${d1.getFullYear()} ${d1.getHours()}:${zero}${d1.getMinutes()}`)
         break;
       case "amonunser":
