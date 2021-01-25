@@ -23,7 +23,7 @@ exports.morenvc = async (message) => {
       return Math.floor(Math.random() * Math.floor(max));
     }
 
-    if (getRandomInt(30)==0){
+    if (getRandomInt(50)==0){
       this.message.react('👌')
       const filter = (reaction) => reaction.emoji.name === '👌'
       this.message.awaitReactions(filter, {max:2,time: 10000 })
