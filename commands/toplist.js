@@ -150,7 +150,7 @@ exports.channeltop = async (message) => {
   console.log(channelarr)
   var TopEmbed = new Discord.MessageEmbed()
     .setColor(0xe19517)
-    .setTitle("Die 10 Leute mit den meisten nvc")
+    .setTitle("Die (bis zu) 10 Leute mit den best laufenden Channel(s)")
     .setFooter("Heute ist der: "+Date("now"))
 for (var i = 0; i < channelarr.length; i++) {
   if (i>=10) {break;}
