@@ -137,6 +137,7 @@ exports.channeltop = async (message) => {
       }
     });
   })
+  console.log(channelarr)
   for (var i = 0; i < channelarr.length; i++) {
     await sleep(1000)
     let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channelarr[i].Chaid))
