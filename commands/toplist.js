@@ -133,7 +133,7 @@ exports.channeltop = async (message) => {
         channelarr.push({Memid:doc.MemberId,Chaid:doc.Channelid})
       }
       if (doc.Channelid2!="undefined") {
-        channelarr.push({Memid:doc.MemberId,Chaid:doc.Channelid})
+        channelarr.push({Memid:doc.MemberId,Chaid:doc.Channelid2})
       }
     });
   })
