@@ -124,6 +124,7 @@ var TopEmbed = new Discord.MessageEmbed()
 }
 exports.channeltop = async (message) => {
   this.message = message;
+  this.message.channel.send("Loading Data")
   let channelarr = []
   Sale.find()
   .exec()
