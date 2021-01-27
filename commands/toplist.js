@@ -146,11 +146,14 @@ exports.channeltop = async (message) => {
     channelarr.sort(function(a, b) {
     return a.messages - b.messages;
   });
+  console.log(channelarr)
   var TopEmbed = new Discord.MessageEmbed()
     .setColor(0xe19517)
     .setTitle("Die 10 Leute mit den meisten nvc")
-    .addField("឵឵ ឵឵ ឵឵","1. <#"+ channelarr[0].Chaid+"> von <@"+channelarr[0].Memid+"> mit "+channelarr[0].messages+"Nachrichten\n\n2. <#"+ channelarr[1].Chaid+"> von <@"+channelarr[1].Memid+"> mit "+channelarr[1].messages+"Nachrichten\n\n3. <#"+ channelarr[2].Chaid+"> von <@"+channelarr[2].Memid+"> mit "+channelarr[2].messages+"Nachrichten\n\n4. <#"+ channelarr[3].Chaid+"> von <@"+channelarr[3].Memid+"> mit "+channelarr[3].messages+"Nachrichten\n\n5. <#"+ channelarr[4].Chaid+"> von <@"+channelarr[4].Memid+"> mit "+channelarr[4].messages+"Nachrichten\n\n6. <#"+ channelarr[5].Chaid+"> von <@"+channelarr[5].Memid+"> mit "+channelarr[5].messages+"Nachrichten\n\n7. <#"+ channelarr[6].Chaid+"> von <@"+channelarr[6].Memid+"> mit "+channelarr[6].messages+"Nachrichten\n\n8. <#"+ channelarr[7].Chaid+"> von <@"+channelarr[7].Memid+"> mit "+channelarr[7].messages+"Nachrichten\n\n9. <#"+ channelarr[8].Chaid+"> von <@"+channelarr[8].Memid+"> mit "+channelarr[8].messages+"Nachrichten\n\n10. <#"+ channelarr[9].Chaid+"> von <@"+channelarr[9].Memid+"> mit "+channelarr[9].messages+"Nachrichten")
     .setFooter("Heute ist der: "+Date("now"))
+for (var i = 0; i < channelarr.length; i++) {
+  TopEmbed.addField("឵឵ ឵឵ ឵឵",""+i+". <#"+ channelarr[i].Chaid+"> von <@"+channelarr[i].Memid+"> mit "+channelarr[i].messages+"Nachrichten")
+}
     this.message.channel.send(TopEmbed)
   }).catch()
   return;
