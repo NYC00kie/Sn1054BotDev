@@ -144,7 +144,7 @@ exports.channeltop = async (message) => {
       channelarr[i].messages = msgcount2
     }
     channelarr.sort(function(a, b) {
-    return a.messages - b.messages;
+    return b.messages - a.messages;
   });
   console.log(channelarr)
   var TopEmbed = new Discord.MessageEmbed()
