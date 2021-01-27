@@ -127,7 +127,7 @@ exports.channeltop = async (message) => {
   let channelarr = []
   Sale.find()
   .exec()
-  .then(docs => {
+  .then( async (docs) => {
     docs.forEach((doc, idx, message) => {
       if (doc.Channelid!="undefined"){
         channelarr.push({Memid:doc.MemberId,Chaid:doc.Channelid})
