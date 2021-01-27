@@ -173,8 +173,12 @@ bot.on("message",async message => {
     let Begriff = message.content.substr(PREFIX.length + args[0].length+1, 128)
     //all Commands
     switch (args[0].toLowerCase()) {
-        //here the sales should be displayed
-
+      case "chtop":
+        top.channeltop(message)
+        break;
+      case "channeltop":
+        top.channeltop(message)
+        break;
       case "addblacklist":
         blacklist.add_word(message,Word)
         break;
