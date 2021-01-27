@@ -154,7 +154,6 @@ exports.channeltop = async (message) => {
     .setFooter("Heute ist der: "+Date("now"))
     this.message.channel.send(TopEmbed)
   })
-
   return;
 }
 
