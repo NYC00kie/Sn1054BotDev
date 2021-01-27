@@ -152,6 +152,7 @@ exports.channeltop = async (message) => {
     .setTitle("Die 10 Leute mit den meisten nvc")
     .setFooter("Heute ist der: "+Date("now"))
 for (var i = 0; i < channelarr.length; i++) {
+  if (i>=10) {break;}
   TopEmbed.addField("឵឵ ឵឵ ឵឵",""+i+". <#"+ channelarr[i].Chaid+"> von <@"+channelarr[i].Memid+"> mit "+channelarr[i].messages+"Nachrichten")
 }
     this.message.channel.send(TopEmbed)
