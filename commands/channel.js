@@ -152,7 +152,7 @@ exports.chstats_channel_User = (PingData,message) => {
           var ChstatsEmbed = new Discord.MessageEmbed()
             .setColor(0xe19517)
             .setTitle("Deine Kanal-Stats")
-            .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
+            .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*12+"\n")
             .setTimestamp(Date("now"))
           this.message.channel.send(ChstatsEmbed);
 
@@ -167,7 +167,7 @@ exports.chstats_channel_User = (PingData,message) => {
         var ChstatsEmbed = new Discord.MessageEmbed()
           .setColor(0xe19517)
           .setTitle("Deine Kanal-Stats")
-          .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid2+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
+          .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid2+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*12+"\n")
           .setTimestamp(Date("now"))
         this.message.channel.send(ChstatsEmbed);
 
@@ -195,7 +195,7 @@ exports.chstats_channel_User = (PingData,message) => {
             var ChstatsEmbed = new Discord.MessageEmbed()
               .setColor(0xe19517)
               .setTitle("Deine Kanal-Stats")
-              .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
+              .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*12+"\n")
               .setTimestamp(Date("now"))
             this.message.channel.send(ChstatsEmbed).catch(console.error());
 
@@ -207,7 +207,7 @@ exports.chstats_channel_User = (PingData,message) => {
             var ChstatsEmbed2 = new Discord.MessageEmbed()
               .setColor(0xe19517)
               .setTitle("Deine Kanal-Stats")
-              .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid2+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
+              .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid2+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*12+"\n")
               .setTimestamp(Date("now"))
             this.message.channel.send(ChstatsEmbed2).catch(console.error());
 
@@ -231,7 +231,7 @@ exports.chstats_channel_User = (PingData,message) => {
                     var ChstatsEmbed = new Discord.MessageEmbed()
                       .setColor(0xe19517)
                       .setTitle("Deine Kanal-Stats")
-                      .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
+                      .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*12+"\n")
                       .setTimestamp(Date("now"))
                     this.message.channel.send(ChstatsEmbed).catch(console.error());
 
@@ -243,7 +243,7 @@ exports.chstats_channel_User = (PingData,message) => {
                     var ChstatsEmbed2 = new Discord.MessageEmbed()
                       .setColor(0xe19517)
                       .setTitle("Deine Kanal-Stats")
-                      .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid2+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*5+"\n")
+                      .addField("Stats:","Dein Channel:\n"+"<#"+docs.Channelid2+">"+"\n\nNachrichten:\n"+msgcount2+"\n\nvorrausgesehene Nvc:\n"+msgcount2*12+"\n")
                       .setTimestamp(Date("now"))
                     this.message.channel.send(ChstatsEmbed2).catch(console.error());
 
@@ -283,7 +283,7 @@ exports.delete_channel_User = async (PingData,message) => {
         .then(async () => {
 
           let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
-          let newcxc = await how_many_messages_are_there_actually(msgcount1)*5
+          let newcxc = await how_many_messages_are_there_actually(msgcount1)*12
 
           if (newcxc == NaN) {
             this.message.channel.send("Es scheint so , als wäre etwas beim auslesen deiner cxc falschgelaufen. <@376394812888186890>")
@@ -297,7 +297,7 @@ exports.delete_channel_User = async (PingData,message) => {
             var DelEmbed = new Discord.MessageEmbed()
             .setColor(0xe19517)
             .setTitle("Channel Entfernungs Info")
-            .addField("Channel Statistiken",`Dein Channel ${message.client.channels.cache.get(channel).name} wurde archiviert.\nNachrichtenanzahl: ${newcxc/5} \nNVC ertrag: ${newcxc}`)
+            .addField("Channel Statistiken",`Dein Channel ${message.client.channels.cache.get(channel).name} wurde archiviert.\nNachrichtenanzahl: ${newcxc/12} \nNVC ertrag: ${newcxc}`)
             this.message.channel.send(DelEmbed)
           }).catch(console.error);
         }).catch(console.error);
@@ -318,7 +318,7 @@ exports.delete_channel_User = async (PingData,message) => {
 
 
         let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
-        let newcxc = await how_many_messages_are_there_actually(msgcount1)*5
+        let newcxc = await how_many_messages_are_there_actually(msgcount1)*12
 
         if (newcxc == NaN) {
           this.message.channel.send("Es scheint so , als wäre etwas beim auslesen deiner cxc falschgelaufen. <@376394812888186890>")
@@ -332,7 +332,7 @@ exports.delete_channel_User = async (PingData,message) => {
           var DelEmbed = new Discord.MessageEmbed()
           .setColor(0xe19517)
           .setTitle("Channel Entfernungs Info")
-          .addField("Channel Statistiken",`Dein Channel ${message.client.channels.cache.get(channel).name} wurde archiviert.\nNachrichtenanzahl: ${newcxc/5} \nNVC ertrag: ${newcxc}`)
+          .addField("Channel Statistiken",`Dein Channel ${message.client.channels.cache.get(channel).name} wurde archiviert.\nNachrichtenanzahl: ${newcxc/12} \nNVC ertrag: ${newcxc}`)
           this.message.channel.send(DelEmbed)
         }).catch(console.error);
       }).catch(console.error);
@@ -357,7 +357,7 @@ exports.delete_channel_User = async (PingData,message) => {
 
 
           let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
-          let newcxc = await how_many_messages_are_there_actually(msgcount1)*5
+          let newcxc = await how_many_messages_are_there_actually(msgcount1)*12
 
           if (newcxc == NaN) {
             this.message.channel.send("Es scheint so , als wäre etwas beim auslesen deiner cxc falschgelaufen. <@376394812888186890>")
@@ -371,7 +371,7 @@ exports.delete_channel_User = async (PingData,message) => {
             var DelEmbed = new Discord.MessageEmbed()
             .setColor(0xe19517)
             .setTitle("Channel Entfernungs Info")
-            .addField("Channel Statistiken",`Dein Channel ${message.client.channels.cache.get(channel).name} wurde archiviert.\nNachrichtenanzahl: ${newcxc/5} \nNVC ertrag: ${newcxc}`)
+            .addField("Channel Statistiken",`Dein Channel ${message.client.channels.cache.get(channel).name} wurde archiviert.\nNachrichtenanzahl: ${newcxc/12} \nNVC ertrag: ${newcxc}`)
             this.message.channel.send(DelEmbed)
           }).catch(console.error);
         }).catch(console.error);
@@ -392,7 +392,7 @@ exports.delete_channel_User = async (PingData,message) => {
 
 
           let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
-          let newcxc = await how_many_messages_are_there_actually(msgcount1)*5
+          let newcxc = await how_many_messages_are_there_actually(msgcount1)*12
 
           if (newcxc == NaN) {
             this.message.channel.send("Es scheint so , als wäre etwas beim auslesen deiner cxc falschgelaufen. <@376394812888186890>")
@@ -406,7 +406,7 @@ exports.delete_channel_User = async (PingData,message) => {
             var DelEmbed = new Discord.MessageEmbed()
             .setColor(0xe19517)
             .setTitle("Channel Entfernungs Info")
-            .addField("Channel Statistiken",`Dein Channel ${message.client.channels.cache.get(channel).name} wurde archiviert.\nNachrichtenanzahl: ${newcxc/5} \nNVC ertrag: ${newcxc}`)
+            .addField("Channel Statistiken",`Dein Channel ${message.client.channels.cache.get(channel).name} wurde archiviert.\nNachrichtenanzahl: ${newcxc/12} \nNVC ertrag: ${newcxc}`)
             this.message.channel.send(DelEmbed)
           }).catch(console.error);
         }).catch(console.error);
@@ -439,7 +439,7 @@ exports.delete_channel_Admin = (PingData,message) => {
         .then(async () => {
           message.client.channels.cache.get(channel).lockPermissions()
           let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
-          let newcxc = await how_many_messages_are_there_actually(msgcount1)*2
+          let newcxc = await how_many_messages_are_there_actually(msgcount1)*12
           console.log(newcxc)
           Sale.updateOne({ _id: docs.id }, { $set: { Channelid: "undefined" , cxc: docs.cxc+newcxc} })
           .exec()
@@ -459,7 +459,7 @@ exports.delete_channel_Admin = (PingData,message) => {
         .then(async () => {
           message.client.channels.cache.get(channel).lockPermissions()
           let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
-          let newcxc = await how_many_messages_are_there_actually(msgcount1)*2
+          let newcxc = await how_many_messages_are_there_actually(msgcount1)*12
           console.log(newcxc)
           Sale.updateOne({ _id: docs.id }, { $set: { Channelid2: "undefined" , cxc: docs.cxc+newcxc} })
           .exec()
