@@ -139,7 +139,7 @@ exports.channeltop = async (message) => {
     });
     console.log(channelarr)
     for (var i = 0; i < channelarr.length; i++) {
-      await sleep(1000)
+      await sleep(500)
       let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channelarr[i].Chaid))
       let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
       channelarr[i].messages = msgcount2
@@ -183,7 +183,7 @@ async function lots_of_messages_getter(channel, limitt = 10000) {
 
 return sum_messages;
 }
-
+󠀀
 async function how_many_messages_are_there_actually(msgcount){
   let PreActuall_messages_v0 = msgcount.toString();
   let Actuall_messages_v0 = PreActuall_messages_v0.split(",");
