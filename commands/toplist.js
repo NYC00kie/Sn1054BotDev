@@ -142,6 +142,7 @@ exports.channeltop = async (message) => {
       let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channelarr[i].Chaid))
       let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
       channelarr[i].messages = msgcount2
+      console.log(channelarr)
     }
     channelarr.sort(function(a, b) {
     return b.messages - a.messages;
