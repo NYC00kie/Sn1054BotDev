@@ -139,7 +139,6 @@ exports.channeltop = async (message) => {
     });
     console.log(channelarr)
     for (var i = 0; i < channelarr.length; i++) {
-      await sleep(500)
       let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channelarr[i].Chaid))
       let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
       channelarr[i].messages = msgcount2
@@ -152,11 +151,11 @@ exports.channeltop = async (message) => {
     .setColor(0xe19517)
     .setTitle("Die (bis zu) 10 Leute mit den best laufenden Channel(s)")
     .setFooter("Heute ist der: "+Date("now"))
-for (var i = 0; i < channelarr.length; i++) {
-  if (i>=10) {break;}
-  TopEmbed.addField("឵឵ ឵឵ ឵឵",""+i+". <#"+ channelarr[i].Chaid+"> von <@"+channelarr[i].Memid+"> mit "+channelarr[i].messages+"Nachrichten")
-}
-    this.message.channel.send(TopEmbed)
+  for (var i = 0; i < channelarr.length; i++) {
+    if (i>=10) {break;}
+    TopEmbed.addField("឵឵ ឵឵ ឵឵",""+i+". <#"+ channelarr[i].Chaid+"> von <@"+channelarr[i].Memid+"> mit "+channelarr[i].messages+"Nachrichten")
+  }
+  this.message.channel.send(TopEmbed)
   }).catch(err => {//message fuction
     var e = new Error(err);
     const Es = e.toString()
