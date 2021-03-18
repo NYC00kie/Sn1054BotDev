@@ -157,8 +157,18 @@ for (var i = 0; i < channelarr.length; i++) {
   TopEmbed.addField("឵឵ ឵឵ ឵឵",""+i+". <#"+ channelarr[i].Chaid+"> von <@"+channelarr[i].Memid+"> mit "+channelarr[i].messages+"Nachrichten")
 }
     this.message.channel.send(TopEmbed)
-  }).catch()
-  return;
+  }).catch(err => {//message fuction
+    var e = new Error(err);
+    const Es = e.toString()
+    var mailOptions = {
+      from: process.env.Mailadress,
+      to: process.env.MyMailadress,
+      subject: "Error",
+      text: Es + Date("now")
+    };
+    transporter.sendMail(mailOptions);
+    console.error(err);
+    });
 }
 
 
