@@ -1,3 +1,4 @@
+//importing of modules
 const dotenv = require('dotenv');
 dotenv.config();
 const Discord = require('discord.js');
@@ -35,6 +36,7 @@ const count = require('./commands/count');
 const verbrauch = require('./commands/verbrauch');
 const ping = require('./commands/ping');
 const morenvc = require('./methodes/morenvc');
+//beginning of the Code
 let bot = new Discord.Client();
 
 const token = process.env.Trellotoken
