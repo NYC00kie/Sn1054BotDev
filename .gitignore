@@ -116,7 +116,7 @@ flycheck_*.el
 # End of https://www.gitignore.io/api/emacs
 
 
-
+/node_modules
 Todolist.txt
 bannedwords/
 database-backup/
