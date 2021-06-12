@@ -133,6 +133,7 @@ bot.on("guildMemberRemove" , member => {
 
 //Execute Commands
 bot.on("message",async message => {
+
   if (message.author.bot) {
     return;//leave if the Author is a Bot or the Bot itself
   };
@@ -194,7 +195,7 @@ bot.on("message",async message => {
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         zero = ""
         if (d1.getMinutes()<10){
-        zero = 0
+          zero = 0
         }
         message.channel.send(`Version ${data.Version} vom ${d1.getDate()}. ${months[d1.getMonth()]} ${d1.getFullYear()} ${d1.getHours()}:${zero}${d1.getMinutes()}`)
         break;
