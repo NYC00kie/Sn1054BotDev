@@ -46,7 +46,7 @@ exports.suizid = (message) => {
   let content = this.message.content.toLowerCase()
   let badword = ["suizid","selbstmord","freitod","selbsttötung","selbstentleibung","suicide"]
   let letter = content.split("")
-
+  let triggered = false
   for (var i = 0; i < letter.length; i++) {
 
     var suizid = letter[i]+letter[i+1]+letter[i+2]+letter[i+3]+letter[i+4]+letter[i+5]
@@ -61,28 +61,37 @@ exports.suizid = (message) => {
 
       if (suizid==badword[j]) {
         this.message.channel.send("Wir haben erkannt, dass du oder eine dir bekannte Person potentiell Selbstmordgedanken hat.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern \n__DEU:__\n**0800 – 111 0 111** (TelefonSeelsorge® Deutschland)\n**0800 – 111 0 222** (TelefonSeelsorge® Deutschland)\n**116 111** (Nummer gegen Kummer)\n\n__AUT:__\n**142** (Telefonseelsorge Österreich) \n\n__CH:__\n**143** (Die Dargebotene Hand)")
+        triggered = true;
         break;
       }
       else if (selbstmord==badword[j]) {
         this.message.channel.send("Wir haben erkannt, dass du oder eine dir bekannte Person potentiell Selbstmordgedanken hat.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern \n__DEU:__\n**0800 – 111 0 111** (TelefonSeelsorge® Deutschland)\n**0800 – 111 0 222** (TelefonSeelsorge® Deutschland)\n**116 111** (Nummer gegen Kummer)\n\n__AUT:__\n**142** (Telefonseelsorge Österreich) \n\n__CH:__\n**143** (Die Dargebotene Hand)")
+        triggered = true;
         break;
       }
       else if (freitod==badword[j]) {
         this.message.channel.send("Wir haben erkannt, dass du oder eine dir bekannte Person potentiell Selbstmordgedanken hat.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern \n__DEU:__\n**0800 – 111 0 111** (TelefonSeelsorge® Deutschland)\n**0800 – 111 0 222** (TelefonSeelsorge® Deutschland)\n**116 111** (Nummer gegen Kummer)\n\n__AUT:__\n**142** (Telefonseelsorge Österreich) \n\n__CH:__\n**143** (Die Dargebotene Hand)")
+        triggered = true;
         break;
       }
       else if (selbsttötung==badword[j]) {
         this.message.channel.send("Wir haben erkannt, dass du oder eine dir bekannte Person potentiell Selbstmordgedanken hat.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern \n__DEU:__\n**0800 – 111 0 111** (TelefonSeelsorge® Deutschland)\n**0800 – 111 0 222** (TelefonSeelsorge® Deutschland)\n**116 111** (Nummer gegen Kummer)\n\n__AUT:__\n**142** (Telefonseelsorge Österreich) \n\n__CH:__\n**143** (Die Dargebotene Hand)")
+        triggered = true;
         break;
        }
       else if (selbstentleibung==badword[j]) {
         this.message.channel.send("Wir haben erkannt, dass du oder eine dir bekannte Person potentiell Selbstmordgedanken hat.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern \n__DEU:__\n**0800 – 111 0 111** (TelefonSeelsorge® Deutschland)\n**0800 – 111 0 222** (TelefonSeelsorge® Deutschland)\n**116 111** (Nummer gegen Kummer)\n\n__AUT:__\n**142** (Telefonseelsorge Österreich) \n\n__CH:__\n**143** (Die Dargebotene Hand)")
+        triggered = true;
         break;
       }
       else if (suicide==badword[j]) {
         this.message.channel.send("Wir haben erkannt, dass du oder eine dir bekannte Person potentiell Selbstmordgedanken hat.\nWenn Du Selbstmordgedanken hast, gibt es Menschen, die dir in dieser Krise helfen können.\nDu solltest deshalb in jedem Fall sofort Kontakt zu entsprechenden medizinischen Diensten aufnehmen.\n\nSpeziell geschulte Menschen helfen Dir auch bei der TelefonSeelsorge unter den Nummern \n__DEU:__\n**0800 – 111 0 111** (TelefonSeelsorge® Deutschland)\n**0800 – 111 0 222** (TelefonSeelsorge® Deutschland)\n**116 111** (Nummer gegen Kummer)\n\n__AUT:__\n**142** (Telefonseelsorge Österreich) \n\n__CH:__\n**143** (Die Dargebotene Hand)")
+        triggered = true;
         break;
       }
+    }
+    if (triggered){
+      break;
     }
   }
 }
