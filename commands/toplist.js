@@ -50,6 +50,7 @@ var TopEmbed = new Discord.MessageEmbed()
 
     })
 }
+
 exports.pwtop = (message) => {
   this.message = message;
   const Searcharray = []
@@ -59,33 +60,24 @@ exports.pwtop = (message) => {
   .then( docs => {
      docs.forEach((doc, idx, message) => {
 
-        Searcharray.push(doc.Prestiege)
-        Personarray.push(doc.Nickname)
+        Searcharray.push({pw:doc.Prestiege,nic:doc.Nickname})
 
     });
-    var len = Searcharray.length//Search algorithm
 
-    for (i=0; i < len; i++){
-      for (j=0, stop=len-i; j < stop; j++){
-        if (Searcharray[j] < Searcharray[j+1]){
-          var temp = Searcharray[j];
-          Searcharray[j] = Searcharray[j+1];
-          Searcharray[j+1] = temp;
-          var temp = Personarray[j];
-          Personarray[j] = Personarray[j+1];
-          Personarray[j+1] = temp;
-      }
-    }
-  }
+    Searcharray.sort((a,b)=>{
+      return b.pw - a.pw
+    })
+console.log(Searcharray)
 //hier den Code zur benutztung des Sortierten Array
 var TopEmbed = new Discord.MessageEmbed()
   .setColor(0xe19517)
   .setTitle("Die 10 Leute mit dem meisten Prestiegewert")
-  .addField("឵឵ ឵឵ ឵឵","1. "+ Personarray[0]+" mit "+Searcharray[0]+"\n\n2. "+ Personarray[1]+" mit "+Searcharray[1]+"\n\n3. "+ Personarray[2]+" mit "+Searcharray[2]+"\n\n4. "+ Personarray[3]+" mit "+Searcharray[3]+"\n\n5. "+ Personarray[4]+" mit "+Searcharray[4]+"\n\n6. "+ Personarray[5]+" mit "+Searcharray[5]+"\n\n7. "+ Personarray[6]+" mit "+Searcharray[6]+"\n\n8. "+ Personarray[7]+" mit "+Searcharray[7]+"\n\n9. "+ Personarray[8]+" mit "+Searcharray[8]+"\n\n10. "+ Personarray[9]+" mit "+Searcharray[9])
+  .addField("឵឵ ឵឵ ឵឵","1. "+ Searcharray[0].nic+" mit "+Searcharray[0].pw+"\n\n2. "+ Searcharray[1].nic+" mit "+Searcharray[1].pw+"\n\n3. "+ Searcharray[2].nic+" mit "+Searcharray[2].pw+"\n\n4. "+ Searcharray[3].nic+" mit "+Searcharray[3].pw+"\n\n5. "+ Searcharray[4].nic+" mit "+Searcharray[4].pw+"\n\n6. "+ Searcharray[5].nic+" mit "+Searcharray[5].pw+"\n\n7. "+ Searcharray[6].nic+" mit "+Searcharray[6].pw+"\n\n8. "+ Searcharray[7].nic+" mit "+Searcharray[7].pw+"\n\n9. "+ Searcharray[8].nic+" mit "+Searcharray[8].pw+"\n\n10. "+ Searcharray[9].nic+" mit "+Searcharray[9].pw)
   .setFooter("Heute ist der: "+Date("now"))
   this.message.channel.send(TopEmbed)
     })
 }
+
 exports.messagetop = (message) => {
   this.message = message;
   const Searcharray = []
