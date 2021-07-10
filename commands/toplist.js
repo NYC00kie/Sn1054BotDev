@@ -50,7 +50,7 @@ exports.pwtop = (message) => {
 var TopEmbed = new Discord.MessageEmbed()
   .setColor(0xe19517)
   .setTitle("Die 10 Leute mit dem meisten Prestiegewert")
-  .addField("឵឵ ឵឵ ឵឵","1. "+ docs[0].nic+" mit "+docs[0].Prestiege+"\n\n2. "+ docs[1].nic+" mit "+docs[1].Prestiege+"\n\n3. "+ docs[2].nic+" mit "+docs[2].Prestiege+"\n\n4. "+ docs[3].nic+" mit "+docs[3].Prestiege+"\n\n5. "+ docs[4].nic+" mit "+docs[4].Prestiege+"\n\n6. "+ docs[5].nic+" mit "+docs[5].Prestiege+"\n\n7. "+ docs[6].nic+" mit "+docs[6].Prestiege+"\n\n8. "+ docs[7].nic+" mit "+docs[7].Prestiege+"\n\n9. "+ docs[8].nic+" mit "+docs[8].Prestiege+"\n\n10. "+ docs[9].nic+" mit "+docs[9].Prestiege)
+  .addField("឵឵ ឵឵ ឵឵","1. "+ docs[0].Name+" mit "+docs[0].Prestiege+"\n\n2. "+ docs[1].Name+" mit "+docs[1].Prestiege+"\n\n3. "+ docs[2].Name+" mit "+docs[2].Prestiege+"\n\n4. "+ docs[3].Name+" mit "+docs[3].Prestiege+"\n\n5. "+ docs[4].Name+" mit "+docs[4].Prestiege+"\n\n6. "+ docs[5].Name+" mit "+docs[5].Prestiege+"\n\n7. "+ docs[6].Name+" mit "+docs[6].Prestiege+"\n\n8. "+ docs[7].Name+" mit "+docs[7].Prestiege+"\n\n9. "+ docs[8].Name+" mit "+docs[8].Prestiege+"\n\n10. "+ docs[9].Name+" mit "+docs[9].Prestiege)
   .setFooter("Heute ist der: "+Date("now"))
   this.message.channel.send(TopEmbed)
     })
