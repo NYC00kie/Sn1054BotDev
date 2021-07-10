@@ -15,64 +15,42 @@ var transporter = nodemailer.createTransport({
 
 exports.nvctop = (message) => {
   this.message = message;
-  const Searcharray = []
-  const Personarray = []
+
   Sale.find()
   .exec()
   .then( docs => {
-     docs.forEach((doc, idx, message) => {
 
-        Searcharray.push(doc.cxc)
-        Personarray.push("<@"+doc.MemberId+">")
+    docs.sort((a,b)=>{
+      return b.cxc - a.cxc
+    })
 
-    });
-    var len = Searcharray.length//Search algorithm
-
-    for (i=0; i < len; i++){
-      for (j=0, stop=len-i; j < stop; j++){
-        if (Searcharray[j] < Searcharray[j+1]){
-          var temp = Searcharray[j];
-          Searcharray[j] = Searcharray[j+1];
-          Searcharray[j+1] = temp;
-          var temp = Personarray[j];
-          Personarray[j] = Personarray[j+1];
-          Personarray[j+1] = temp;
-      }
-    }
-  }
 //hier den Code zur benutztung des Sortierten Array
-var TopEmbed = new Discord.MessageEmbed()
-  .setColor(0xe19517)
-  .setTitle("Die 10 Leute mit den meisten nvc")
-  .addField("឵឵ ឵឵ ឵឵","1. "+ Personarray[0]+" mit "+Searcharray[0]+"\n\n2. "+ Personarray[1]+" mit "+Searcharray[1]+"\n\n3. "+ Personarray[2]+" mit "+Searcharray[2]+"\n\n4. "+ Personarray[3]+" mit "+Searcharray[3]+"\n\n5. "+ Personarray[4]+" mit "+Searcharray[4]+"\n\n6. "+ Personarray[5]+" mit "+Searcharray[5]+"\n\n7. "+ Personarray[6]+" mit "+Searcharray[6]+"\n\n8. "+ Personarray[7]+" mit "+Searcharray[7]+"\n\n9. "+ Personarray[8]+" mit "+Searcharray[8]+"\n\n10. "+ Personarray[9]+" mit "+Searcharray[9])
-  .setFooter("Heute ist der: "+Date("now"))
-  this.message.channel.send(TopEmbed)
+  var TopEmbed = new Discord.MessageEmbed()
+    .setColor(0xe19517)
+    .setTitle("Die 10 Leute mit den meisten nvc")
+    .addField("឵឵ ឵឵ ឵឵","1. "+ docs[0].MemberId+" mit "+docs[0].cxc+"\n\n2. "+ docs[1].MemberId+" mit "+docs[1].cxc+"\n\n3. "+ docs[2].MemberId+" mit "+docs[2].cxc+"\n\n4. "+ docs[3].MemberId+" mit "+docs[3].cxc+"\n\n5. "+ docs[4].MemberId+" mit "+docs[4].cxc+"\n\n6. "+ docs[5].MemberId+" mit "+docs[5].cxc+"\n\n7. "+ docs[6].MemberId+" mit "+docs[6].cxc+"\n\n8. "+ docs[7].MemberId+" mit "+docs[7].cxc+"\n\n9. "+ docs[8].MemberId+" mit "+docs[8].cxc+"\n\n10. "+ docs[9].MemberId+" mit "+docs[9].cxc)
+    .setFooter("Heute ist der: "+Date("now"))
+    this.message.channel.send(TopEmbed)
 
     })
 }
 
 exports.pwtop = (message) => {
   this.message = message;
-  const Searcharray = []
-  const Personarray = []
+
   Sale.find()
   .exec()
   .then( docs => {
-     docs.forEach((doc, idx, message) => {
 
-        Searcharray.push({pw:doc.Prestiege,nic:doc.Nickname})
-
-    });
-
-    Searcharray.sort((a,b)=>{
-      return b.pw - a.pw
+    docs.sort((a,b)=>{
+      return b.Prestiege - a.Prestiege
     })
-console.log(Searcharray)
+
 //hier den Code zur benutztung des Sortierten Array
 var TopEmbed = new Discord.MessageEmbed()
   .setColor(0xe19517)
   .setTitle("Die 10 Leute mit dem meisten Prestiegewert")
-  .addField("឵឵ ឵឵ ឵឵","1. "+ Searcharray[0].nic+" mit "+Searcharray[0].pw+"\n\n2. "+ Searcharray[1].nic+" mit "+Searcharray[1].pw+"\n\n3. "+ Searcharray[2].nic+" mit "+Searcharray[2].pw+"\n\n4. "+ Searcharray[3].nic+" mit "+Searcharray[3].pw+"\n\n5. "+ Searcharray[4].nic+" mit "+Searcharray[4].pw+"\n\n6. "+ Searcharray[5].nic+" mit "+Searcharray[5].pw+"\n\n7. "+ Searcharray[6].nic+" mit "+Searcharray[6].pw+"\n\n8. "+ Searcharray[7].nic+" mit "+Searcharray[7].pw+"\n\n9. "+ Searcharray[8].nic+" mit "+Searcharray[8].pw+"\n\n10. "+ Searcharray[9].nic+" mit "+Searcharray[9].pw)
+  .addField("឵឵ ឵឵ ឵឵","1. "+ docs[0].nic+" mit "+docs[0].Prestiege+"\n\n2. "+ docs[1].nic+" mit "+docs[1].Prestiege+"\n\n3. "+ docs[2].nic+" mit "+docs[2].Prestiege+"\n\n4. "+ docs[3].nic+" mit "+docs[3].Prestiege+"\n\n5. "+ docs[4].nic+" mit "+docs[4].Prestiege+"\n\n6. "+ docs[5].nic+" mit "+docs[5].Prestiege+"\n\n7. "+ docs[6].nic+" mit "+docs[6].Prestiege+"\n\n8. "+ docs[7].nic+" mit "+docs[7].Prestiege+"\n\n9. "+ docs[8].nic+" mit "+docs[8].Prestiege+"\n\n10. "+ docs[9].nic+" mit "+docs[9].Prestiege)
   .setFooter("Heute ist der: "+Date("now"))
   this.message.channel.send(TopEmbed)
     })
@@ -105,6 +83,7 @@ exports.messagetop = (message) => {
       }
     }
   }
+
 //hier den Code zur benutztung des Sortierten Array
 var TopEmbed = new Discord.MessageEmbed()
   .setColor(0xe19517)
@@ -114,6 +93,7 @@ var TopEmbed = new Discord.MessageEmbed()
   this.message.channel.send(TopEmbed)
     })
 }
+
 exports.channeltop = async (message) => {
   this.message = message;
   this.message.channel.send("Loading Data")
