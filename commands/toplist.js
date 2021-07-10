@@ -58,37 +58,20 @@ var TopEmbed = new Discord.MessageEmbed()
 
 exports.messagetop = (message) => {
   this.message = message;
-  const Searcharray = []
-  const Personarray = []
+
   Sale.find()
   .exec()
   .then( docs => {
-     docs.forEach((doc, idx, message) => {
 
-        Searcharray.push(doc.messages)
-        Personarray.push(doc.Nickname)
-
-    });
-    var len = Searcharray.length//Search algorithm
-
-    for (i=0; i < len; i++){
-      for (j=0, stop=len-i; j < stop; j++){
-        if (Searcharray[j] < Searcharray[j+1]){
-          var temp = Searcharray[j];
-          Searcharray[j] = Searcharray[j+1];
-          Searcharray[j+1] = temp;
-          var temp = Personarray[j];
-          Personarray[j] = Personarray[j+1];
-          Personarray[j+1] = temp;
-      }
-    }
-  }
+    docs.sort((a,b) => {
+      return b.messages - a.messages
+    })
 
 //hier den Code zur benutztung des Sortierten Array
 var TopEmbed = new Discord.MessageEmbed()
   .setColor(0xe19517)
   .setTitle("Die 10 Leute mit den meisten Nachrichten")
-  .addField("឵឵ ឵឵ ឵឵","1. "+ Personarray[0]+" mit "+Searcharray[0]+"\n\n2. "+ Personarray[1]+" mit "+Searcharray[1]+"\n\n3. "+ Personarray[2]+" mit "+Searcharray[2]+"\n\n4. "+ Personarray[3]+" mit "+Searcharray[3]+"\n\n5. "+ Personarray[4]+" mit "+Searcharray[4]+"\n\n6. "+ Personarray[5]+" mit "+Searcharray[5]+"\n\n7. "+ Personarray[6]+" mit "+Searcharray[6]+"\n\n8. "+ Personarray[7]+" mit "+Searcharray[7]+"\n\n9. "+ Personarray[8]+" mit "+Searcharray[8]+"\n\n10. "+ Personarray[9]+" mit "+Searcharray[9])
+  .addField("឵឵ ឵឵ ឵឵","1. "+ docs[0].Name+" mit "+docs[0].messages+"\n\n2. "+ docs[1].Name+" mit "+docs[1].messages+"\n\n3. "+ docs[2].Name+" mit "+docs[2].messages+"\n\n4. "+ docs[3].Name+" mit "+docs[3].messages+"\n\n5. "+ docs[4].Name+" mit "+docs[4].messages+"\n\n6. "+ docs[5].Name+" mit "+docs[5].messages+"\n\n7. "+ docs[6].Name+" mit "+docs[6].messages+"\n\n8. "+ docs[7].Name+" mit "+docs[7].messages+"\n\n9. "+ docs[8].Name+" mit "+docs[8].messages+"\n\n10. "+ docs[9].Name+" mit "+docs[9].messages)
   .setFooter("Heute ist der: "+Date("now"))
   this.message.channel.send(TopEmbed)
     })
