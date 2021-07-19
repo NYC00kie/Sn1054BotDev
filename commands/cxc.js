@@ -89,7 +89,7 @@ exports.add_cxc =  (message) => {
 var Today = new Date () //Heutigen Tag bekommen. mit Date("now") gehts ned
 var d1 = docs.Date, //Datum der zuzletzt geschriebenen Nachricht bekommen
     d2 = new Date ( d1 );
-d2.setMinutes ( d1.getMinutes() + 1 );
+    d2.setMinutes ( d1.getMinutes() + 1 );
 
     if (Today > d2) {//wenn der hinterlegte Zeitpunkt nicht mehr der jetzige ist , dann bitte speichern
     var CXC = docs.cxc + 10
