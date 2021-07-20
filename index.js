@@ -37,7 +37,7 @@ const verbrauch = require('./commands/verbrauch');
 const ping = require('./commands/ping');
 const morenvc = require('./methodes/morenvc');
 //beginning of the Code
-let bot = new Discord.Client();
+let bot = new Discord.Client({ws:{intents:["GUILDS","GUILD_MEMBERS","GUILD_MESSAGES","GUILD_MESSAGE_REACTIONS","GUILD_PRESENCES"]}});
 
 const token = process.env.Trellotoken
 const key = process.env.Trellokey
@@ -107,6 +107,7 @@ var transporter = nodemailer.createTransport({
 });
 
 bot.on("guildMemberUpdate", function(oldMember, newMember){
+  console.log(newMember)
     if (oldMember._roles != newMember._roles) {
       for (var i = 0; i < oldMember._roles.length; i++) {
         if (oldMember._roles[i]=="518385317229625364") {

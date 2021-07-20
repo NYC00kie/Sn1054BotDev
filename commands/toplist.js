@@ -33,6 +33,7 @@ exports.nvctop = (message) => {
     this.message.channel.send(TopEmbed)
 
     })
+    .catch(err => console.error(err))
 }
 
 exports.pwtop = (message) => {
@@ -54,6 +55,7 @@ var TopEmbed = new Discord.MessageEmbed()
   .setFooter("Heute ist der: "+Date("now"))
   this.message.channel.send(TopEmbed)
     })
+    .catch(err => console.error(err))
 }
 
 exports.messagetop = (message) => {
@@ -75,6 +77,7 @@ var TopEmbed = new Discord.MessageEmbed()
   .setFooter("Heute ist der: "+Date("now"))
   this.message.channel.send(TopEmbed)
     })
+    .catch(err => console.error(err))
 }
 
 exports.channeltop = async (message) => {
