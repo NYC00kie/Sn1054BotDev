@@ -57,38 +57,43 @@ exports.suizid = (message) => {
 
       if (suizid==badword[j]) {
         this.message.author.send(szmessage)
-        this.message.client.channels.cache.get("506609726478483456").send(`Der User <@${this.message.author.id}> hat das Hilfesystem getriggert. \nEr braucht möglicherweise Hilfe.\n Der Person wurde eine Nachricht mit Hilfe Nummern geschrieben. <@&450742960678764544> <@&541755253247442945>\n Es könnte möglicherweise praktisch sein, wenn jemand Privat Nachfragt und sich zum reden anbietet.`)
+        this.message.client.channels.cache.get("506609726478483456").send(`Der User <@${this.message.author.id}> hat das Hilfesystem getriggert. \nEr braucht möglicherweise Hilfe.\nDer Person wurde eine Nachricht mit Hilfe Nummern geschrieben. <@&450742960678764544> <@&541755253247442945>\nEs könnte möglicherweise praktisch sein, wenn jemand Privat Nachfragt und sich zum reden anbietet.`)
         triggered = true;
+        message.delete({timeout:100})
         break;
       }
       else if (selbstmord==badword[j]) {
         this.message.author.send(szmessage)
-        this.message.client.channels.cache.get("506609726478483456").send(`Der User <@${this.message.author.id}> hat das Hilfesystem getriggert. \nEr braucht möglicherweise Hilfe.\n Der Person wurde eine Nachricht mit Hilfe Nummern geschrieben. <@&450742960678764544> <@&541755253247442945>\n Es könnte möglicherweise praktisch sein, wenn jemand Privat Nachfragt und sich zum reden anbietet.`)
+        this.message.client.channels.cache.get("506609726478483456").send(`Der User <@${this.message.author.id}> hat das Hilfesystem getriggert. \nEr braucht möglicherweise Hilfe.\nDer Person wurde eine Nachricht mit Hilfe Nummern geschrieben. <@&450742960678764544> <@&541755253247442945>\nEs könnte möglicherweise praktisch sein, wenn jemand Privat Nachfragt und sich zum reden anbietet.`)
         triggered = true;
+        message.delete({timeout:100})
         break;
       }
       else if (freitod==badword[j]) {
         this.message.author.send(szmessage)
-        this.message.client.channels.cache.get("506609726478483456").send(`Der User <@${this.message.author.id}> hat das Hilfesystem getriggert. \nEr braucht möglicherweise Hilfe.\n Der Person wurde eine Nachricht mit Hilfe Nummern geschrieben. <@&450742960678764544> <@&541755253247442945>\n Es könnte möglicherweise praktisch sein, wenn jemand Privat Nachfragt und sich zum reden anbietet.`)
+        this.message.client.channels.cache.get("506609726478483456").send(`Der User <@${this.message.author.id}> hat das Hilfesystem getriggert. \nEr braucht möglicherweise Hilfe.\nDer Person wurde eine Nachricht mit Hilfe Nummern geschrieben. <@&450742960678764544> <@&541755253247442945>\nEs könnte möglicherweise praktisch sein, wenn jemand Privat Nachfragt und sich zum reden anbietet.`)
         triggered = true;
+        message.delete({timeout:100})
         break;
       }
       else if (selbsttötung==badword[j]) {
         this.message.author.send(szmessage)
-        this.message.client.channels.cache.get("506609726478483456").send(`Der User <@${this.message.author.id}> hat das Hilfesystem getriggert. \nEr braucht möglicherweise Hilfe.\n Der Person wurde eine Nachricht mit Hilfe Nummern geschrieben. <@&450742960678764544> <@&541755253247442945>\n Es könnte möglicherweise praktisch sein, wenn jemand Privat Nachfragt und sich zum reden anbietet.`)
+        this.message.client.channels.cache.get("506609726478483456").send(`Der User <@${this.message.author.id}> hat das Hilfesystem getriggert. \nEr braucht möglicherweise Hilfe.\nDer Person wurde eine Nachricht mit Hilfe Nummern geschrieben. <@&450742960678764544> <@&541755253247442945>\nEs könnte möglicherweise praktisch sein, wenn jemand Privat Nachfragt und sich zum reden anbietet.`)
         triggered = true;
         break;
        }
       else if (selbstentleibung==badword[j]) {
         this.message.author.send(szmessage)
-        this.message.client.channels.cache.get("506609726478483456").send(`Der User <@${this.message.author.id}> hat das Hilfesystem getriggert. \nEr braucht möglicherweise Hilfe.\n Der Person wurde eine Nachricht mit Hilfe Nummern geschrieben. <@&450742960678764544> <@&541755253247442945>\n Es könnte möglicherweise praktisch sein, wenn jemand Privat Nachfragt und sich zum reden anbietet.`)
+        this.message.client.channels.cache.get("506609726478483456").send(`Der User <@${this.message.author.id}> hat das Hilfesystem getriggert. \nEr braucht möglicherweise Hilfe.\nDer Person wurde eine Nachricht mit Hilfe Nummern geschrieben. <@&450742960678764544> <@&541755253247442945>\nEs könnte möglicherweise praktisch sein, wenn jemand Privat Nachfragt und sich zum reden anbietet.`)
         triggered = true;
+        message.delete({timeout:100})
         break;
       }
       else if (suicide==badword[j]) {
         this.message.author.send(szmessage)
-        this.message.client.channels.cache.get("506609726478483456").send(`Der User <@${this.message.author.id}> hat das Hilfesystem getriggert. \nEr braucht möglicherweise Hilfe.\n Der Person wurde eine Nachricht mit Hilfe Nummern geschrieben. <@&450742960678764544> <@&541755253247442945>\n Es könnte möglicherweise praktisch sein, wenn jemand Privat Nachfragt und sich zum reden anbietet.`)
+        this.message.client.channels.cache.get("506609726478483456").send(`Der User <@${this.message.author.id}> hat das Hilfesystem getriggert. \nEr braucht möglicherweise Hilfe.\nDer Person wurde eine Nachricht mit Hilfe Nummern geschrieben. <@&450742960678764544> <@&541755253247442945>\nEs könnte möglicherweise praktisch sein, wenn jemand Privat Nachfragt und sich zum reden anbietet.`)
         triggered = true;
+        message.delete({timeout:100})
         break;
       }
     }
