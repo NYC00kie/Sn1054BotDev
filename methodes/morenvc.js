@@ -35,10 +35,10 @@ exports.morenvc = async (message) => {
         .exec()
         .then(docs => {
           this.message.channel.send(`<@${id}> du hast das Race gewonnen du Lucker`)
-          this.message.reactions.removeAll()
             .then(msg => {
               msg.delete({timeout:10000})
             })
+          this.message.reactions.removeAll()
           Loghandler.log(message,`<@${id}>`,undefined,"morenvc",undefined,undefined)
           Sale.updateOne({ _id: docs._id }, { $set: { cxc:docs.cxc+200} })
           .exec()
