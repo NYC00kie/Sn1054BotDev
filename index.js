@@ -33,7 +33,6 @@ const howmany = require('./commands/howmany');
 const top = require('./commands/toplist');
 const trello = require('./commands/trello');
 const count = require('./commands/count');
-const verbrauch = require('./commands/verbrauch');
 const ping = require('./commands/ping');
 const morenvc = require('./methodes/morenvc');
 //beginning of the Code
@@ -332,9 +331,6 @@ bot.on("message",async message => {
         break;
       case "ey":
         trello.whatsontrello(message,token,key);
-        break;
-      case "verbrauch":
-        verbrauch.verbrauch(message)
         break;
       case "ping":
         ping.ping(message,bot)
