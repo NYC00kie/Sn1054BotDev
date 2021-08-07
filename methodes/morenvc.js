@@ -23,7 +23,7 @@ exports.morenvc = async (message) => {
       return Math.floor(Math.random() * Math.floor(max));
     }
 
-    if (getRandomInt(50)==0){
+    if (getRandomInt(20)==0){
       this.message.react('👌')
       const filter = (reaction) => reaction.emoji.name === '👌'
       this.message.awaitReactions(filter, {max:2,time: 10000 })
@@ -35,6 +35,7 @@ exports.morenvc = async (message) => {
         .exec()
         .then(docs => {
           this.message.channel.send(`<@${id}> du hast das Race gewonnen du Lucker`)
+          this.message.reactions.removeAll()
             .then(msg => {
               msg.delete({timeout:10000})
             })
