@@ -23,7 +23,7 @@ exports.morenvc = async (message) => {
       return Math.floor(Math.random() * Math.floor(max));
     }
 
-    if (getRandomInt(20)==0){
+    if (getRandomInt(50)==0){
       this.message.react('👌')
       const filter = (reaction) => reaction.emoji.name === '👌'
       this.message.awaitReactions(filter, {max:2,time: 10000 })
@@ -48,7 +48,7 @@ exports.morenvc = async (message) => {
               const Es = e.toString()
               var mailOptions = {
                 from: process.env.Mailadress,
-                to: process.env.MyMailadress,
+                to: process.en20v.MyMailadress,
                 subject: "Error",
                 text: Es + Date("now")
               };
