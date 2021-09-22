@@ -12,6 +12,7 @@
     "mpath": "^0.8.3",
     "mquery": "^3.2.3",
     "nodemailer": "^6.4.16",
+    "nth-check": "^2.0.1",
     "request": "^2.88.2",
     "wikijs": "^6.0.1"
   },
