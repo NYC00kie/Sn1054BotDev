@@ -9,6 +9,7 @@
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
     "mongoose": "^5.10.11",
+    "mpath": "^0.8.3",
     "mquery": "^3.2.3",
     "nodemailer": "^6.4.16",
     "request": "^2.88.2",
