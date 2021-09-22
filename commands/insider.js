@@ -17,3 +17,13 @@ exports.inversesquarelaw = (message) => {
         files: ["./commands/cxgifs/InverseSquarelaw_Michealreeves.mp4"]
     })
 }
+
+exports.LindnerNein = (message) => {
+    this.message = message;
+    this.message.delete({
+        timeout: 10
+    })
+    this.message.channel.send({
+        files: ["./commands/cxgifs/Christian_Lindner_Haha_Nein-480p.mp4"]
+    })
+}

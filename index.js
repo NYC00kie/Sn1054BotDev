@@ -205,6 +205,9 @@ bot.on("message",async message => {
       case "inversesquarelaw":
         insider.inversesquarelaw(message)
         break;
+      case "lindernein":
+        insider.LindnerNein(message)
+        break;
       case "changenick":
         Nick.change_nick(NewNick,message)
         break;
