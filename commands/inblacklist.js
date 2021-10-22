@@ -4,7 +4,6 @@ const Discord = require('discord.js');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const Loghandler = require('./Loghandler');
-const stringsimilarity = require('string-similarity');
 const fs = require('fs');
 dotenv.config();
 exports.check_word = (message) => {
