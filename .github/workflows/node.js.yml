@@ -37,4 +37,4 @@ jobs:
         TRELLOTOKEN: ${{ secrets.TRELLOTOKEN }}
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm run test -- $TOKEN $MAILPW $MAILADRESS $MYMAILADRESS $DB_PASSWORD $DB $TRELLOKEY $TRELLOTOKEN & function sleepnkill () { sleep 60; killall node; }; sleepnkill
+    - run: npm run test $TOKEN $MAILPW $MAILADRESS $MYMAILADRESS $DB_PASSWORD $DB $TRELLOKEY $TRELLOTOKEN & function sleepnkill () { sleep 30; killall node; }; sleepnkill
