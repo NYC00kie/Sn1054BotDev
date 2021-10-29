@@ -36,6 +36,26 @@ const count = require('./commands/count');
 const ping = require('./commands/ping');
 const morenvc = require('./methodes/morenvc');
 //beginning of the Code
+
+var args = process.argv.slice(2)
+
+//for Testing purpuses
+console.log(args)
+if (args.length == 8){
+  process.env = {
+    TOKEN:args[0],
+    Mailpw:args[1],
+    Mailadress:args[2],
+    MyMailadress:args[3],
+    Password:args[4],
+    DB:args[5],
+    Trellokey:args[6],
+    Trellotoken:args[7]
+  }
+}
+
+console.log(process.env)
+
 let bot = new Discord.Client({ws:{intents:["GUILDS","GUILD_MEMBERS","GUILD_MESSAGES","GUILD_MESSAGE_REACTIONS","GUILD_PRESENCES"]}});
 
 const token = process.env.Trellotoken

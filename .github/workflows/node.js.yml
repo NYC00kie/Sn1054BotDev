@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x , 17.x]
+        node-version: [14.x, 16.x, 17.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -26,6 +26,15 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - env:
+        DB: ${{ secrets.DB }}
+        DB_PASSWORD: ${{ secrests.DB_PASSWORD }}
+        MAILADRESS: ${{ secrets.MAILADRESS }}
+        MAILPW: ${{ secrets.MAILPW }}
+        MYMAILADRESS: ${{ secrets.MYMAILADRESS }}
+        TOKEN: ${{ secrets.TOKEN }}
+        TRELLOKEY: ${{ secrets.TRELLOKEY }}
+        TRELLOTOKEN: ${{ secrets.TRELLOTOKEN }}
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
+    - run: npm run test -- $TOKEN $MAILPW $MAILADRESS $MYMAILADRESS $DB_PASSWORD $DB $TRELLOKEY $TRELLOTOKEN
