@@ -18,7 +18,7 @@
     "wikijs": "^6.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Testing Botfiles\" && node index",
     "start": "node index"
   },
   "repository": {
