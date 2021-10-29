@@ -54,8 +54,6 @@ if (args.length == 8){
   }
 }
 
-console.log(process.env)
-
 let bot = new Discord.Client({ws:{intents:["GUILDS","GUILD_MEMBERS","GUILD_MESSAGES","GUILD_MESSAGE_REACTIONS","GUILD_PRESENCES"]}});
 
 const token = process.env.Trellotoken

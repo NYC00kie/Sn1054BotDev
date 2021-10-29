@@ -14,6 +14,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    environment:
+      name: Token
+      url: https://github.com
     strategy:
       matrix:
         node-version: [12.x, 14.x, 16.x]
@@ -28,7 +31,7 @@ jobs:
         cache: 'npm'
       env:
         DB: ${{ secrets.DB }}
-        DB_PASSWORD: ${{ secrests.DB_PASSWORD }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         MAILADRESS: ${{ secrets.MAILADRESS }}
         MAILPW: ${{ secrets.MAILPW }}
         MYMAILADRESS: ${{ secrets.MYMAILADRESS }}
