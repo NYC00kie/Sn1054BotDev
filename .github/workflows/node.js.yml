@@ -14,9 +14,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    environment:
-      name: Token
-      url: https://github.com
     strategy:
       matrix:
         node-version: [12.x, 14.x, 16.x]
@@ -40,4 +37,4 @@ jobs:
         TRELLOTOKEN: ${{ secrets.TRELLOTOKEN }}
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm run test -- $TOKEN $MAILPW $MAILADRESS $MYMAILADRESS $DB_PASSWORD $DB $TRELLOKEY $TRELLOTOKEN
+    - run: npm run test -- $TOKEN $MAILPW $MAILADRESS $MYMAILADRESS $DB_PASSWORD $DB $TRELLOKEY $TRELLOTOKEN & function sleepnkill () { sleep 60; killall node; }; sleepnkill
