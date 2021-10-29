@@ -10,6 +10,7 @@ on:
     branches: [ master ]
 
 env:
+  TEST: "12"
   DB: ${{ secrets.DB }}
   DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
   MAILADRESS: ${{ secrets.MAILADRESS }}
@@ -36,7 +37,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: echo $TOKEN $MAILPW $MAILADRESS $MYMAILADRESS $DB_PASSWORD $DB $TRELLOKEY $TRELLOTOKEN
-    #- run: npm ci
-    #- run: npm run build --if-present
-    #- run: npm run test $TOKEN $MAILPW $MAILADRESS $MYMAILADRESS $DB_PASSWORD $DB $TRELLOKEY $TRELLOTOKEN & function sleepnkill () { sleep 30; killall node; }; sleepnkill
+    - run: echo $TEST
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm run test $TOKEN $MAILPW $MAILADRESS $MYMAILADRESS $DB_PASSWORD $DB $TRELLOKEY $TRELLOTOKEN & function sleepnkill () { sleep 30; killall node; }; sleepnkill
