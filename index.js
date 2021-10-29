@@ -39,7 +39,7 @@ const morenvc = require('./methodes/morenvc');
 
 var args = process.argv.slice(2)
 
-//for Testing purpuses
+//for Testing shit
 console.log(args)
 if (args.length == 8){
   process.env = {
