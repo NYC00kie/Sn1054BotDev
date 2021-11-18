@@ -8,27 +8,31 @@ dotenv.config();
 
 exports.add_word = (message, NewWord) => {
   this.message = message;
-  if (!message.member.roles.cache.some(role => role.id === "450742960678764544")){
+  if (!message.member.roles.cache.some(role => role.id === "450742960678764544")) {
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
   }
 
-  fs.writeFile('./bannedwords/blacklist.txt', "|"+NewWord, {flag:'a'},function (err) {
-  if (err) throw err;
-  console.log('Word: '+NewWord+' added to Blacklist!');
-});
+  fs.writeFile('./bannedwords/blacklist.txt', "|" + NewWord, {
+    flag: 'a'
+  }, function(err) {
+    if (err) throw err;
+    console.log('Word: ' + NewWord + ' added to Blacklist!');
+  });
 }
 
 
 exports.add_channel = (message, NewWord) => {
   this.message = message;
-  if (!message.member.roles.cache.some(role => role.id === "450742960678764544")){
+  if (!message.member.roles.cache.some(role => role.id === "450742960678764544")) {
     this.message.channel.send("Du hast keine Berechtigung dafür")
     return;
   }
 
-  fs.writeFile('./bannedwords/channelblacklist.txt', "|"+NewWord, {flag:'a'},function (err) {
-  if (err) throw err;
-  console.log('Word: '+NewWord+' added to Blacklist!');
-});
+  fs.writeFile('./bannedwords/channelblacklist.txt', "|" + NewWord, {
+    flag: 'a'
+  }, function(err) {
+    if (err) throw err;
+    console.log('Word: ' + NewWord + ' added to Blacklist!');
+  });
 }
