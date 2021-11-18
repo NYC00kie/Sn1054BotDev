@@ -6,6 +6,9 @@ const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 const PREFIX = "."
 var fs = require("fs");
+const {
+  exec
+} = require("child_process");
 const Help = require("./commands/help");
 const blacklist = require("./commands/addtoblacklist");
 const checkblacklist = require("./commands/inblacklist")
@@ -62,25 +65,6 @@ let bot = new Discord.Client({
 const token = process.env.Trellotoken
 const key = process.env.Trellokey
 
-async function rewriteVersion() {
-  let output = await getVersion()
-  Version2 = output.Version.split(".")
-
-
-  let finalVersion = Number(Version2[1]) + 1
-  var data = {
-    Version: Version2[0] + "." + finalVersion,
-    Date: Date("now")
-  }
-  var data = JSON.stringify(data)
-
-  fs.writeFile("Version.json", data, 'utf8', err => {
-    if (err) {
-      console.error(err)
-    }
-  })
-}
-rewriteVersion()
 
 bot.login(process.env.TOKEN);
 bot.on('error', console.error)
@@ -217,15 +201,32 @@ bot.on("message", async message => {
         blacklist.add_channel(message, Word)
         break;
       case "v":
-        let data = getVersion()
-        d1 = new Date(data.Date)
+        exec("git rev-list HEAD --count", (error, stdout, stderr) => {
+          if (error) {
+            console.error(error)
+          }
+          if (stderr) {
+            console.error(stderr)
+          }
+          let vdata = stdout
+          exec("git log -1 --format=%cd", (error, stdout, stderr) => {
+            if (error) {
+              console.error(error)
+            }
+            if (stderr) {
+              console.error(stderr)
+            }
+            let date = stdout
+            d1 = new Date(date)
 
-        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        zero = ""
-        if (d1.getMinutes() < 10) {
-          zero = 0
-        }
-        message.channel.send(`Version ${data.Version} vom ${d1.getDate()}. ${months[d1.getMonth()]} ${d1.getFullYear()} ${d1.getHours()}:${zero}${d1.getMinutes()}`)
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            zero = ""
+            if (d1.getMinutes() < 10) {
+              zero = 0
+            }
+            message.channel.send(`Commit anzahl: ${vdata.split("\n")[0]}. Letzter vom ${d1.getDate()}. ${months[d1.getMonth()]} ${d1.getFullYear()} ${d1.getHours()}:${zero}${d1.getMinutes()}`)
+          })
+        })
         break;
       case "amonunser":
         insider.AmonUnser(message)
