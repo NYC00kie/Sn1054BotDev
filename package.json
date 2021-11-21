@@ -1,6 +1,6 @@
 {
-  "name": "test-bot",
-  "version": "1.0.0",
+  "name": "clixoombot",
+  "version": "2.1.5",
   "description": "Clixoom Bot",
   "main": "index.js",
   "dependencies": {
@@ -26,9 +26,10 @@
     "url": "git+https://github.com/NYC00kie/ClixoomBotDev.git"
   },
   "author": "NY_Cookie",
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/NYC00kie/ClixoomBotDev/issues"
   },
-  "homepage": "https://github.com/NYC00kie/ClixoomBotDev#readme"
+  "homepage": "https://github.com/NYC00kie/ClixoomBotDev#readme",
+  "devDependencies": {}
 }
