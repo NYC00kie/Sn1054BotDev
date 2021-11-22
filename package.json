@@ -8,6 +8,7 @@
     "bl": "^2.2.1",
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
+    "gun": "^0.2020.1235",
     "mongoose": "^5.10.11",
     "mpath": "^0.8.3",
     "mquery": "^3.2.3",
@@ -30,6 +31,5 @@
   "bugs": {
     "url": "https://github.com/NYC00kie/ClixoomBotDev/issues"
   },
-  "homepage": "https://github.com/NYC00kie/ClixoomBotDev#readme",
-  "devDependencies": {}
+  "homepage": "https://github.com/NYC00kie/ClixoomBotDev#readme"
 }
