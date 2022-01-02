@@ -9,6 +9,8 @@
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
     "gun": "^0.2020.1235",
+    "json-schema": "^0.4.0",
+    "jsprim": "^1.4.1",
     "mongoose": "^5.10.11",
     "mpath": "^0.8.3",
     "mquery": "^3.2.3",
