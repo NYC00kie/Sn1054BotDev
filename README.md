@@ -20,3 +20,5 @@ there are 3 .env Files
 in /methodes is one
 in /commands is one
 and in the root dir is one
+
+env variables need to be configuired in docker-compose file
