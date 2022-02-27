@@ -14,7 +14,7 @@
     "mongoose": "^5.10.11",
     "mpath": "^0.8.3",
     "mquery": "^3.2.3",
-    "nodemailer": "^6.4.16",
+    "nodemailer": "^6.7.2",
     "nth-check": "^2.0.1",
     "request": "^2.88.2",
     "swift": "^2.8.0",
