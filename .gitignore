@@ -121,3 +121,4 @@ Todolist.txt
 bannedwords/
 database-backup/
 /radata*
+docker-compose.yml
