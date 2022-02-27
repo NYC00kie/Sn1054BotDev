@@ -1,0 +1,19 @@
+version: "3"
+
+
+services:
+  server:
+    image: nycookie/clixoombot:1.0
+    container_name: clixbot
+    environment:
+      - NODE_ENV=
+      - TOKEN=
+      - Mailpw=
+      - Mailadress=
+      - MyMailadress=
+      - Password=
+      - DB=
+      - Trellokey=
+      - Trellotoken=
+      - DBConnectionstring=
+    restart: always

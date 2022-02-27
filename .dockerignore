@@ -1,0 +1,5 @@
+node_modules
+radata
+.github
+*.env*
+docker-compose.yml
