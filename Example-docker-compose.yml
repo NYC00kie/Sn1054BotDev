@@ -3,7 +3,7 @@ version: "3"
 
 services:
   server:
-    image: nycookie/clixoombot:1.0
+    image: nycookie/clixoombot:latest
     container_name: clixbot
     environment:
       - NODE_ENV=
