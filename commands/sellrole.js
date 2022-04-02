@@ -295,7 +295,7 @@ exports.remove_role = (RoleData, message) => {
             Loghandler.log(message, Author, undefined, "sellroleall", undefined, undefined)
           }).catch(console.error)
       } else if (Search == undefined) {
-        console.log("something went wrong")
+
         this.message.channel.send("bitte definiere eine Rolle , die du verkaufen möchtes.")
       }
 

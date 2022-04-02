@@ -278,7 +278,6 @@ exports.add_role = (RoleData, message) => {
         }
 
       } else if (Search == undefined) {
-        console.log("something went wrong")
         this.message.channel.send("please define a Role you want to buy")
       }
     })

@@ -506,7 +506,7 @@ exports.delete_channel_Admin = (PingData, message) => {
           message.client.channels.cache.get(channel).lockPermissions()
           let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
           let newcxc = await how_many_messages_are_there_actually(msgcount1) * 12
-          console.log(newcxc)
+
           Sale.updateOne({
               _id: docs.id
             }, {
@@ -535,7 +535,7 @@ exports.delete_channel_Admin = (PingData, message) => {
               message.client.channels.cache.get(channel).lockPermissions()
               let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channel))
               let newcxc = await how_many_messages_are_there_actually(msgcount1) * 12
-              console.log(newcxc)
+
               Sale.updateOne({
                   _id: docs.id
                 }, {

@@ -16,4 +16,3 @@ services:
       - Trellokey=
       - Trellotoken=
       - DBConnectionstring=
-    restart: always

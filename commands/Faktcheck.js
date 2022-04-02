@@ -43,8 +43,7 @@ exports.check = (message, Begriff) => {
       let zeroth = Pagecontent.split("\n")
       let actuallength = Pagecontent.split("")
       let shorter = zeroth[0].substr(0, 1800)
-      console.log("\n------------------\n" + shorter + "\n-----------------\n")
-      console.log(actuallength.length)
+
       if (actuallength.length >= 1800) {
         this.message.channel.send(shorter + "\n \nMehr Informationen findest du hier: https://de.wikipedia.org/wiki/" + Suche + " \n \nDiese Informationen wurden von Wikipedia, der freien Enzyklopädie bereitgestellt.")
           .catch(err => {

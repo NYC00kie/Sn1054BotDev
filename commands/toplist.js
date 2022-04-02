@@ -101,17 +101,17 @@ exports.channeltop = async (message) => {
           })
         }
       });
-      console.log(channelarr)
+
       for (var i = 0; i < channelarr.length; i++) {
         let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(channelarr[i].Chaid))
         let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
         channelarr[i].messages = msgcount2
-        console.log(channelarr)
+
       }
       channelarr.sort(function(a, b) {
         return b.messages - a.messages;
       });
-      console.log(channelarr)
+
       var TopEmbed = new Discord.MessageEmbed()
         .setColor(0xe19517)
         .setTitle("Die (bis zu) 10 Leute mit den best laufenden Channel(s)")

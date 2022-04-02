@@ -26,7 +26,7 @@ exports.add_cxc = (message) => {
         Loghandler.log(message, Author, undefined, "daily", undefined, undefined)
         this.message.react('💸')
         var CXC = docs.cxc + 300
-        console.log("1 day later")
+
         Sale.updateOne({
             _id: docs._id
           }, {

@@ -13,7 +13,7 @@ exports.get_help = (message) => {
     .addField("Zusätzliches", "Bei Problemen mit diesem Bot kann man sich gerne bei mir über Discord melden:\n < 376394812888186890> , oder beim Clixoom Discord Team.\nMehr Befehle kommen bald. Vorschläge kannst du in den Chat <#518388012149899294> schreiben.\n Bugs sind bitte direkt bei mir oder beim Clixoom Discord Team zu melden.\n Viel Spaß c:")
     .setFooter("erstellt von: Nici und mit der Hilfe von Clara")
   this.message.author.send(Helpembed);
-  console.log("help executed")
+
   this.message.channel.send("Alle Commands wurden dir Privat zugesendet")
     .catch(err => {
       this.message.channel.send("Help kann nicht gesendet werden. Du hast deine Privaten Nachrichten deaktiviert.")
