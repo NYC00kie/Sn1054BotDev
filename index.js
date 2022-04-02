@@ -29,7 +29,6 @@ const dbupdate = require('./commands/DBupdate');
 const stats = require('./commands/stats');
 const insider = require('./commands/insider');
 const start = require('./commands/start');
-const SNUpdate = require('./commands/SNUpdate');
 const Faktcheck = require('./commands/Faktcheck');
 const Watchblacklist = require('./commands/watchblacklist');
 const howmany = require('./commands/howmany');
@@ -334,10 +333,6 @@ bot.on("message", async message => {
         break;
       case "start":
         start.start(message);
-        break;
-      case "snupdate":
-        //SNUpdate.SNUpdate(message);
-        this.message.channel.send("Die Datenbank ist schon geupdated")
         break;
       case "faktcheck":
         Faktcheck.check(message, Begriff);
