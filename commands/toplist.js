@@ -1,10 +1,12 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const Discord = require('discord.js');
-const Sale = require('../models/sale');
-const Channel = require('../models/channels')
+const moment = require("moment");
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
+const Sale = require('../models/sale');
+const Channel = require('../models/channels')
+
 
 var transporter = nodemailer.createTransport({
 	host: "smtp.gmail.com",
@@ -83,7 +85,6 @@ exports.messagetop = (message) => {
 
 exports.channeltop = async (message) => {
 	this.message = message;
-	this.message.channel.send("Loading Data")
 	let channelarr = []
 
 	Channel.find()
@@ -102,7 +103,7 @@ exports.channeltop = async (message) => {
 				.setFooter("Heute ist der: " + Date("now"))
 			for (var i = 0; i < channelarr.length; i++) {
 
-				TopEmbed.addField("឵឵ ឵឵ ឵឵", "" + (i + 1) + ". <#" + channelarr[i].channelid + "> von <@" + channelarr[i].ownerid + "> mit " + channelarr[i].messagecount + "Nachrichten. (zuletzt gechached am " + channelarr[i].lastcachedate + " )")
+				TopEmbed.addField("឵឵ ឵឵ ឵឵", "" + (i + 1) + ". <#" + channelarr[i].channelid + "> von <@" + channelarr[i].ownerid + "> mit " + channelarr[i].messagecount + "Nachrichten. \n( Stand " + moment(channelarr[i].lastcachedate).format('DD MMMM YYYY, HH:MM') + " )")
 			}
 			this.message.channel.send(TopEmbed)
 		}).catch(err => { //message fuction
