@@ -3,7 +3,7 @@ version: "3"
 
 services:
   server:
-    image: nycookie/clixoombot:latest
+    image: nycookie/sn1054bot:latest
     container_name: clixbot
     environment:
       - NODE_ENV=
@@ -16,5 +16,5 @@ services:
       - Trellokey=
       - Trellotoken=
       - DBConnectionstring=
-      
+
     restart: always

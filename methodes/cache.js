@@ -109,7 +109,7 @@ function sleep(ms) {
 				await Newchannel.save()
 			}
 			let waittimems = 60000 * (Math.floor(msgcount / 1000) + 1)
-			console.log(`${waittimems/60000} sekunden`)
+			console.log(`${waittimems/60000} Minuten`)
 			await sleep(waittimems)
 		}
 
@@ -130,7 +130,7 @@ function sleep(ms) {
 				await Newchannel.save()
 			}
 			let waittimems = 60000 * (Math.floor(msgcount / 1000) + 1)
-			console.log(`${waittimems/60000} sekunden`)
+			console.log(`${waittimems/60000} Minuten`)
 			await sleep(waittimems)
 		}
 
