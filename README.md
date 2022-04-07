@@ -1,6 +1,6 @@
 # SN1054 Bot
 
-This is a Discord Bot for the Sn1054 Discord Server. (https: discord (dot) gg/Sn1054)
+This is a Discord Bot for the Sn1054 Discord Server. (https:// discord (dot) gg/Sn1054)
 
 It is based on the **discord.js** package.
 
