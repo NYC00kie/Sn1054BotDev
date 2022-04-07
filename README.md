@@ -1,4 +1,4 @@
-# ClixoomBotDev
+# SN1054 Bot
 
 This is a Discord Bot for the Sn1054 Discord Server. (https:discord.gg/Sn1054)
 
