@@ -109,7 +109,7 @@ function sleep(ms) {
 			}
 			let waittimems = 60000 * (Math.floor(msgcount / 1000) + 1)
 			console.log(`${waittimems/60000} Minuten`)
-
+			await sleep(waittimems)
 		}
 
 		// channel 2
@@ -131,7 +131,7 @@ function sleep(ms) {
 			}
 			let waittimems = 60000 * (Math.floor(msgcount / 1000) + 1)
 			console.log(`${waittimems/60000} Minuten`)
-
+			await sleep(waittimems)
 		}
 
 	}
