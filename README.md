@@ -22,3 +22,6 @@ in /commands is one
 and in the root dir is one
 
 env variables need to be configuired in docker-compose file
+
+to not overflow the discord api I added caching to the .chtop command.
+Because of that the caching process must be initiated every once in a while
