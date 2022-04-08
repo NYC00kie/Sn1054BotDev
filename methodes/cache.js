@@ -77,8 +77,7 @@ function sleep(ms) {
 }
 
 (async () => {
-	console.log(1)
-	console.log(2)
+
 	let docs = await Sale.find()
 	let filtereddocs = docs.filter(e => e.Channelid != "undefined" || e.Channelid2 != "undefined")
 
@@ -88,7 +87,6 @@ function sleep(ms) {
 	for (var i = 0; i < filtereddocs.length; i++) {
 		filtereddocs[i].created = await Channel.exists({ channelid: filtereddocs[i].Channelid }) || await Channel.exists({ channelid: filtereddocs[i].Channelid2 })
 	}
-	console.log(3)
 	await sleep(5000)
 	for (var i = 0; i < filtereddocs.length; i++) {
 
@@ -135,8 +133,7 @@ function sleep(ms) {
 		}
 
 	}
-	console.log(4)
-	console.log(5)
+
 	await mongoose.disconnect();
 	await mongoose.connection.close()
 	process.exit()
