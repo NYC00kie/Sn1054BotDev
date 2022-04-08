@@ -94,8 +94,9 @@ function sleep(ms) {
 		if (filtereddocs[i].Channelid != "undefined") {
 			let msgcount = await countmessages(filtereddocs[i].Channelid)
 			if (filtereddocs[i].created) {
-				let update = { messagecount: msgcount }
-				await filtereddocs[i].updateOne(update)
+				let channeldoc = await Channel.findOne({ channelid: filtereddocs[i].Channelid })
+				let update = { messagecount: msgcount, lastcachedate: new Date() }
+				await channeldoc.updateOne(update)
 			} else {
 				let Newchannel = new Channel({
 					_id: new mongoose.Types.ObjectId(),
@@ -108,15 +109,16 @@ function sleep(ms) {
 			}
 			let waittimems = 60000 * (Math.floor(msgcount / 1000) + 1)
 			console.log(`${waittimems/60000} Minuten`)
-			await sleep(waittimems)
+
 		}
 
 		// channel 2
 		if (filtereddocs[i].Channelid2 != "undefined") {
 			let msgcount = await countmessages(filtereddocs[i].Channelid2)
 			if (filtereddocs[i].created) {
-				let update = { messagecount: msgcount }
-				await filtereddocs[i].updateOne(update)
+				let channeldoc = await Channel.findOne({ channelid: filtereddocs[i].Channelid2 })
+				let update = { messagecount: msgcount, lastcachedate: new Date() }
+				await channeldoc.updateOne(update)
 			} else {
 				let Newchannel = new Channel({
 					_id: new mongoose.Types.ObjectId(),
@@ -129,9 +131,22 @@ function sleep(ms) {
 			}
 			let waittimems = 60000 * (Math.floor(msgcount / 1000) + 1)
 			console.log(`${waittimems/60000} Minuten`)
-			await sleep(waittimems)
+
 		}
 
+	}
+
+	let channeldocs = await Channel.find()
+
+	for (var i = 0; i < channeldocs.length; i++) {
+
+		let found = docs.find(element => element.Channelid == channeldocs[i].channelid || element.Channelid2 == channeldocs[i].channelid)
+		// wenn der channel gelöscht wurde, lösche ihn auch aus der Sammlung
+		if (found == undefined) {
+			console.log("no Partner found")
+			console.log(channeldocs[i])
+			await channeldocs[i].remove()
+		}
 	}
 
 	await mongoose.disconnect();
