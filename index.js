@@ -10,8 +10,6 @@ const {
 	exec
 } = require("child_process");
 const Help = require("./commands/help");
-const blacklist = require("./commands/addtoblacklist");
-const checkblacklist = require("./commands/inblacklist")
 const manageprofile = require("./commands/manageprofile");
 const Cxc = require("./commands/cxc");
 const Sale = require('./models/sale');
@@ -30,7 +28,6 @@ const stats = require('./commands/stats');
 const insider = require('./commands/insider');
 const start = require('./commands/start');
 const Faktcheck = require('./commands/Faktcheck');
-const Watchblacklist = require('./commands/watchblacklist');
 const howmany = require('./commands/howmany');
 const top = require('./commands/toplist');
 const trello = require('./commands/trello');
@@ -189,12 +186,6 @@ bot.on("message", async message => {
 			case "channeltop":
 				top.channeltop(message)
 				break;
-			case "addblacklist":
-				blacklist.add_word(message, Word)
-				break;
-			case "addchannel":
-				blacklist.add_channel(message, Word)
-				break;
 			case "v":
 				exec("git rev-list HEAD --count", (error, stdout, stderr) => {
 					if (error) {
@@ -333,12 +324,6 @@ bot.on("message", async message => {
 				break;
 			case "faktcheck":
 				Faktcheck.check(message, Begriff);
-				break;
-			case "watchword":
-				Watchblacklist.word(message);
-				break;
-			case "watchchannel":
-				Watchblacklist.channel(message);
 				break;
 			case "nvctop":
 				top.nvctop(message);
