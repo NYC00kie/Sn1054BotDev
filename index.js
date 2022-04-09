@@ -147,24 +147,22 @@ bot.on("message", async message => {
 	};
 
 	count.message_count(message)
-	checkblacklist.suizid(message)
+
 	if (message.channel instanceof Discord.DMChannel) return; //return if the Channel the message got send in is the PM channel
 	manageprofile.add_Profile_old(message);
 	if (!message.content.startsWith(PREFIX)) {
-		if (!checkblacklist.check_word(message)) {
 
-			if (message.channel.id != "518446638335918080") {
-				Cxc.add_cxc(message);
-				await sleep(1000);
-				Cxcdaily.add_cxc(message);
-				morenvc.morenvc(message);
-			} else {
-				message.delete({
-					timeout: 1000
-				})
-			}
-
+		if (message.channel.id != "518446638335918080") {
+			Cxc.add_cxc(message);
+			await sleep(1000);
+			Cxcdaily.add_cxc(message);
+			morenvc.morenvc(message);
+		} else {
+			message.delete({
+				timeout: 1000
+			})
 		}
+
 
 	} //return if there is no Prefix
 	else {
