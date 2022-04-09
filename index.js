@@ -352,10 +352,3 @@ function sleep(ms) {
 		setTimeout(resolve, ms);
 	});
 }
-//gets the current Bot Version from Version.json
-function getVersion() {
-	var data = fs.readFileSync('Version.json', 'utf8')
-	var data2 = JSON.parse(data)
-
-	return data2
-}
