@@ -161,7 +161,7 @@ bot.on("message", async message => {
 		}
 
 
-	} //return if there is no Prefix
+	} //if there is no Prefix
 	else {
 		let args = message.content.substring(PREFIX.length).split(" ");
 		let NewCxc = {
