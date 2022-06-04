@@ -5,14 +5,12 @@ const Discord = require('discord.js');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 const PREFIX = "."
-var fs = require("fs");
 const {
 	exec
 } = require("child_process");
 const Help = require("./commands/help");
 const manageprofile = require("./commands/manageprofile");
 const Cxc = require("./commands/cxc");
-const Sale = require('./models/sale');
 const Sellrole = require("./commands/sellrole");
 const Buyrole = require("./commands/buyrole");
 const Nick = require("./commands/changenick");
@@ -23,14 +21,11 @@ const ahelp = require('./commands/ahelp');
 const cxc = require('./commands/givecxc');
 const Profil = require('./commands/profil');
 const cxgifs = require('./commands/cx-gifs');
-const dbupdate = require('./commands/DBupdate');
 const stats = require('./commands/stats');
 const insider = require('./commands/insider');
 const start = require('./commands/start');
 const Faktcheck = require('./commands/Faktcheck');
-const howmany = require('./commands/howmany');
 const top = require('./commands/toplist');
-const trello = require('./commands/trello');
 const count = require('./commands/count');
 const ping = require('./commands/ping');
 const morenvc = require('./methodes/morenvc');
@@ -47,8 +42,6 @@ if (args.length == 8) {
 		MyMailadress: args[3],
 		Password: args[4],
 		DB: args[5],
-		Trellokey: args[6],
-		Trellotoken: args[7]
 	}
 }
 
@@ -57,9 +50,6 @@ let bot = new Discord.Client({
 		intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILD_PRESENCES"]
 	}
 });
-
-const token = process.env.Trellotoken
-const key = process.env.Trellokey
 
 
 bot.login(process.env.TOKEN);
@@ -176,7 +166,6 @@ bot.on("message", async message => {
 		let PingData = {
 			Ping: args[1]
 		}
-		let Word = args[1]
 		let Begriff = message.content.substr(PREFIX.length + args[0].length + 1, 128)
 		//all Commands
 		switch (args[0].toLowerCase()) {
@@ -310,9 +299,6 @@ bot.on("message", async message => {
 			case "thumbs":
 				cxgifs.thumbs_gif(message);
 				break;
-			case "dbupdate":
-				//dbupdate.update(message);
-				break;
 			case "reset":
 				manageprofile.reset_Profile(PingData, message, bot);
 				break;
@@ -333,12 +319,6 @@ bot.on("message", async message => {
 				break;
 			case "messagetop":
 				top.messagetop(message);
-				break;
-			case "dev":
-				trello.whatsontrello(message, token, key);
-				break;
-			case "ey":
-				trello.whatsontrello(message, token, key);
 				break;
 			case "ping":
 				ping.ping(message, bot)
