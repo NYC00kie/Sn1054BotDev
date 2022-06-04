@@ -13,8 +13,6 @@ services:
       - MyMailadress=
       - Password=
       - DB=
-      - Trellokey=
-      - Trellotoken=
       - DBConnectionstring=
 
     restart: always
