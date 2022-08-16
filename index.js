@@ -4,23 +4,19 @@ dotenv.config();
 const Discord = require('discord.js');
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
-const PREFIX = "."
-const {
-	exec
-} = require("child_process");
+const {exec} = require("child_process");
 const Help = require("./commands/help");
 const manageprofile = require("./commands/manageprofile");
 const Cxc = require("./commands/cxc");
 const Sellrole = require("./commands/sellrole");
 const Buyrole = require("./commands/buyrole");
 const Nick = require("./commands/changenick");
-const buyemote = require("./commands/buyemote");
 const channel = require("./commands/channel");
 const Cxcdaily = require("./commands/cxcdaily");
 const ahelp = require('./commands/ahelp');
 const cxc = require('./commands/givecxc');
 const Profil = require('./commands/profil');
-const cxgifs = require('./commands/cx-gifs');
+// const cxgifs = require('./commands/cx-gifs');
 const stats = require('./commands/stats');
 const insider = require('./commands/insider');
 const start = require('./commands/start');
@@ -31,6 +27,7 @@ const ping = require('./commands/ping');
 const morenvc = require('./methodes/morenvc');
 //beginning of the Code
 
+const PREFIX = "."
 var args = process.argv.slice(2)
 
 //for Testing shit
@@ -248,9 +245,6 @@ bot.on("message", async message => {
 			case "setnvc":
 				cxc.setcxc(PingData, message, NewCxc)
 				break;
-			case "buyemote":
-				buyemote.buy_emote(RoleData, message)
-				break;
 			case "create":
 				//message.channel.send("Um den Einstieg für die Neuen zu vereinfachen, ist dieses Modul, für eine kurze Zeit nach dem Update deaktivieren.")
 				let channelbeschreibung = message.content.substr(PREFIX.length + args[0].length + args[1].length + 1, 1000)
@@ -274,30 +268,6 @@ bot.on("message", async message => {
 				break;
 			case "transfer":
 				Cxc.transfer_cxc(PingData, NewCxc, message);
-				break;
-			case "bye":
-				cxgifs.bye_gif(message)
-				break;
-			case "happy":
-				cxgifs.happy_gif(message);
-				break;
-			case "klick":
-				cxgifs.klick_gif(message);
-				break;
-			case "point":
-				cxgifs.point_gif(message);
-				break;
-			case "sad":
-				cxgifs.sad_gif(message);
-				break;
-			case "spock":
-				cxgifs.spock_gif(message);
-				break;
-			case "lebelangundinfrieden":
-				cxgifs.spock_gif(message);
-				break;
-			case "thumbs":
-				cxgifs.thumbs_gif(message);
 				break;
 			case "reset":
 				manageprofile.reset_Profile(PingData, message, bot);
