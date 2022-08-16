@@ -209,6 +209,9 @@ bot.on("message", async message => {
 			case "lindnernein":
 				insider.LindnerNein(message)
 				break;
+			case "ichwillnichtmehr":
+				insider.Ichwillnichtmehr(message)
+				break;
 			case "changenick":
 				Nick.change_nick(NewNick, message)
 				break;

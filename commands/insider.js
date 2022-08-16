@@ -27,3 +27,13 @@ exports.LindnerNein = (message) => {
 		files: ["./commands/cxgifs/Christian_Lindner_Haha_Nein-480p.mp4"]
 	})
 }
+
+exports.Ichwillnichtmehr = (message) => {
+	this.message = message;
+	this.message.delete({
+		timeout: 10
+	})
+	this.message.channel.send({
+		files: ["./commands/cxgifs/Ichwillnichtmehr.mp4"]
+	})
+}
