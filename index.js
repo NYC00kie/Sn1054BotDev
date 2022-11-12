@@ -3,7 +3,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 const Discord = require('discord.js');
 const mongoose = require('mongoose');
-const nodemailer = require('nodemailer');
 const {exec} = require("child_process");
 const Help = require("./commands/help");
 const manageprofile = require("./commands/manageprofile");
@@ -71,7 +70,8 @@ bot.on('ready', async () => {
 });
 
 //conect to DB
-mongoose.connect('mongodb+srv://NY_Cookie:' + process.env.Password + '@clixoom-bot-oj9lk.mongodb.net/' + process.env.DB + '?retryWrites=true&w=majority', {
+
+mongoose.connect('mongodb+srv://NY_Cookie:' + process.env.Password + '@clixoom-bot.oj9lk.mongodb.net/' + process.env.DB + '?retryWrites=true&w=majority', {
 	useNewUrlParser: true,
 	dbName: process.env.DB,
 }).then(() => {
@@ -90,13 +90,6 @@ mongoose.connect('mongodb+srv://NY_Cookie:' + process.env.Password + '@clixoom-b
 });
 mongoose.Promise = global.Promise;
 
-var transporter = nodemailer.createTransport({
-	host: "smtp.gmail.com",
-	auth: {
-		user: process.env.Mailadress,
-		pass: process.env.Mailpw
-	}
-});
 
 bot.on("guildMemberUpdate", function(oldMember, newMember) {
 	if (oldMember._roles != newMember._roles) {

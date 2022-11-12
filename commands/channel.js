@@ -1,19 +1,10 @@
 const mongoose = require('mongoose');
 const Sale = require('../models/sale');
 const Discord = require('discord.js');
-const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 const howmany = require('./howmany');
 const Loghandler = require('./Loghandler');
 dotenv.config();
-
-var transporter = nodemailer.createTransport({
-	host: "smtp.gmail.com",
-	auth: {
-		user: process.env.Mailadress,
-		pass: process.env.Mailpw
-	}
-});
 
 async function lots_of_messages_getter(channel, limitt = 10000) {
 	const sum_messages = [];
@@ -95,15 +86,6 @@ exports.create_channel = async (ChannelData, message) => {
 					});
 			})
 			.catch(err => {
-				var e = new Error(err);
-				const Es = e.toString()
-				var mailOptions = {
-					from: process.env.Mailadress,
-					to: process.env.MyMailadress,
-					subject: "Error",
-					text: Es + Date("now")
-				};
-				transporter.sendMail(mailOptions);
 				console.error(err);
 			});
 	} else if (docs.Channelid2 == "undefined") {
@@ -139,15 +121,7 @@ exports.create_channel = async (ChannelData, message) => {
 						});
 				})
 				.catch(err => {
-					var e = new Error(err);
-					const Es = e.toString()
-					var mailOptions = {
-						from: process.env.Mailadress,
-						to: process.env.MyMailadress,
-						subject: "Error",
-						text: Es + Date("now")
-					};
-					transporter.sendMail(mailOptions);
+					
 					console.error(err);
 				});
 		} else {
@@ -158,134 +132,65 @@ exports.create_channel = async (ChannelData, message) => {
 	}
 }
 exports.chstats_channel_User = (PingData, message) => {
-
+	const Channel = require('../models/channels')
+	const moment = require("moment");
 	this.message = message;
 	const MemberID = this.message.author.id
 	const Author = this.message.author
 	if (PingData.Ping == undefined) {
-		Sale.findOne({
-				MemberId: MemberID
+		Channel.findOne({
+				ownerid: MemberID
 			})
 			.exec()
 			.then(docs => {
 				message.delete({
 					timeout: 1000
 				})
-				if (docs.Channelid != "undefined") {
-
-					Promise.resolve()
+				Promise.resolve()
 						.then(async () => {
-							let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(docs.Channelid))
-							let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
+
 
 							var ChstatsEmbed = new Discord.MessageEmbed()
 								.setColor(0xe19517)
 								.setTitle("Deine Kanal-Stats")
-								.addField("Stats:", "Dein Channel:\n" + "<#" + docs.Channelid + ">" + "\n\nNachrichten:\n" + msgcount2 + "\n\nvorrausgesehene Nvc:\n" + msgcount2 * 12 + "\n")
+								.addField("Stats:", "Dein Channel:\n" + "<#" + docs.channelid + ">" + "\n\nNachrichten:\n" + docs.msgcount + "\n\nvorrausgesehene Nvc:\n" + docs.msgcount * 12 + "\n (stand : "+moment(channelarr[i].lastcachedate).format('DD MMMM YYYY, HH:MM')+" )")
 								.setTimestamp(Date("now"))
 							this.message.channel.send(ChstatsEmbed);
 
 						}).catch(console.error);
-				}
-				if (docs.Channelid2 != "undefined") {
 
-					Promise.resolve()
-						.then(async () => {
-							let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(docs.Channelid2))
-							let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
-							var ChstatsEmbed = new Discord.MessageEmbed()
-								.setColor(0xe19517)
-								.setTitle("Deine Kanal-Stats")
-								.addField("Stats:", "Dein Channel:\n" + "<#" + docs.Channelid2 + ">" + "\n\nNachrichten:\n" + msgcount2 + "\n\nvorrausgesehene Nvc:\n" + msgcount2 * 12 + "\n")
-								.setTimestamp(Date("now"))
-							this.message.channel.send(ChstatsEmbed);
 
-						}).catch(console.error);
-				}
-				if (docs.Channelid2 == "undefined" && docs.Channelid == "undefined") {
-					this.message.channel.send("Du hast keinen Kanal, für den man Statistiken anzeigen könnte.")
-				}
-
-			})
+			}).catch(console.error)
 	} else {
-
-		Sale.findOne({
-				Name: PingData.Ping
+		Channel.findOne({
+				ownerid: PingData.Ping
 			})
 			.exec()
-			.then(async docs => {
-
-				if (docs.Channelid != "undefined" || docs.Channelid2 != "undefined") {
-
-
-					if (docs.Channelid != "undefined") {
-
-						let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(docs.Channelid))
-						let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
-						var ChstatsEmbed = new Discord.MessageEmbed()
-							.setColor(0xe19517)
-							.setTitle("Deine Kanal-Stats")
-							.addField("Stats:", "Dein Channel:\n" + "<#" + docs.Channelid + ">" + "\n\nNachrichten:\n" + msgcount2 + "\n\nvorrausgesehene Nvc:\n" + msgcount2 * 12 + "\n")
-							.setTimestamp(Date("now"))
-						this.message.channel.send(ChstatsEmbed).catch(console.error());
-
-					}
-					if (docs.Channelid2 != "undefined") {
-
-						let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(docs.Channelid2))
-						let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
-						var ChstatsEmbed2 = new Discord.MessageEmbed()
-							.setColor(0xe19517)
-							.setTitle("Deine Kanal-Stats")
-							.addField("Stats:", "Dein Channel:\n" + "<#" + docs.Channelid2 + ">" + "\n\nNachrichten:\n" + msgcount2 + "\n\nvorrausgesehene Nvc:\n" + msgcount2 * 12 + "\n")
-							.setTimestamp(Date("now"))
-						this.message.channel.send(ChstatsEmbed2).catch(console.error());
-
-					}
-				} else {
-					this.message.channel.send("Die Gepingte Person hat keinen Kanal")
-				}
-			}).catch(err => {
-				Sale.findOne({
-						Name2: PingData.Ping
-					})
-					.exec()
-					.then(async docs => {
-
-						if (docs.Channelid != "undefined" || docs.Channelid2 != "undefined") {
+			.then(docs => {
+				message.delete({
+					timeout: 1000
+				})
+				Promise.resolve()
+						.then(async () => {
 
 
-							if (docs.Channelid != "undefined") {
+							var ChstatsEmbed = new Discord.MessageEmbed()
+								.setColor(0xe19517)
+								.setTitle("Deine Kanal-Stats")
+								.addField("Stats:", "Dein Channel:\n" + "<#" + docs.channelid + ">" + "\n\nNachrichten:\n" + docs.msgcount + "\n\nvorrausgesehene Nvc:\n" + docs.msgcount * 12 + "\n")
+								.setTimestamp(Date("now"))
+							this.message.channel.send(ChstatsEmbed);
 
-								let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(docs.Channelid))
-								let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
-								var ChstatsEmbed = new Discord.MessageEmbed()
-									.setColor(0xe19517)
-									.setTitle("Deine Kanal-Stats")
-									.addField("Stats:", "Dein Channel:\n" + "<#" + docs.Channelid + ">" + "\n\nNachrichten:\n" + msgcount2 + "\n\nvorrausgesehene Nvc:\n" + msgcount2 * 12 + "\n")
-									.setTimestamp(Date("now"))
-								this.message.channel.send(ChstatsEmbed).catch(console.error());
+						}).catch(console.error);
 
-							}
-							if (docs.Channelid2 != "undefined") {
 
-								let msgcount1 = await lots_of_messages_getter(message.client.channels.cache.get(docs.Channelid2))
-								let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
-								var ChstatsEmbed2 = new Discord.MessageEmbed()
-									.setColor(0xe19517)
-									.setTitle("Deine Kanal-Stats")
-									.addField("Stats:", "Dein Channel:\n" + "<#" + docs.Channelid2 + ">" + "\n\nNachrichten:\n" + msgcount2 + "\n\nvorrausgesehene Nvc:\n" + msgcount2 * 12 + "\n")
-									.setTimestamp(Date("now"))
-								this.message.channel.send(ChstatsEmbed2).catch(console.error());
-
-							}
-						} else {
-							this.message.channel.send("Die Gepingte Person hast keinen Kanal")
-						}
-					}).catch(console.error)
-			})
+			}).catch(console.error)
+		
 	}
+
 }
+	
+
 
 exports.delete_channel_User = async (PingData, message) => {
 	this.message = message;
