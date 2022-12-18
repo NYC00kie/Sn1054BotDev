@@ -14,7 +14,6 @@ const Buyrole = require("./commands/buyrole");
 const Nick = require("./commands/changenick");
 const channel = require("./commands/channel");
 const Cxcdaily = require("./commands/cxcdaily");
-const ahelp = require('./commands/ahelp');
 const cxc = require('./commands/givecxc');
 const Profil = require('./commands/profil');
 const stats = require('./commands/stats');
