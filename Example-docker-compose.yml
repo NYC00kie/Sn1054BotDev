@@ -14,5 +14,7 @@ services:
       - Password=
       - DB=
       - DBConnectionstring=
+      - clientid =
+      - guildId = 
 
     restart: always
