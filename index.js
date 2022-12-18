@@ -10,7 +10,6 @@ const Help = require("./commands/help");
 const manageprofile = require("./commands/manageprofile");
 const Cxc = require("./commands/cxc");
 const Sellrole = require("./commands/sellrole");
-const Buyrole = require("./commands/buyrole");
 const Nick = require("./commands/changenick");
 const channel = require("./commands/channel");
 const Cxcdaily = require("./commands/cxcdaily");

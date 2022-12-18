@@ -4,7 +4,7 @@ version: "3"
 services:
   server:
     image: nycookie/sn1054bot:latest
-    container_name: clixbot
+    container_name: sn1054bot
     environment:
       - NODE_ENV=
       - TOKEN=
