@@ -73,18 +73,7 @@ mongoose.connect('mongodb+srv://NY_Cookie:' + process.env.Password + '@clixoom-b
 	dbName: process.env.DB,
 }).then(() => {
 	console.log('\nconnected to database\n')
-}).catch(err => { //message fuction
-	var e = new Error(err);
-	const Es = e.toString()
-	var mailOptions = {
-		from: process.env.Mailadress,
-		to: process.env.MyMailadress,
-		subject: "Error",
-		text: Es + Date("now")
-	};
-	transporter.sendMail(mailOptions);
-	console.error(err);
-});
+}).catch(err => console.error(err));
 mongoose.Promise = global.Promise;
 
 
