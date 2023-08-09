@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@discordjs/uws": "^10.149.0",
+    "@js-temporal/polyfill": "^0.4.3",
     "bl": "^2.2.1",
     "discord.js": "^14.7.1",
     "dotenv": "^8.2.0",
