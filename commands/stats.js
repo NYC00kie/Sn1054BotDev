@@ -5,7 +5,7 @@ const Sale = require('../models/sale');
 const Cxc = require("../commands/cxc");
 const Discord = require('discord.js');
 const nodemailer = require('nodemailer');
-const howmany = require('./howmany');
+const howmany = require('../methodes/howmany');
 
 var transporter = nodemailer.createTransport({
 	host: "smtp.gmail.com",

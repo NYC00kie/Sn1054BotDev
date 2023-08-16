@@ -7,9 +7,11 @@ const Channel = require('../models/channels')
 const Sale = require('../models/sale');
 
 let bot = new Discord.Client({
-	ws: {
-		intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILD_PRESENCES"]
-	}
+		intents: [
+			'1',
+			'2',
+			'512'
+			]
 });
 
 bot.login(process.env.TOKEN);
