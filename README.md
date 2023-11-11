@@ -4,7 +4,7 @@ This is a Discord Bot for the Sn1054 Discord Server. (https:// discord (dot) gg/
 
 It is based on the **discord.js** package.
 
-It Runs in NodeJS and is hosted on a Raspberrypi 3B+.
+It Runs in NodeJS and is hosted on a Raspberrypi 4.
 
 I use a MongoDB Database because I some what know how it works.
 
