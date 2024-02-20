@@ -10,11 +10,9 @@ const manageprofile = require("./commands/manageprofile");
 const Cxc = require("./commands/cxc");
 const Sellrole = require("./commands/sellrole");
 const channel = require("./commands/channel");
-const Cxcdaily = require("./commands/cxcdaily");
 const cxc = require('./commands/givecxc');
 const Profil = require('./commands/profil');
 const insider = require('./commands/insider');
-const morenvc = require('./methodes/morenvc');
 //beginning of the Code
 
 const PREFIX = "."
