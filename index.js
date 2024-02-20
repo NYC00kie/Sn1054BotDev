@@ -16,9 +16,6 @@ const Cxcdaily = require("./commands/cxcdaily");
 const cxc = require('./commands/givecxc');
 const Profil = require('./commands/profil');
 const insider = require('./commands/insider');
-const Faktcheck = require('./commands/Faktcheck');
-const count = require('./commands/count');
-const ping = require('./commands/ping');
 const morenvc = require('./methodes/morenvc');
 //beginning of the Code
 
