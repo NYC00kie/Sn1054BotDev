@@ -6,7 +6,6 @@ const fs = require("fs")
 const path = require("path")
 const mongoose = require('mongoose');
 const {exec} = require("child_process");
-const Help = require("./commands/help");
 const manageprofile = require("./commands/manageprofile");
 const Cxc = require("./commands/cxc");
 const Sellrole = require("./commands/sellrole");
