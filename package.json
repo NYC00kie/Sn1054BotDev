@@ -16,7 +16,7 @@
     "mout": "^1.2.3",
     "mpath": "^0.8.3",
     "mquery": "^3.2.3",
-    "nodemailer": "^6.7.2",
+    "nodemailer": "^6.9.9",
     "nth-check": "^2.0.1",
     "request": "^2.88.2",
     "swift": "^0.1.8",
