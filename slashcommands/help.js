@@ -16,7 +16,7 @@ module.exports = {
 		{name:"Kanalsystem", value: "Hinweise:\n Diese System ist nur für wissenschaftliche Themen gedacht! Andere Themen werden sofort gelöscht.\n Den Namen des Kanals immer ohne Leerzeichen schreiben (Die Beschreibung darf Leerzeichen enthalten)\n Eigene Kanäle können erst gelöscht werden, wenn 24h nichts mehr in ihnen geschrieben wurde.\n Nachdem man seinen Kanal geschlossen hat erhält man eine kleine Belohnung in Form von Nova-Coins (die Anzahl richtet sich nach der vorherigen Aktivität des Channels)\n Missbrauch in Form von Spam usw. wird nicht tolleriert.\n ``.create [name] [beschreibung]`` - Erstellt einen eigenen Diskussionskanal\n ``.chstats`` - Zeigt dir Statistiken zu deinem Kanal an\n ``.delete`` - Löscht deinen eigenen Kanal"},
 		{name:"Zusätzliches", value:"Bei Problemen mit diesem Bot kann man sich gerne bei mir über Discord melden:\n < 376394812888186890> , oder beim Clixoom Discord Team.\nMehr Befehle kommen bald. Vorschläge kannst du in den Chat <#518388012149899294> schreiben.\n Bugs sind bitte direkt bei mir oder beim Clixoom Discord Team zu melden.\n Viel Spaß c:"}
 		)
-		.setFooter("erstellt von: Nici und mit der Hilfe von Clara")
+		.setFooter("erstellt von: Nici \n XMR:82jEH9rqCo88nDDE3ybmpfZacjtYPH99AD9ES6txNn714SbWG2izuzKi1JWY5ea8Ea7ERiroHUXULWFG41PXPPe36kN6FKc")
 
 		await interaction.reply({embeds:[Helpembed], ephemeral:true});
 	},

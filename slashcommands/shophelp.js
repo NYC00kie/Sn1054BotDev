@@ -17,7 +17,7 @@ module.exports = {
 		{name:"​", value: "Weißer-Zwerg   = .buyrole weißer-zwerg\nKaufen: 13'000 Nova-Coins \n Roter-Zwerg  = .buyrole roter-zwerg\nKaufen: 7'500 Nova-Coins \n Brauner-Zwerg  = .buyrole brauner-zwerg\nKaufen: 6'000 Nova-Coins \n Gaswolke = .buyrole gaswolke\nKaufen: 3'750 Nova-Coins\n memes. = .buyrole memes\nKaufen: 50 Nova-Coins"},
 		{name:"Zusätzliches", value: "Bei Problemen mit diesem Bot kann man sich gerne bei mir über Discord melden:\n < 376394812888186890> , oder beim SN1054 Discord Team.\nMehr Befehle kommen bald. Vorschläge kannst du in den Chat #ideen-feedback schreiben.\n Bugs sind bitte direkt bei mir oder beim Clixoom Discord Team zu melden.\n Viel Spaß c:"},
 		)
-		.setFooter("erstellt von: Nici und mit der Hilfe von Clara")
+		.setFooter("erstellt von: Nici \nXMR:82jEH9rqCo88nDDE3ybmpfZacjtYPH99AD9ES6txNn714SbWG2izuzKi1JWY5ea8Ea7ERiroHUXULWFG41PXPPe36kN6FKc")
 
 		await interaction.reply({embeds:[Helpembed], ephemeral:true});
 	},
