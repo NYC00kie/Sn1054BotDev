@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Sale = require('../models/sale');
 const Discord = require('discord.js');
 const dotenv = require('dotenv');
-const howmany = require('./howmany');
+const howmany = require('../methodes/howmany');
 const Loghandler = require('./Loghandler');
 dotenv.config();
 
