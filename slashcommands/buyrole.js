@@ -1,6 +1,7 @@
 const {EmbedBuilder,SlashCommandBuilder} = require('discord.js');
 const mongoose = require('mongoose');
 const Sale = require('../models/sale');
+const Loghandler = require('../methodes/Loghandler');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -40,7 +41,7 @@ module.exports = {
 							})
 							.exec()
 							.then(docs => {
-								Loghandler.log(message, Author, undefined, "buyrole", "518395092197965845", undefined)
+								Loghandler.log(interaction, Author, undefined, "buyrole", "518395092197965845", undefined)
 							})
 					} else {
 						interaction.editReply("Du hast nicht genug nvc")
@@ -63,7 +64,7 @@ module.exports = {
 							})
 							.exec()
 							.then(docs => {
-								Loghandler.log(message, Author, undefined, "buyrole", "518395091472089101", undefined)
+								Loghandler.log(interaction, Author, undefined, "buyrole", "518395091472089101", undefined)
 							})
 					} else {
 						interaction.editReply("Du hast nicht genug nvc")
@@ -86,7 +87,7 @@ module.exports = {
 							})
 							.exec()
 							.then(docs => {
-								Loghandler.log(message, Author, undefined, "buyrole", "518384555007148042", undefined)
+								Loghandler.log(interaction, Author, undefined, "buyrole", "518384555007148042", undefined)
 							})
 					} else {
 						interaction.editReply("Du hast nicht genug nvc")
@@ -109,7 +110,7 @@ module.exports = {
 							})
 							.exec()
 							.then(docs => {
-								Loghandler.log(message, Author, undefined, "buyrole", "518384549408014343", undefined)
+								Loghandler.log(interaction, Author, undefined, "buyrole", "518384549408014343", undefined)
 							})
 					} else {
 						interaction.editReply("Du hast nicht genug nvc")
@@ -132,7 +133,7 @@ module.exports = {
 							})
 							.exec()
 							.then(docs => {
-								Loghandler.log(message, Author, undefined, "buyrole", "518384546492973056", undefined)
+								Loghandler.log(interaction, Author, undefined, "buyrole", "518384546492973056", undefined)
 							})
 					} else {
 						interaction.editReply("Du hast nicht genug nvc")
@@ -155,7 +156,7 @@ module.exports = {
 							})
 							.exec()
 							.then(docs => {
-								Loghandler.log(message, Author, undefined, "buyrole", "518384356222566410", undefined)
+								Loghandler.log(interaction, Author, undefined, "buyrole", "518384356222566410", undefined)
 							})
 					} else {
 						interaction.editReply("Du hast nicht genug nvc")
@@ -178,7 +179,7 @@ module.exports = {
 							})
 							.exec()
 							.then(docs => {
-								Loghandler.log(message, Author, undefined, "buyrole", "518384355698278430", undefined)
+								Loghandler.log(interaction, Author, undefined, "buyrole", "518384355698278430", undefined)
 							})
 					} else {
 						interaction.editReply("Du hast nicht genug nvc")
@@ -201,7 +202,7 @@ module.exports = {
 							})
 							.exec()
 							.then(docs => {
-								Loghandler.log(message, Author, undefined, "buyrole", "518384354880258049", undefined)
+								Loghandler.log(interaction, Author, undefined, "buyrole", "518384354880258049", undefined)
 							})
 					} else {
 						interaction.editReply("Du hast nicht genug nvc")
@@ -224,7 +225,7 @@ module.exports = {
 							})
 							.exec()
 							.then(docs => {
-								Loghandler.log(message, Author, undefined, "buyrole", "518384354272215060", undefined)
+								Loghandler.log(interaction, Author, undefined, "buyrole", "518384354272215060", undefined)
 							})
 					} else {
 						interaction.editReply("Du hast nicht genug nvc")
@@ -247,7 +248,7 @@ module.exports = {
 							})
 							.exec()
 							.then(docs => {
-								Loghandler.log(message, Author, undefined, "buyrole", "518384353387085845", undefined)
+								Loghandler.log(interaction, Author, undefined, "buyrole", "518384353387085845", undefined)
 							})
 					} else {
 						interaction.editReply("Du hast nicht genug nvc")
@@ -270,7 +271,7 @@ module.exports = {
 							})
 							.exec()
 							.then(docs => {
-								Loghandler.log(message, Author, undefined, "buyrole", "518172524811386890", undefined)
+								Loghandler.log(interaction, Author, undefined, "buyrole", "518172524811386890", undefined)
 							})
 					} else {
 						interaction.editReply("Du hast nicht genug nvc")
@@ -293,7 +294,7 @@ module.exports = {
 							})
 							.exec()
 							.then(docs => {
-								Loghandler.log(message, Author, undefined, "buyrole", "700740599195893760", undefined)
+								Loghandler.log(interaction, Author, undefined, "buyrole", "700740599195893760", undefined)
 							})
 					} else {
 						interaction.editReply("Du hast nicht genug nvc")

@@ -1,24 +1,16 @@
-//importing of modules
+// importing of modules
 const dotenv = require('dotenv');
 dotenv.config();
-const { Client, Events, GatewayIntentBits, Collection } = require('discord.js');
-const fs = require("fs")
-const path = require("path")
+const { Client, Events, GatewayIntentBits, Collection, ActivityType } = require('discord.js');
+const fs = require("fs");
+const path = require("path");
 const mongoose = require('mongoose');
-const {exec} = require("child_process");
-const manageprofile = require("./commands/manageprofile");
-const Cxc = require("./commands/cxc");
-const Sellrole = require("./commands/sellrole");
-const channel = require("./commands/channel");
-const cxc = require('./commands/givecxc');
-const Profil = require('./commands/profil');
-const insider = require('./commands/insider');
-//beginning of the Code
+const manageprofile = require("./methodes/manageprofile");
 
-const PREFIX = "."
-var args = process.argv.slice(2)
+// beginning of the Code
+var args = process.argv.slice(2);
 
-//for Testing shit
+// for Testing
 if (args.length == 8) {
 	process.env = {
 		TOKEN: args[0],
@@ -27,45 +19,41 @@ if (args.length == 8) {
 		MyMailadress: args[3],
 		Password: args[4],
 		DB: args[5],
-	}
+	};
 }
 
-console.log(GatewayIntentBits)
-
 let bot = new Client({
-		intents: [
-			GatewayIntentBits.Guilds,
-			GatewayIntentBits.GuildMembers,
-			GatewayIntentBits.GuildMessages,
-			GatewayIntentBits.GuildMessageReactions,
-			GatewayIntentBits.GuildPresences
-			]
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.GuildMessageReactions,
+		GatewayIntentBits.GuildPresences
+	]
 });
-
 
 bot.login(process.env.TOKEN);
-bot.on('error', console.error)
+bot.on('error', console.error);
+
 bot.on('ready', async () => {
 	bot.user.setPresence({
-			activities: {
-				name: 'type .help',
-				type: 0
-			},
-			status: 'online'
-		})
-	console.log("Bot Online :)")
+		activities: [{
+			name: '/help',
+			type: ActivityType.Playing
+		}],
+		status: 'online'
+	});
+	console.log("Bot Online :)");
 });
 
-//conect to DB
-
+// connect to DB
 mongoose.connect('mongodb+srv://NY_Cookie:' + process.env.Password + '@clixoom-bot.oj9lk.mongodb.net/' + process.env.DB + '?retryWrites=true&w=majority', {
 	useNewUrlParser: true,
 	dbName: process.env.DB,
 }).then(() => {
-	console.log('\nconnected to database\n')
+	console.log('\nconnected to database\n');
 }).catch(err => console.error(err));
 mongoose.Promise = global.Promise;
-
 
 bot.on("guildMemberUpdate", function(oldMember, newMember) {
 	if (oldMember._roles != newMember._roles) {
@@ -76,31 +64,30 @@ bot.on("guildMemberUpdate", function(oldMember, newMember) {
 		}
 		for (var j = 0; j < newMember._roles.length; j++) {
 			if (newMember._roles[j] == "518385317229625364") {
-				bot.channels.cache.get("727919338606166096").send(`<@${newMember.user.id}> Willkommen und schön, dass du es bis hier her geschafft hast 👍`)
+				bot.channels.cache.get("727919338606166096").send(`<@${newMember.user.id}> Willkommen und schön, dass du es bis hier her geschafft hast 👍`);
 				return;
 			}
 		}
 	}
-
 });
 
 bot.on("guildMemberAdd", member => {
-	manageprofile.add_Profile_new(member); //addprofile to DB when entering the Server
-})
+	manageprofile.add_Profile_new(member); // add profile to DB when entering the Server
+});
 
 bot.on("guildMemberRemove", member => {
-	manageprofile.remove_Profile(member); //removeprofile from DB when leaving the server
-})
+	manageprofile.remove_Profile(member); // remove profile from DB when leaving the server
+});
 
-//Slash Commands
-//Loading
+// Slash Commands
+// Loading
 bot.commands = new Collection();
 const commandsPath = path.join(__dirname, 'slashcommands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
 for (const file of commandFiles) {
 	const filePath = path.join(commandsPath, file);
 	const command = require(filePath);
-	// Set a new item in the Collection with the key as the command name and the value as the exported module
 	if ('data' in command && 'execute' in command) {
 		bot.commands.set(command.data.name, command);
 	} else {
@@ -108,7 +95,7 @@ for (const file of commandFiles) {
 	}
 }
 
-//Executing Slash Commands
+// Executing Slash Commands
 bot.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
@@ -123,12 +110,10 @@ bot.on(Events.InteractionCreate, async interaction => {
 		await command.execute(interaction);
 	} catch (error) {
 		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+		if (interaction.replied || interaction.deferred) {
+			await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
+		} else {
+			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+		}
 	}
 });
-
-function sleep(ms) {
-	return new Promise((resolve) => {
-		setTimeout(resolve, ms);
-	});
-}

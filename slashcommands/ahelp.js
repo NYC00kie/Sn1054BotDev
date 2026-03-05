@@ -15,7 +15,7 @@ module.exports = {
 		.setColor(0xd62433)
 		.setTitle("ClixoomBot Admin Commands:")
 		.addFields(
-		{name: "Befehle" ,value:"``.givenvc @user [betrag]`` - Gibt @user [betrag] Cx-Coins\n ``.remnvc @user [betrag]`` - Entzieht @user [betrag] Cx-Coins\n NUR FÜR NOTFALL: ``.setnvc @user [betrag]``\n ``.stats`` - Zeigt dir ein paar Allgemeine Statistiken \n ``.archiv #channel ``- Archiviert den Kanal von @user und gibt ihm die nötigen nvc\n ``.unlink @user`` - Nimmt @user die Rechte an seinem Kanal\n NUR FÜR NOTFALL: ``.link @user #kanal``(noch nicht in arbeit, weil es eher unwichtig ist)\n ``.reset @user ``Alles von dem user löschen \n `` .addblacklist [Wort]`` - Fügt ein Wort der Blacklist hinzu und mit diesem Wort können keine nvc mehr bekommen werden\n`` .addchannel [channelid] `` - fügt die Channel id der blacklist hinzu, in dem keine nvc mehr bekommen werden können.\n`` .watchword `` - Wörter Blacklist einsehen.\n`` .watchchannel `` - Channel Blacklist einsehen." },
+		{name: "Befehle" ,value:"``/givenvc user: @user betrag: [betrag]`` - Gibt @user [betrag] Nova-Coins\n ``/remnvc user: @user betrag: [betrag]`` - Entzieht @user [betrag] Nova-Coins\n ``/setnvc user: @user betrag: [betrag]`` - Setzt NVC von @user\n ``/stats`` - Zeigt dir ein paar Allgemeine Statistiken \n ``/archiv kanal: #channel ``- Archiviert den Kanal von @user und gibt ihm die nötigen nvc\n ``/unlink user: @user`` - Nimmt @user die Rechte an seinem Kanal\n ``/reset user: @user ``- Alles von dem User löschen" },
 		)
 
 		await interaction.reply({embeds:[AHelpembed], ephemeral:true});
