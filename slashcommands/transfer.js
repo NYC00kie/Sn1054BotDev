@@ -27,7 +27,7 @@ module.exports = {
 		}
 
 		try {
-			const senderDocs = await Sale.findOne({ MemberId: interaction.user.id });
+			const senderDocs = await Sale.findOne({ MemberId: interaction.user.id }).exec();
 			if (!senderDocs) {
 				return interaction.reply({ content: 'Du hast noch kein Profil.', ephemeral: true });
 			}
@@ -36,20 +36,15 @@ module.exports = {
 				return interaction.reply({ content: 'Du hast nicht genug Nova-Coins.', ephemeral: true });
 			}
 
-			const receiverDocs = await Sale.findOne({ MemberId: targetUser.id });
+			const receiverDocs = await Sale.findOne({ MemberId: targetUser.id }).exec();
 			if (!receiverDocs) {
 				return interaction.reply({ content: 'Der Empfänger hat noch kein Profil.', ephemeral: true });
 			}
 
-			// Update Sender
-			await Sale.updateOne({ _id: senderDocs._id }, { $set: { cxc: senderDocs.cxc - amount } });
+			await Sale.updateOne({ _id: senderDocs._id }, { $set: { cxc: senderDocs.cxc - amount } }).exec();
+			await Sale.updateOne({ _id: receiverDocs._id }, { $set: { cxc: receiverDocs.cxc + amount } }).exec();
 
-			// Update Receiver
-			await Sale.updateOne({ _id: receiverDocs._id }, { $set: { cxc: receiverDocs.cxc + amount } });
-
-			// Log action
 			Loghandler.log(interaction, interaction.user, targetUser, "transfer", undefined, undefined);
-
 			await interaction.reply({ content: `${amount} NVC wurden erfolgreich an <@${targetUser.id}> übertragen.` });
 		} catch (err) {
 			console.error(err);

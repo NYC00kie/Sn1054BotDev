@@ -44,7 +44,7 @@ module.exports = {
 		const member = interaction.member;
 
 		try {
-			const docs = await Sale.findOne({ MemberId: memberId });
+			const docs = await Sale.findOne({ MemberId: memberId }).exec();
 			if (!docs) {
 				return interaction.reply({ content: 'Du hast noch kein Profil.', ephemeral: true });
 			}
@@ -81,17 +81,14 @@ module.exports = {
 				}
 
 				dbUpdate.$set.cxc = docs.cxc + totalReward;
-
-				await Sale.updateOne({ _id: docs._id }, dbUpdate);
+				await Sale.updateOne({ _id: docs._id }, dbUpdate).exec();
 
 				for (const roleId of roleIdsToRemove) {
 					await member.roles.remove(roleId).catch(console.error);
 				}
-				// Special Case Memes (from original code)
 				await member.roles.remove("518395092197965845").catch(console.error);
 
 				Loghandler.log(interaction, interaction.user, undefined, "sellroleall", undefined, undefined);
-
 				await interaction.reply({ content: `Alle deine Rollen wurden verkauft für **${totalReward} NVC**.` });
 				await interaction.user.send("Alle deine Rollen wurden verkauft und es wird keine Rückerstattung geben.").catch(() => {});
 
@@ -111,10 +108,9 @@ module.exports = {
 						cxc: docs.cxc + roleInfo.price,
 						[roleInfo.dbKey]: 0
 					}
-				});
+				}).exec();
 
 				Loghandler.log(interaction, interaction.user, undefined, "sellrole", roleInfo.id, undefined);
-
 				await interaction.reply({ content: `Die Rolle **${search}** wurde für **${roleInfo.price} NVC** verkauft.` });
 			}
 

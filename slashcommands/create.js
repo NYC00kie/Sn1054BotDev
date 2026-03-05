@@ -21,7 +21,7 @@ module.exports = {
 		const memberId = interaction.user.id;
 
 		try {
-			const docs = await Sale.findOne({ MemberId: memberId });
+			const docs = await Sale.findOne({ MemberId: memberId }).exec();
 			if (!docs) {
 				return interaction.reply({ content: 'Du hast noch kein Profil.', ephemeral: true });
 			}
@@ -30,7 +30,6 @@ module.exports = {
 				return interaction.reply({ content: "Du hast bereits 2 Kanäle.", ephemeral: true });
 			}
 
-			// If user has one channel, check for roles for a second one
 			if (docs.Channelid !== "undefined") {
 				const rolesCount = await howmany.roles(memberId);
 				if (rolesCount <= 1) {
@@ -42,7 +41,7 @@ module.exports = {
 
 			const newChannel = await interaction.guild.channels.create({
 				name: name,
-				type: 0, // GuildText
+				type: 0,
 				topic: `${beschreibung} | <@${memberId}>`,
 				parent: "451776378938064897"
 			});
@@ -56,18 +55,17 @@ module.exports = {
 						Channelid: newChannel.id,
 						createdDate: new Date()
 					}
-				});
+				}).exec();
 			} else {
 				await Sale.updateOne({ _id: docs._id }, {
 					$set: {
 						Channelid2: newChannel.id,
 						createdDate2: new Date()
 					}
-				});
+				}).exec();
 			}
 
 			Loghandler.log(interaction, interaction.user, undefined, "channelcreate", undefined, newChannel.id);
-
 			await interaction.editReply({ content: `Dein Kanal <#${newChannel.id}> wurde erfolgreich erstellt.` });
 
 		} catch (err) {

@@ -17,7 +17,7 @@ module.exports = {
 		const targetUser = interaction.options.getUser('user');
 
 		try {
-			const docs = await Sale.findOne({ MemberId: targetUser.id });
+			const docs = await Sale.findOne({ MemberId: targetUser.id }).exec();
 			if (!docs) {
 				return interaction.reply({ content: "Dieser Nutzer hat kein Profil.", ephemeral: true });
 			}
@@ -54,7 +54,7 @@ module.exports = {
 					spockgif: 0,
 					thumbsgif: 0
 				}
-			});
+			}).exec();
 
 			const logChannel = interaction.client.channels.cache.get("509757254862372883");
 			if (logChannel) {

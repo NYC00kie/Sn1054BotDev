@@ -11,17 +11,15 @@ module.exports = {
 	async execute(interaction) {
 		const targetUser = interaction.options.getUser('user') || interaction.user;
 
-		Sale.findOne({ MemberId: targetUser.id })
-			.exec()
-			.then(docs => {
-				if (!docs) {
-					return interaction.reply({ content: 'Dieser Nutzer hat noch kein Profil.', ephemeral: true });
-				}
-				interaction.reply(`${docs.Nickname} hat aktuell **${docs.cxc}** Nova-Coins`);
-			})
-			.catch(err => {
-				console.error(err);
-				interaction.reply({ content: 'Fehler beim Abrufen der NVC.', ephemeral: true });
-			});
+		try {
+			const docs = await Sale.findOne({ MemberId: targetUser.id }).exec();
+			if (!docs) {
+				return interaction.reply({ content: 'Dieser Nutzer hat noch kein Profil.', ephemeral: true });
+			}
+			await interaction.reply(`${docs.Nickname} hat aktuell **${docs.cxc}** Nova-Coins`);
+		} catch (err) {
+			console.error(err);
+			await interaction.reply({ content: 'Fehler beim Abrufen der NVC.', ephemeral: true });
+		}
 	},
 };

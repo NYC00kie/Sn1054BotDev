@@ -41,10 +41,10 @@ module.exports = {
 		const channelId = targetChannel.id;
 
 		try {
-			let docs = await Sale.findOne({ Channelid: channelId });
+			let docs = await Sale.findOne({ Channelid: channelId }).exec();
 			let isChannel2 = false;
 			if (!docs) {
-				docs = await Sale.findOne({ Channelid2: channelId });
+				docs = await Sale.findOne({ Channelid2: channelId }).exec();
 				isChannel2 = true;
 			}
 
@@ -66,10 +66,9 @@ module.exports = {
 				? { $set: { Channelid2: "undefined", cxc: docs.cxc + reward } }
 				: { $set: { Channelid: "undefined", cxc: docs.cxc + reward } };
 
-			await Sale.updateOne({ _id: docs._id }, update);
+			await Sale.updateOne({ _id: docs._id }, update).exec();
 
 			Loghandler.log(interaction, targetChannel, undefined, "channelarchiv", undefined, channelId);
-
 			await interaction.editReply({ content: `Kanal <#${channelId}> wurde erfolgreich archiviert. Besitzer <@${docs.MemberId}> hat ${reward} NVC erhalten.` });
 
 		} catch (err) {

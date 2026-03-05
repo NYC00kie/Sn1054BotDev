@@ -17,7 +17,7 @@ module.exports = {
 		const targetUser = interaction.options.getUser('user');
 
 		try {
-			const docs = await Sale.findOne({ MemberId: targetUser.id });
+			const docs = await Sale.findOne({ MemberId: targetUser.id }).exec();
 			if (!docs) {
 				return interaction.reply({ content: "Dieser Nutzer hat kein Profil.", ephemeral: true });
 			}
@@ -27,14 +27,17 @@ module.exports = {
 			}
 
 			const channelId = docs.Channelid;
-			const channel = await interaction.guild.channels.fetch(channelId);
-			if (channel) {
-				await channel.send(`Dieser Channel wurde entlinkt. Der User: <@${targetUser.id}> erhält nun keine cxc mehr für diesen Channel.`);
+			try {
+				const channel = await interaction.guild.channels.fetch(channelId);
+				if (channel) {
+					await channel.send(`Dieser Channel wurde entlinkt. Der User: <@${targetUser.id}> erhält nun keine cxc mehr für diesen Channel.`);
+				}
+			} catch (e) {
+				console.error("Could not send message to channel being unlinked:", e);
 			}
 
-			await Sale.updateOne({ _id: docs._id }, { $set: { Channelid: "undefined" } });
+			await Sale.updateOne({ _id: docs._id }, { $set: { Channelid: "undefined" } }).exec();
 
-			// Log to a specific channel if needed as in original code
 			const logChannel = interaction.client.channels.cache.get("509757254862372883");
 			if (logChannel) {
 				await logChannel.send(`channel von <@${targetUser.id}> wurde entlinkt \n unlink`);

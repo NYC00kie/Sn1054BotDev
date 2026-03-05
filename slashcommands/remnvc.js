@@ -22,12 +22,12 @@ module.exports = {
 		const amount = interaction.options.getInteger('betrag');
 
 		try {
-			const docs = await Sale.findOne({ MemberId: targetUser.id });
+			const docs = await Sale.findOne({ MemberId: targetUser.id }).exec();
 			if (!docs) {
 				return interaction.reply({ content: "Dieser Nutzer hat kein Profil.", ephemeral: true });
 			}
 
-			await Sale.updateOne({ _id: docs._id }, { $set: { cxc: docs.cxc - amount } });
+			await Sale.updateOne({ _id: docs._id }, { $set: { cxc: docs.cxc - amount } }).exec();
 			await interaction.reply({ content: `${amount} NVC wurden <@${targetUser.id}> abgezogen.` });
 
 		} catch (err) {

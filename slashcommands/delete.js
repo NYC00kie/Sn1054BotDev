@@ -33,62 +33,62 @@ module.exports = {
 				.setDescription('Der Kanal, den du löschen möchtest (erforderlich, wenn du 2 hast)')),
 	async execute(interaction) {
 		const memberId = interaction.user.id;
-		const docs = await Sale.findOne({ MemberId: memberId });
-
-		if (!docs) {
-			return interaction.reply({ content: 'Du hast noch kein Profil.', ephemeral: true });
-		}
-
-		let channelToDeleteId;
-		let isChannel2 = false;
-
-		const hasCh1 = docs.Channelid !== "undefined";
-		const hasCh2 = docs.Channelid2 !== "undefined";
-
-		if (!hasCh1 && !hasCh2) {
-			return interaction.reply({ content: "Du hast keinen Kanal!", ephemeral: true });
-		}
-
-		const selectedChannel = interaction.options.getChannel('kanal');
-
-		if (hasCh1 && hasCh2) {
-			if (!selectedChannel) {
-				return interaction.reply({ content: `Da du zwei Kanäle hast, musst du angeben, welchen du löschen möchtest: <#${docs.Channelid}> oder <#${docs.Channelid2}>`, ephemeral: true });
-			}
-			if (selectedChannel.id === docs.Channelid) {
-				channelToDeleteId = docs.Channelid;
-				isChannel2 = false;
-			} else if (selectedChannel.id === docs.Channelid2) {
-				channelToDeleteId = docs.Channelid2;
-				isChannel2 = true;
-			} else {
-				return interaction.reply({ content: "Dieser Kanal gehört dir nicht!", ephemeral: true });
-			}
-		} else {
-			if (hasCh1) {
-				channelToDeleteId = docs.Channelid;
-				isChannel2 = false;
-			} else {
-				channelToDeleteId = docs.Channelid2;
-				isChannel2 = true;
-			}
-			if (selectedChannel && selectedChannel.id !== channelToDeleteId) {
-				return interaction.reply({ content: "Dieser Kanal gehört dir nicht!", ephemeral: true });
-			}
-		}
-
-		const createdDate = isChannel2 ? docs.createdDate2 : docs.createdDate;
-		const today = new Date();
-		const minAge = new Date(createdDate);
-		minAge.setDate(minAge.getDate() + 1);
-
-		if (minAge > today) {
-			return interaction.reply({ content: "Dein Kanal wurde vor weniger als 24h erstellt. Bitte warte mindestens 24h, bevor du ihn löschst.", ephemeral: true });
-		}
-
-		await interaction.deferReply();
-
 		try {
+			const docs = await Sale.findOne({ MemberId: memberId }).exec();
+
+			if (!docs) {
+				return interaction.reply({ content: 'Du hast noch kein Profil.', ephemeral: true });
+			}
+
+			let channelToDeleteId;
+			let isChannel2 = false;
+
+			const hasCh1 = docs.Channelid !== "undefined";
+			const hasCh2 = docs.Channelid2 !== "undefined";
+
+			if (!hasCh1 && !hasCh2) {
+				return interaction.reply({ content: "Du hast keinen Kanal!", ephemeral: true });
+			}
+
+			const selectedChannel = interaction.options.getChannel('kanal');
+
+			if (hasCh1 && hasCh2) {
+				if (!selectedChannel) {
+					return interaction.reply({ content: `Da du zwei Kanäle hast, musst du angeben, welchen du löschen möchtest: <#${docs.Channelid}> oder <#${docs.Channelid2}>`, ephemeral: true });
+				}
+				if (selectedChannel.id === docs.Channelid) {
+					channelToDeleteId = docs.Channelid;
+					isChannel2 = false;
+				} else if (selectedChannel.id === docs.Channelid2) {
+					channelToDeleteId = docs.Channelid2;
+					isChannel2 = true;
+				} else {
+					return interaction.reply({ content: "Dieser Kanal gehört dir nicht!", ephemeral: true });
+				}
+			} else {
+				if (hasCh1) {
+					channelToDeleteId = docs.Channelid;
+					isChannel2 = false;
+				} else {
+					channelToDeleteId = docs.Channelid2;
+					isChannel2 = true;
+				}
+				if (selectedChannel && selectedChannel.id !== channelToDeleteId) {
+					return interaction.reply({ content: "Dieser Kanal gehört dir nicht!", ephemeral: true });
+				}
+			}
+
+			const createdDate = isChannel2 ? docs.createdDate2 : docs.createdDate;
+			const today = new Date();
+			const minAge = new Date(createdDate);
+			minAge.setDate(minAge.getDate() + 1);
+
+			if (minAge > today) {
+				return interaction.reply({ content: "Dein Kanal wurde vor weniger als 24h erstellt. Bitte warte mindestens 24h, bevor du ihn löschst.", ephemeral: true });
+			}
+
+			await interaction.deferReply();
+
 			const channel = await interaction.guild.channels.fetch(channelToDeleteId);
 			await channel.setParent("518452814691827731", { lockPermissions: true });
 			await channel.send("Channel archived");
@@ -100,7 +100,7 @@ module.exports = {
 				? { $set: { Channelid2: "undefined", cxc: docs.cxc + reward } }
 				: { $set: { Channelid: "undefined", cxc: docs.cxc + reward } };
 
-			await Sale.updateOne({ _id: docs._id }, update);
+			await Sale.updateOne({ _id: docs._id }, update).exec();
 
 			Loghandler.log(interaction, interaction.user, undefined, "channeldelete", undefined, channelToDeleteId);
 
@@ -115,7 +115,11 @@ module.exports = {
 
 		} catch (err) {
 			console.error(err);
-			await interaction.editReply({ content: "Ein Fehler ist beim Löschen des Kanals aufgetreten." });
+			if (interaction.deferred) {
+				await interaction.editReply({ content: "Ein Fehler ist beim Löschen des Kanals aufgetreten." });
+			} else {
+				await interaction.reply({ content: "Ein Fehler ist beim Löschen des Kanals aufgetreten.", ephemeral: true });
+			}
 		}
 	},
 };
