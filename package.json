@@ -4,36 +4,19 @@
   "description": "Clixoom Bot",
   "main": "index.js",
   "dependencies": {
-    "@discordjs/uws": "^10.149.0",
     "@js-temporal/polyfill": "^0.4.3",
-    "bl": "^2.2.1",
     "discord.js": "^14.14.1",
-    "dotenv": "^8.2.0",
-    "gun": "^0.2020.1235",
-    "json-schema": "^0.4.0",
-    "jsprim": "^1.4.1",
-    "moment": "^2.29.2",
+    "dotenv": "^16.4.5",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.45",
     "mongoose": "^8.9.5",
-    "mout": "^1.2.3",
-    "mpath": "^0.8.3",
-    "mquery": "^3.2.3",
-    "nodemailer": "^7.0.11",
-    "moment-timezone": "^0.5.35",
-    "mongodb": "^5.7.0",
-    "mongoose": "^7.4.2",
-    "mout": "^1.2.3",
-    "mpath": "^0.8.3",
-    "mquery": "^3.2.3",
-    "nodemailer": "^6.7.2",
-    "nodemon": "^3.0.3",
-    "nth-check": "^2.0.1",
-    "request": "^2.88.2",
-    "swift": "^2.8.0",
-    "wikijs": "^6.3.3"
+    "nodemailer": "^6.9.13",
+    "nodemon": "^3.1.0"
   },
   "scripts": {
     "test": "node index",
-    "start": "node index"
+    "start": "node index",
+    "deploy": "node deploay-commands.js"
   },
   "repository": {
     "type": "git",

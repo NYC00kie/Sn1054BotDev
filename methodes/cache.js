@@ -1,75 +1,61 @@
 // caching the channel messages
 const dotenv = require('dotenv');
 dotenv.config();
-const Discord = require('discord.js');
+const { Client, GatewayIntentBits } = require('discord.js');
 const mongoose = require('mongoose');
-const Channel = require('../models/channels')
+const Channel = require('../models/channels');
 const Sale = require('../models/sale');
 
-let bot = new Discord.Client({
-		intents: [
-			'1',
-			'2',
-			'512'
-			]
+let bot = new Client({
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages
+	]
 });
 
 bot.login(process.env.TOKEN);
 
-mongoose.connect('mongodb+srv://NY_Cookie:' + process.env.Password + '@clixoom-bot-oj9lk.mongodb.net/' + process.env.DB + '?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://NY_Cookie:' + process.env.Password + '@clixoom-bot.oj9lk.mongodb.net/' + process.env.DB + '?retryWrites=true&w=majority', {
 	useNewUrlParser: true,
 	dbName: process.env.DB,
 }).then(() => {
-	console.log('\nconnected to database\n')
-}).catch(err => { console.error(err) })
+	console.log('\nconnected to database\n');
+}).catch(err => { console.error(err) });
 
 
 async function lots_of_messages_getter(channel, limitt = 10000) {
-
 	const sum_messages = [];
 	let last_id;
 
 	while (true) {
-		const options = {
-			limit: 99
-		};
+		const options = { limit: 99 };
 		if (last_id) {
 			options.before = last_id;
 		}
 
 		const messages = await channel.messages.fetch(options);
+		if (messages.size === 0) break;
 		sum_messages.push(messages.size);
 		last_id = messages.last().id;
 
-		if (messages.size != 99 || sum_messages >= limitt) {
+		const total_so_far = sum_messages.reduce((a, b) => a + b, 0);
+		if (messages.size != 99 || total_so_far >= limitt) {
 			break;
 		}
 	}
 
-	return sum_messages;
-}
-
-async function how_many_messages_are_there_actually(msgcount) {
-	let PreActuall_messages_v0 = msgcount.toString();
-	let Actuall_messages_v0 = PreActuall_messages_v0.split(",");
-	let y = Actuall_messages_v0.length
-
-	var count = 0
-	for (i = 0; i < y; i++) {
-		var count = count + parseInt(Actuall_messages_v0[i])
-	}
-	actuall_messages = count
-	return actuall_messages
+	return sum_messages.reduce((a, b) => a + b, 0);
 }
 
 async function countmessages(channelid) {
-
-	let channel = await bot.channels.cache.get(channelid)
-
-	let msgcount1 = await lots_of_messages_getter(channel)
-	let msgcount2 = await how_many_messages_are_there_actually(msgcount1)
-
-	return msgcount2
+	try {
+		let channel = await bot.channels.fetch(channelid);
+		if (!channel) return 0;
+		return await lots_of_messages_getter(channel);
+	} catch (err) {
+		console.error(`Error counting messages for ${channelid}:`, err);
+		return 0;
+	}
 }
 
 function sleep(ms) {
@@ -79,26 +65,21 @@ function sleep(ms) {
 }
 
 (async () => {
+	// Wait for bot to be ready
+	await new Promise(resolve => bot.once('ready', resolve));
+	console.log("Bot ready for caching");
 
-	let docs = await Sale.find()
-	let filtereddocs = docs.filter(e => e.Channelid != "undefined" || e.Channelid2 != "undefined")
+	let docs = await Sale.find();
+	let filtereddocs = docs.filter(e => e.Channelid != "undefined" || e.Channelid2 != "undefined");
 
-	console.log(filtereddocs)
-
-	// check if the channel already exists
 	for (var i = 0; i < filtereddocs.length; i++) {
-		filtereddocs[i].created = await Channel.exists({ channelid: filtereddocs[i].Channelid }) || await Channel.exists({ channelid: filtereddocs[i].Channelid2 })
-	}
-	await sleep(5000)
-	for (var i = 0; i < filtereddocs.length; i++) {
-
 		// channel 1
 		if (filtereddocs[i].Channelid != "undefined") {
-			let msgcount = await countmessages(filtereddocs[i].Channelid)
-			if (filtereddocs[i].created) {
-				let channeldoc = await Channel.findOne({ channelid: filtereddocs[i].Channelid })
-				let update = { messagecount: msgcount, lastcachedate: new Date() }
-				await channeldoc.updateOne(update)
+			let msgcount = await countmessages(filtereddocs[i].Channelid);
+			let exists = await Channel.exists({ channelid: filtereddocs[i].Channelid });
+			
+			if (exists) {
+				await Channel.updateOne({ channelid: filtereddocs[i].Channelid }, { messagecount: msgcount, lastcachedate: new Date() });
 			} else {
 				let Newchannel = new Channel({
 					_id: new mongoose.Types.ObjectId(),
@@ -106,21 +87,20 @@ function sleep(ms) {
 					ownerid: filtereddocs[i].MemberId,
 					messagecount: msgcount,
 					lastcachedate: new Date(),
-				})
-				await Newchannel.save()
+				});
+				await Newchannel.save();
 			}
-			let waittimems = 60000 * (Math.floor(msgcount / 1000) + 1)
-			console.log(`${waittimems/60000} Minuten`)
-			await sleep(waittimems)
+			console.log(`Updated channel 1: ${filtereddocs[i].Channelid}`);
+			await sleep(5000);
 		}
 
 		// channel 2
 		if (filtereddocs[i].Channelid2 != "undefined") {
-			let msgcount = await countmessages(filtereddocs[i].Channelid2)
-			if (filtereddocs[i].created) {
-				let channeldoc = await Channel.findOne({ channelid: filtereddocs[i].Channelid2 })
-				let update = { messagecount: msgcount, lastcachedate: new Date() }
-				await channeldoc.updateOne(update)
+			let msgcount = await countmessages(filtereddocs[i].Channelid2);
+			let exists = await Channel.exists({ channelid: filtereddocs[i].Channelid2 });
+			
+			if (exists) {
+				await Channel.updateOne({ channelid: filtereddocs[i].Channelid2 }, { messagecount: msgcount, lastcachedate: new Date() });
 			} else {
 				let Newchannel = new Channel({
 					_id: new mongoose.Types.ObjectId(),
@@ -128,30 +108,23 @@ function sleep(ms) {
 					ownerid: filtereddocs[i].MemberId,
 					messagecount: msgcount,
 					lastcachedate: new Date(),
-				})
-				await Newchannel.save()
+				});
+				await Newchannel.save();
 			}
-			let waittimems = 60000 * (Math.floor(msgcount / 1000) + 1)
-			console.log(`${waittimems/60000} Minuten`)
-			await sleep(waittimems)
+			console.log(`Updated channel 2: ${filtereddocs[i].Channelid2}`);
+			await sleep(5000);
 		}
-
 	}
 
-	let channeldocs = await Channel.find()
-
+	let channeldocs = await Channel.find();
 	for (var i = 0; i < channeldocs.length; i++) {
-
-		let found = docs.find(element => element.Channelid == channeldocs[i].channelid || element.Channelid2 == channeldocs[i].channelid)
-		// wenn der channel gelöscht wurde, lösche ihn auch aus der Sammlung
+		let found = docs.find(element => element.Channelid == channeldocs[i].channelid || element.Channelid2 == channeldocs[i].channelid);
 		if (found == undefined) {
-			console.log("no Partner found")
-			console.log(channeldocs[i])
-			await channeldocs[i].remove()
+			console.log(`Deleting orphan channel record: ${channeldocs[i].channelid}`);
+			await Channel.deleteOne({ _id: channeldocs[i]._id });
 		}
 	}
 
 	await mongoose.disconnect();
-	await mongoose.connection.close()
-	process.exit()
-})().catch((e) => console.error(e))
+	process.exit();
+})().catch((e) => console.error(e));
