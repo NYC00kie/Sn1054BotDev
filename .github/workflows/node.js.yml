@@ -9,35 +9,30 @@ on:
   pull_request:
     branches: [ master ]
 
-env:
-  TEST: "12"
-  DB: ${{ secrets.DB }}
-  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-  MAILADRESS: ${{ secrets.MAILADRESS }}
-  MAILPW: ${{ secrets.MAILPW }}
-  MYMAILADRESS: ${{ secrets.MYMAILADRESS }}
-  TOKEN: ${{ secrets.TOKEN }}
-  TRELLOKEY: ${{ secrets.TRELLOKEY }}
-  TRELLOTOKEN: ${{ secrets.TRELLOTOKEN }}
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [23.x, 24.x, 25.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        # Testing on the latest and experimental Node versions as requested
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: echo $TEST
+    
     - run: npm ci
-    - run: npm run build --if-present
-    - run: npm run test $TOKEN $MAILPW $MAILADRESS $MYMAILADRESS $DB_PASSWORD $DB $TRELLOKEY $TRELLOTOKEN & function sleepnkill () { sleep 30; killall node; }; sleepnkill
+    
+    - name: Build
+      run: npm run build --if-present
+    
+    - name: Smoke Test
+      # Starts the bot and waits 30 seconds to ensure it doesn't crash on startup.
+      # timeout returns exit code 124 when it times out, which we treat as success for a long-running process.
+      run: |
+        timeout 30s npm test ${{ secrets.TOKEN }} ${{ secrets.MAILPW }} ${{ secrets.MAILADRESS }} ${{ secrets.MYMAILADRESS }} ${{ secrets.DB_PASSWORD }} ${{ secrets.DB }} ${{ secrets.TRELLOKEY }} ${{ secrets.TRELLOTOKEN }} || [ $? -eq 124 ]

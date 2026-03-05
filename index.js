@@ -12,14 +12,14 @@ var args = process.argv.slice(2);
 
 // for Testing
 if (args.length == 8) {
-	process.env = {
+	Object.assign(process.env, {
 		TOKEN: args[0],
 		Mailpw: args[1],
 		Mailadress: args[2],
 		MyMailadress: args[3],
 		Password: args[4],
 		DB: args[5],
-	};
+	});
 }
 
 let bot = new Client({
